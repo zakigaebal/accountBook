@@ -241,10 +241,9 @@ namespace accountBook
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            buttonLogin_Click(sender, e);
             
-            var f = new Login();
-            DialogResult = f.ShowDialog();
-            // 로그인 false로 바꾸고 해야함
             buttonSearch_Click(sender, e);
         }
 
@@ -255,6 +254,11 @@ namespace accountBook
             if(result == DialogResult.OK)
             {
                 MessageBox.Show("성공");
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                MessageBox.Show("실패");
+                this.Close();
             }
            
         }

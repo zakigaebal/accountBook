@@ -19,7 +19,7 @@ namespace accountBook
 
         private void buttonlogin_Click(object sender, EventArgs e)
         {
-            if(textBoxName.Text =="최대열"&&textBoxPassword.Text == "")
+            if(textBoxName.Text ==""&&textBoxPassword.Text == "")
             {
                 DialogResult = DialogResult.OK;
             }
@@ -34,7 +34,7 @@ namespace accountBook
         {
             if(e.KeyCode == Keys.Enter)
             {
-                if(textBoxName.Text == "최대열" && textBoxPassword.Text == "")
+                if(textBoxName.Text == "" && textBoxPassword.Text == "")
                 {
                     DialogResult=DialogResult.OK;
                 }
@@ -44,6 +44,11 @@ namespace accountBook
                     textBoxPassword.Focus();
                 }
             }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
