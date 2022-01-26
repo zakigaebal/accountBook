@@ -17,6 +17,12 @@ namespace accountBook
         {
             InitializeComponent();
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
         // 테이블을 두개로 바꿔야됨
         // account테이블 기존 하나
         // 또 다른 테이블 하나 items 테이블 하나 생성
@@ -31,10 +37,12 @@ namespace accountBook
             this.Close();
             
         }
-        private void Form2_Load(object sender, EventArgs e)
+
+        private void comboBoxInOut_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComBoChange();
         }
+
         private void ComBoChange()
         {
             //함수로 만들어보자
@@ -56,8 +64,7 @@ namespace accountBook
                 comboBoxName.Items.Add("외식");
             }
         }
-        //추가
-        //지출연동 이슈
+        
 
         private void comboBoxName_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -130,9 +137,8 @@ namespace accountBook
         }
 
         
-        private void comboBoxInOut_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
+        
+
+       
     }
 }

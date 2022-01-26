@@ -275,5 +275,10 @@ namespace accountBook
         {
 
         }
+
+        private void buttonForm2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     }

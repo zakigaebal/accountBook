@@ -267,6 +267,7 @@
             this.buttonForm2.TabIndex = 25;
             this.buttonForm2.Text = "...";
             this.buttonForm2.UseVisualStyleBackColor = true;
+            this.buttonForm2.TextChanged += new System.EventHandler(this.buttonForm2_TextChanged);
             this.buttonForm2.Click += new System.EventHandler(this.buttonForm2_Click);
             // 
             // notifyIcon1
