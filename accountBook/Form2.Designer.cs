@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonClose = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.textBoxMoney = new System.Windows.Forms.TextBox();
             this.labelItemInput = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
@@ -42,21 +42,12 @@
             this.dateTimePickerCalender = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
-            // buttonClose
-            // 
-            this.buttonClose.Location = new System.Drawing.Point(209, 364);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(105, 89);
-            this.buttonClose.TabIndex = 0;
-            this.buttonClose.Text = "종료";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
             // textBoxMoney
             // 
-            this.textBoxMoney.Location = new System.Drawing.Point(76, 145);
+            this.textBoxMoney.ImeMode = System.Windows.Forms.ImeMode.Hangul;
+            this.textBoxMoney.Location = new System.Drawing.Point(76, 135);
             this.textBoxMoney.Name = "textBoxMoney";
-            this.textBoxMoney.Size = new System.Drawing.Size(121, 21);
+            this.textBoxMoney.Size = new System.Drawing.Size(169, 21);
             this.textBoxMoney.TabIndex = 1;
             // 
             // labelItemInput
@@ -70,9 +61,9 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(0, 364);
+            this.buttonSave.Location = new System.Drawing.Point(12, 298);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(103, 89);
+            this.buttonSave.Size = new System.Drawing.Size(314, 140);
             this.buttonSave.TabIndex = 3;
             this.buttonSave.Text = "저장";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -92,7 +83,7 @@
             this.comboBoxName.FormattingEnabled = true;
             this.comboBoxName.Location = new System.Drawing.Point(76, 85);
             this.comboBoxName.Name = "comboBoxName";
-            this.comboBoxName.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxName.Size = new System.Drawing.Size(169, 20);
             this.comboBoxName.TabIndex = 5;
             this.comboBoxName.Text = "월급";
             this.comboBoxName.SelectedIndexChanged += new System.EventHandler(this.comboBoxName_SelectedIndexChanged);
@@ -103,9 +94,9 @@
             this.comboBoxInOut.Items.AddRange(new object[] {
             "수입",
             "지출"});
-            this.comboBoxInOut.Location = new System.Drawing.Point(76, 35);
+            this.comboBoxInOut.Location = new System.Drawing.Point(76, 37);
             this.comboBoxInOut.Name = "comboBoxInOut";
-            this.comboBoxInOut.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxInOut.Size = new System.Drawing.Size(169, 20);
             this.comboBoxInOut.TabIndex = 7;
             this.comboBoxInOut.Text = "수입";
             this.comboBoxInOut.SelectedIndexChanged += new System.EventHandler(this.comboBoxInOut_SelectedIndexChanged);
@@ -113,7 +104,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 9);
+            this.label2.Location = new System.Drawing.Point(74, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 12);
             this.label2.TabIndex = 6;
@@ -122,7 +113,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(74, 178);
+            this.label3.Location = new System.Drawing.Point(74, 168);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 9;
@@ -130,15 +121,16 @@
             // 
             // textBoxMemo
             // 
-            this.textBoxMemo.Location = new System.Drawing.Point(76, 203);
+            this.textBoxMemo.ImeMode = System.Windows.Forms.ImeMode.Hangul;
+            this.textBoxMemo.Location = new System.Drawing.Point(76, 183);
             this.textBoxMemo.Name = "textBoxMemo";
-            this.textBoxMemo.Size = new System.Drawing.Size(121, 21);
+            this.textBoxMemo.Size = new System.Drawing.Size(169, 21);
             this.textBoxMemo.TabIndex = 8;
             // 
             // labelCalender
             // 
             this.labelCalender.AutoSize = true;
-            this.labelCalender.Location = new System.Drawing.Point(74, 236);
+            this.labelCalender.Location = new System.Drawing.Point(74, 220);
             this.labelCalender.Name = "labelCalender";
             this.labelCalender.Size = new System.Drawing.Size(29, 12);
             this.labelCalender.TabIndex = 10;
@@ -146,7 +138,7 @@
             // 
             // dateTimePickerCalender
             // 
-            this.dateTimePickerCalender.Location = new System.Drawing.Point(76, 263);
+            this.dateTimePickerCalender.Location = new System.Drawing.Point(76, 235);
             this.dateTimePickerCalender.Name = "dateTimePickerCalender";
             this.dateTimePickerCalender.Size = new System.Drawing.Size(169, 21);
             this.dateTimePickerCalender.TabIndex = 12;
@@ -155,7 +147,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 450);
+            this.ClientSize = new System.Drawing.Size(347, 450);
             this.Controls.Add(this.dateTimePickerCalender);
             this.Controls.Add(this.labelCalender);
             this.Controls.Add(this.label3);
@@ -167,9 +159,9 @@
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.labelItemInput);
             this.Controls.Add(this.textBoxMoney);
-            this.Controls.Add(this.buttonClose);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "아이템입력";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -177,8 +169,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.TextBox textBoxMoney;
         private System.Windows.Forms.Label labelItemInput;
         private System.Windows.Forms.Button buttonSave;

@@ -47,8 +47,8 @@ namespace accountBook
                 {
                     string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
                     string Query = "insert into dawoon.dc_account(userSeq,userInOut,userContents,userMoney,userCalender,userWhy,flagYN,regDate,issueDate,issueID) values('"
-                        + seqCount() + "','" + comboBoxInOut.Text.Trim() + "','" + comboBoxContents.Text.Trim() + "','" 
-                        + textBoxMoney.Text.Trim() + "','" + dateTimePickerCalender.Text.Trim() + "','" + richTextBoxWhy.Text.Trim() 
+                        + seqCount() + "','" + comboBoxInOut.Text.Trim() + "','" + comboBoxName.Text.Trim() + "','" 
+                        + textBoxMoney.Text.Trim() + "','" + dateTimePickerCalender.Text.Trim() + "','" + textBoxMemo.Text.Trim() 
                         + "','Y',now(),now(),'CDY');";
 
                     MySqlConnection con = new MySqlConnection(Connect);
@@ -139,10 +139,10 @@ namespace accountBook
         }
             private void clear()
             {
-                comboBoxInOut.Text = "";
+                comboBoxInOut.Text = "수입";
                 textBoxSearch.Text = "";
-                comboBoxContents.Text = "";
-                richTextBoxWhy.Text = "";
+                comboBoxName.Text = "월급";
+                textBoxMemo.Text = "";
             }
 
             private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -152,10 +152,10 @@ namespace accountBook
                     return;
                 }
                 comboBoxInOut.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                comboBoxContents.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                comboBoxName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
                 textBoxMoney.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
                 dateTimePickerCalender.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                richTextBoxWhy.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
             }
 
             private void buttonDel_Click(object sender, EventArgs e)
@@ -190,10 +190,10 @@ namespace accountBook
                 string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
                 string Query = "UPDATE dawoon.dc_account SET userSeq='" + seqstr +
                   "',userInOut='" + comboBoxInOut.Text +
-                  "',userContents='" + comboBoxContents.Text +
+                  "',userContents='" + comboBoxName.Text +
                   "',userMoney='" + textBoxMoney.Text +
                   "',userCalender='" + dateTimePickerCalender.Text.Trim() +
-                  "',userWhy='" + richTextBoxWhy.Text + "' where userSeq='" + seqstr + "';";
+                  "',userWhy='" + textBoxMemo.Text + "' where userSeq='" + seqstr + "';";
                 MySqlConnection con = new MySqlConnection(Connect);
                 MySqlCommand Comm = new MySqlCommand(Query, con);
                 MySqlDataReader Read;
@@ -253,7 +253,7 @@ namespace accountBook
             DialogResult result = f.ShowDialog();
             if(result == DialogResult.OK)
             {
-                MessageBox.Show("성공");
+              
             }
             else if (result == DialogResult.Cancel)
             {
@@ -272,12 +272,37 @@ namespace accountBook
             //수입등록
             //dc_account dc_items
             Form2 newform2 = new Form2();
-            newform2.ShowDialog();
+            newform2.ShowDialog(this);
         }
 
         private void comboBoxInOut_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ComBoChange();
+        }
 
+        private void ComBoChange()
+        {
+            //함수로 만들어보자
+            // 만약에 userInOut 내용이 지출이라면 콤보박스내용 Name은 간식 교통비 교육비 월세 외식을 보여준다
+            if (comboBoxInOut.Text == "수입")
+            {
+                comboBoxName.Text = "수입";
+                comboBoxName.Items.Clear();
+                comboBoxName.Items.Add("월급");
+                comboBoxName.Items.Add("떡값");
+                comboBoxName.Items.Add("상여금");
+                comboBoxName.Items.Add("보너스");
+            }
+            else if (comboBoxInOut.Text == "지출")
+            {
+                comboBoxName.Text = "간식";
+                comboBoxName.Items.Clear();
+                comboBoxName.Items.Add("간식");
+                comboBoxName.Items.Add("교통비");
+                comboBoxName.Items.Add("교육비");
+                comboBoxName.Items.Add("월세");
+                comboBoxName.Items.Add("외식");
+            }
         }
 
         private void buttonForm2_TextChanged(object sender, EventArgs e)
