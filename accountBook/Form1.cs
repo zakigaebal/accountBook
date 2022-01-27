@@ -207,11 +207,13 @@ namespace accountBook
                 {
                     Query = "CREATE TABLE IF NOT EXISTS `dc_account` (" +
                          "`accSeq` int(11) NOT NULL COMMENT " + "'번호'," +
-                         "`userInOut` varchar(10) DEFAULT '' COMMENT '지출수입'," +
-                         "`userContents` varchar(20) DEFAULT '' COMMENT '내용'," +
-                          "`userMoney` varchar(11) DEFAULT '' COMMENT '돈'," +
-                          "`usedDate` varchar(30) DEFAULT '' COMMENT '달력'," +
-                          "`userWhy` varchar(300) DEFAULT '' COMMENT '사유'," +
+                         "`usedDate` varchar(10) DEFAULT '' COMMENT '달력'," +
+                         "`accAcount` varchar(20) DEFAULT '' COMMENT '지출수입'," +
+                          "`itemSeq` varchar(11) DEFAULT '' COMMENT 'dc_items의 고유번호'," +
+                          "`subject` varchar(30) DEFAULT '' COMMENT '아이템들'," +
+                          "`money` varchar(300) DEFAULT '' COMMENT '돈'," +
+                          "`content` varchar(300) DEFAULT '' COMMENT '내용'," +
+                          "`memo` varchar(300) DEFAULT '' COMMENT '메모'," +
                           "`flagYN` varchar(1) DEFAULT 'Y' COMMENT '가용여부(Y:유효/N:삭제)'," +
                           "`regDate` datetime DEFAULT NULL COMMENT '최초저장일'," +
                           "`issueDate` datetime DEFAULT NULL COMMENT '최종저장일'," +

@@ -241,6 +241,7 @@
             // 
             // textBoxMemo
             // 
+            this.textBoxMemo.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.textBoxMemo.Location = new System.Drawing.Point(44, 201);
             this.textBoxMemo.Multiline = true;
             this.textBoxMemo.Name = "textBoxMemo";
