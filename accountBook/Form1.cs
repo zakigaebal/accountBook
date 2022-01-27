@@ -7,6 +7,7 @@ namespace accountBook
 {
     public partial class Form1 : Form
     {
+       
         public Form1()
         {
             InitializeComponent();
@@ -16,8 +17,9 @@ namespace accountBook
             if (radioButton1.Checked)
             {
                 string account = "지출";
-                comboBoxName.Text = "식대";
                 comboBoxName.Items.Clear();
+
+
                 try
                 {
                     MySqlConnection connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8");
@@ -41,12 +43,38 @@ namespace accountBook
             }
         }
 
+        /*
+         * 금액 타입으로 바꿔주는 함수
+         */
+        private string LetMoneyTYPE(string Num)
+        {
+            if (Num.Contains("."))
+            {
+                //소수점 이하의 스트링을 저장한다.
+                int Check = Num.Substring(Num.IndexOf('.')).Length;
+                char[] delimiterChars = { '.' };
+                string[] words = Num.Split(delimiterChars);
+                string mntyNum = string.Format("{0:#,0}", int.Parse(words[0]));
+                string ComplateNum = string.Format("{0}.{1}", mntyNum, words[1]);
+                return ComplateNum;
+            }
+            else
+            {
+                string mntyNum = string.Format("{0:#,0}", int.Parse(Num));
+                string ComplateNum = string.Format("{0}", mntyNum);
+                return ComplateNum;
+            }
+        }
+
+
+
+        
         public void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton2.Checked)
             {
                 string account = "수입";
-                comboBoxName.Text = "용돈";
+               
                 comboBoxName.Items.Clear();
                 try
                 {
@@ -70,7 +98,6 @@ namespace accountBook
                 }
             }
         }
-
         // getItemSeq 함수를 만들기
         private string getItemSeq(string account, string txt)
         {
@@ -94,9 +121,6 @@ namespace accountBook
             }
             return "";
         }
-
-
-
         private string seqCount()
         {
             try
@@ -250,16 +274,14 @@ namespace accountBook
             {
                 return;
             }
-
             dateTimePickerCalender.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             account = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            accountName = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-            comboBoxName.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-            textBoxMoney.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-            textBoxContent.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-            textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+            //accountName = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+            comboBoxName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+            textBoxMoney.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+            textBoxContent.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+            textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
         }
-
         private void buttonDel_Click(object sender, EventArgs e)
         {
             try
@@ -283,7 +305,6 @@ namespace accountBook
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             string account = "지출";
@@ -319,7 +340,6 @@ namespace accountBook
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
             if (textBoxSearch.Text == "")
@@ -327,20 +347,15 @@ namespace accountBook
                 buttonSearch_Click(sender, e);
             }
         }
-
         private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
-
         private void checkBoxDelShow_CheckedChanged(object sender, EventArgs e)
         {
             buttonSearch_Click(sender, e);
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-
             buttonLogin_Click(sender, e);
             buttonSearch_Click(sender, e);
         }
@@ -367,10 +382,7 @@ namespace accountBook
             Form2 newform2 = new Form2();
             newform2.ShowDialog(this);
         }
-        private void comboBoxInOut_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComBoChange();
-        }
+     
         private void ComBoChange()
         {
         }
@@ -401,7 +413,9 @@ namespace accountBook
             if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
             {
                 e.Handled = true;
+               
             }
+            
         }
     }
 }

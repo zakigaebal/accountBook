@@ -161,6 +161,7 @@
             // 
             // comboBoxName
             // 
+            this.comboBoxName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxName.FormattingEnabled = true;
             this.comboBoxName.Location = new System.Drawing.Point(118, 95);
             this.comboBoxName.Name = "comboBoxName";
@@ -184,6 +185,7 @@
             this.textBoxMoney.Name = "textBoxMoney";
             this.textBoxMoney.Size = new System.Drawing.Size(186, 21);
             this.textBoxMoney.TabIndex = 1;
+            this.textBoxMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxMoney.TextChanged += new System.EventHandler(this.textBoxMoney_TextChanged);
             this.textBoxMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMoney_KeyPress);
             // 
@@ -292,6 +294,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
+            this.Text = "매일매일 가계부";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);

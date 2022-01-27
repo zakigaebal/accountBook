@@ -103,11 +103,11 @@ namespace accountBook
                 }
             }
         }
-        
         private void buttonSave_Click(object sender, EventArgs e)
         {
             try
             {
+               
                 //ignore로 중복된 키를 주는게 아니라 메세지박스 나오게하기
                 string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
                 string Query = "insert into dawoon.dc_items(itemSeq,acount,subject,flagYN,regDate,issueDate,issueID) values('"
