@@ -4,8 +4,6 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 namespace accountBook
 {
-    // 이슈
-    // 테이블연동...
     public partial class Form2 : Form
     {
         public Form2()
@@ -60,14 +58,16 @@ namespace accountBook
         {
             try
             {
-                string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
-                string Query = "select * from dawoon.dc_items;";
-                Query = "select * from dawoon.dc_items";
+                string Connect = "datasource=127.0.0.1;database=dawoon;port=3306;username=root;password=ekdnsel;Charset=utf8";
+                string Query = "select * from dc_items;";
+                Query = "select * from dc_items";
                 MySqlConnection con = new MySqlConnection(Connect);
                 MySqlCommand Comm = new MySqlCommand(Query, con);
                 MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
                 MyAdapter.SelectCommand = Comm;
                 DataTable dTable = new DataTable();
+               
+
                 MyAdapter.Fill(dTable);
                 dataGridView1.DataSource = dTable;
                 dataGridView1.Columns[0].Visible = false;
@@ -110,7 +110,7 @@ namespace accountBook
             try
             {
                 string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
-                string Query = "insert into dawoon.dc_items(itemSeq,acount,subject,flagYN,regDate,issueDate,issueID) values('"
+                string Query = "insert IGNORE into dawoon.dc_items(itemSeq,acount,subject,flagYN,regDate,issueDate,issueID) values('"
                     + seqCount() + "','" + comboBoxAccount.Text.Trim() + "','" + textBoxSubject.Text.Trim()
                     + "','Y',now(),now(),'CDY')" + ";";
 
@@ -127,6 +127,8 @@ namespace accountBook
                 Form1 MainForm = (Form1)Owner;
                 //메인폼안에 있는 버튼서치메소드를 호출할 수 있다
                 MainForm.buttonSearch_Click(sender, e);
+                MainForm.radioButton1_CheckedChanged(sender, e);
+                MainForm.radioButton2_CheckedChanged(sender, e);
             }
             catch (Exception ex)
             {

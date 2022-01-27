@@ -11,7 +11,7 @@ namespace accountBook
         {
           InitializeComponent();
         }
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        public void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
             {
@@ -41,7 +41,7 @@ namespace accountBook
             }
          }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        public void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton2.Checked)
             {
@@ -95,6 +95,8 @@ namespace accountBook
             return "";
         }
 
+        
+
         private string seqCount()
         {
             try
@@ -119,27 +121,30 @@ namespace accountBook
         }
         private void buttonSave_Click(object sender, EventArgs e)
             {
-                if (textBoxMemo.Text == "")
+                if (textBoxMoney.Text == "")
                 {
-                    MessageBox.Show("메모를 입력해주세요");
-                textBoxMemo.Focus();
+                    MessageBox.Show("금액을 입력해주세요");
+                textBoxMoney.Focus();
                     return;
                 }
+
                 try
                 {
                 string account = "지출";
                 if (radioButton2.Checked)
                 account = "수입";
                     string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
-                    string Query = "insert into dawoon.dc_account(accSeq,usedDate,accAcount,itemSeq,subject,money,memo,flagYN,regDate,issueDate,issueID) values('"
-                        + seqCount() + "','" 
-                        + dateTimePickerCalender.Text.Trim() + "','" 
-                        + account + "','"
-                        + getItemSeq(account, comboBoxName.Text) + "','"
-                        + comboBoxName.Text.Trim() + "','" 
-                        + textBoxMoney.Text.Trim() + "','" 
-                        + textBoxMemo.Text.Trim() 
-                        + "','Y',now(),now(),'CDY');";
+                string Query = "insert into dawoon.dc_account(accSeq,usedDate,accAcount,itemSeq,subject,money,content,memo,flagYN,regDate,issueDate,issueID) values('"
+                    + seqCount() + "','"
+                    + dateTimePickerCalender.Text.Trim() + "','"
+                    + account + "','"
+                    + getItemSeq(account, comboBoxName.Text) + "','"
+                    + comboBoxName.Text.Trim() + "','"
+                    + textBoxMoney.Text.Trim() + "','"
+                    + textBoxContent.Text.Trim() + "','"
+                    + textBoxMemo.Text.Trim()
+                    + "','Y',now(),now(),'CDY');";
+
 
                     MySqlConnection con = new MySqlConnection(Connect);
                     MySqlCommand Comm = new MySqlCommand(Query, con);
@@ -160,13 +165,14 @@ namespace accountBook
             {
             try
             {
-                string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
-                string Query = "select * from dawoon.dc_account;";
+                string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
+                string Query = "select * from dc_account;";
+                string Query2 = "SELECT accSeq, usedDate, dc_items.acount, dc_account.itemSeq, dc_account.subject, dc_account.money, content, dc_account.memo, dc_items.flagYN, dc_items.regDate, dc_items.issueDate, dc_items.issueID FROM dc_account RIGHT OUTER JOIN dc_items ON dc_account.subject = dc_items.subject";
                 string searchtext = textBoxSearch.Text.Trim();
                 string keyText = comboBoxSearch.Text;
                 string field = "";
-                if (keyText == "금액") field = "money";
-                else if (keyText == "메모") field = "memo";
+                if (keyText == "금액") field = "dc_account.money";
+                else if (keyText == "메모") field = "dc_account.memo";
                 string flagYN = "";
                 if (checkBoxDelShow.Checked == true)
                 {
@@ -174,11 +180,14 @@ namespace accountBook
                 }
                 else
                 {
-                    flagYN = "AND flagYN = 'Y'";
+                    flagYN = "AND dc_items.flagYN = 'Y'";
                 }
-                Query = "select * from dawoon.dc_account WHERE " + field + " like '%" + searchtext + "%' " + flagYN;
+// SELECT  accSeq, usedDate, dc_items.acount, dc_items.itemSeq, dc_items.subject, money, content, memo, dc_items.flagYN, dc_items.regDate, dc_items.issueDate, dc_items.issueID FROM dc_account LEFT JOIN dc_items ON dc_account.subject = dc_items.subject;
+                Query = "select * from dc_account " +
+                    "WHERE " + field + " like '%" + searchtext + "%' " + flagYN;
+                Query2 = "SELECT accSeq, usedDate, dc_items.acount, dc_account.itemSeq, dc_account.subject, dc_account.money, content, dc_account.memo, dc_items.flagYN, dc_items.regDate, dc_items.issueDate, dc_items.issueID FROM dc_account RIGHT OUTER JOIN dc_items ON dc_account.subject = dc_items.subject WHERE dc_account.flagYN = 'Y' AND dc_items.flagYN = 'Y'";
                 MySqlConnection con = new MySqlConnection(Connect);
-                MySqlCommand Comm = new MySqlCommand(Query, con);
+                MySqlCommand Comm = new MySqlCommand(Query2, con);
                 MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
                 MyAdapter.SelectCommand = Comm;
                 DataTable dTable = new DataTable();
@@ -224,20 +233,29 @@ namespace accountBook
             private void clear()
             {
                 textBoxSearch.Text = "";
-                comboBoxName.Text = "월급";
                 textBoxMemo.Text = "";
+                textBoxMoney.Text = "";
+                textBoxContent.Text = "";
             }
 
             private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
             {
-                if (e.RowIndex < 0)
+            string account = "지출";
+            if (radioButton2.Checked)
+                account = "수입";
+            string accountName = getItemSeq(account, comboBoxName.Text);
+            if (e.RowIndex < 0)
                 {
                     return;
                 }
-                comboBoxName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                textBoxMoney.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                dateTimePickerCalender.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+                  dateTimePickerCalender.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                  account = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                  accountName = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                  comboBoxName.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                  textBoxMoney.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                  textBoxContent.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                  textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();                
             }
 
             private void buttonDel_Click(object sender, EventArgs e)
@@ -266,15 +284,22 @@ namespace accountBook
 
             private void buttonUpdate_Click(object sender, EventArgs e)
             {
-                try
+            string account = "지출";
+            if (radioButton2.Checked)
+                account = "수입";
+            string accountName = getItemSeq(account, comboBoxName.Text);
+            try
                 {
                 string seqstr = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString();
-                string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
-                string Query = "UPDATE dawoon.dc_account SET accSeq='" + seqstr +
-                  "',userContents='" + comboBoxName.Text +
-                  "',userMoney='" + textBoxMoney.Text +
-                  "',userCalender='" + dateTimePickerCalender.Text.Trim() +
-                  "',userWhy='" + textBoxMemo.Text + "' where accSeq='" + seqstr + "';";
+                string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
+                string Query = "UPDATE dc_account AS a, dc_items AS b SET a.accSeq='" + seqstr +
+                  "',a.usedDate='" + dateTimePickerCalender.Text.Trim() +
+                  "',b.acount='" + account +
+                  "',a.itemSeq='" + accountName +
+                  "',a.subject='" + comboBoxName.Text +
+                  "',a.money='" + textBoxMoney.Text +
+                  "',a.content='" + textBoxContent.Text +
+                  "',a.memo='" + textBoxMemo.Text + "' where a.accSeq='" + seqstr + "';";
                 MySqlConnection con = new MySqlConnection(Connect);
                 MySqlCommand Comm = new MySqlCommand(Query, con);
                 MySqlDataReader Read;
@@ -345,6 +370,7 @@ namespace accountBook
             //dc_account dc_items
             Form2 newform2 = new Form2();
             newform2.ShowDialog(this);
+
         }
 
         private void comboBoxInOut_SelectedIndexChanged(object sender, EventArgs e)
@@ -379,6 +405,32 @@ namespace accountBook
 
         private void label3_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void textBoxMoney_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
+            
+
 
         }
     }
