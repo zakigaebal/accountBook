@@ -66,7 +66,6 @@ namespace accountBook
                 MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
                 MyAdapter.SelectCommand = Comm;
                 DataTable dTable = new DataTable();
-               
 
                 MyAdapter.Fill(dTable);
                 dataGridView1.DataSource = dTable;
@@ -109,11 +108,11 @@ namespace accountBook
         {
             try
             {
+                //ignore로 중복된 키를 주는게 아니라 메세지박스 나오게하기
                 string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
-                string Query = "insert IGNORE into dawoon.dc_items(itemSeq,acount,subject,flagYN,regDate,issueDate,issueID) values('"
+                string Query = "insert into dawoon.dc_items(itemSeq,acount,subject,flagYN,regDate,issueDate,issueID) values('"
                     + seqCount() + "','" + comboBoxAccount.Text.Trim() + "','" + textBoxSubject.Text.Trim()
                     + "','Y',now(),now(),'CDY')" + ";";
-
                 MySqlConnection con = new MySqlConnection(Connect);
                 MySqlCommand Comm = new MySqlCommand(Query, con);
                 MySqlDataReader Read;
@@ -132,7 +131,8 @@ namespace accountBook
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                if (ex.Message.ToString() == "Duplicate entry '" + textBoxSubject.Text.Trim() + "' for key 'PRIMARY'")
+                    MessageBox.Show(textBoxSubject.Text.Trim() + "키워드가 이미 들어가 있습니다.");
             }
         }
     }

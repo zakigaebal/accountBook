@@ -43,13 +43,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxMoney = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.textBoxContent = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxMemo = new System.Windows.Forms.TextBox();
             this.dateTimePickerCalender = new System.Windows.Forms.DateTimePicker();
             this.buttonForm2 = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -98,11 +98,11 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(378, 61);
+            this.dataGridView1.Location = new System.Drawing.Point(378, 43);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(636, 361);
+            this.dataGridView1.Size = new System.Drawing.Size(636, 409);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -112,7 +112,7 @@
             this.comboBoxSearch.Items.AddRange(new object[] {
             "금액",
             "메모"});
-            this.comboBoxSearch.Location = new System.Drawing.Point(564, 16);
+            this.comboBoxSearch.Location = new System.Drawing.Point(597, 9);
             this.comboBoxSearch.Name = "comboBoxSearch";
             this.comboBoxSearch.Size = new System.Drawing.Size(94, 20);
             this.comboBoxSearch.TabIndex = 2;
@@ -122,7 +122,7 @@
             // textBoxSearch
             // 
             this.textBoxSearch.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.textBoxSearch.Location = new System.Drawing.Point(664, 16);
+            this.textBoxSearch.Location = new System.Drawing.Point(697, 9);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(144, 21);
             this.textBoxSearch.TabIndex = 3;
@@ -130,7 +130,7 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(814, 15);
+            this.buttonSearch.Location = new System.Drawing.Point(847, 8);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(66, 23);
             this.buttonSearch.TabIndex = 4;
@@ -153,7 +153,7 @@
             // 
             this.buttonLogin.Location = new System.Drawing.Point(919, 0);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(95, 58);
+            this.buttonLogin.Size = new System.Drawing.Size(95, 38);
             this.buttonLogin.TabIndex = 5;
             this.buttonLogin.Text = "로그인";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -208,6 +208,17 @@
             this.panel1.Size = new System.Drawing.Size(378, 448);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(118, 60);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(47, 16);
+            this.radioButton1.TabIndex = 10;
+            this.radioButton1.Text = "지출";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -266,17 +277,6 @@
             this.buttonForm2.UseVisualStyleBackColor = true;
             this.buttonForm2.TextChanged += new System.EventHandler(this.buttonForm2_TextChanged);
             this.buttonForm2.Click += new System.EventHandler(this.buttonForm2_Click);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(118, 60);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 16);
-            this.radioButton1.TabIndex = 10;
-            this.radioButton1.Text = "지출";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // Form1
             // 
