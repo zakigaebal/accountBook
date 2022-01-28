@@ -196,6 +196,7 @@
             this.textBoxMoney.Text = "0";
             this.textBoxMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxMoney.TextChanged += new System.EventHandler(this.textBoxMoney_TextChanged);
+            this.textBoxMoney.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMoney_KeyDown);
             this.textBoxMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMoney_KeyPress);
             // 
             // panel1

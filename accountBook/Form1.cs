@@ -159,9 +159,10 @@ namespace accountBook
                 return;
             }
 
+           
             try
             {
-              
+                string moneydot = textBoxMoney.Text;
                 var startDay = DateTime.Parse(pDate.Value.ToString("yyyy-MM-01"));
                 var endDay = DateTime.Parse(startDay.AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd"));
               // 마감날짜 해아함
@@ -171,11 +172,11 @@ namespace accountBook
                 string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
                 string Query = "insert into dawoon.dc_account(accSeq,usedDate,accAcount,itemSeq,subject,money,content,memo,flagYN,regDate,issueDate,issueID) values('"
                     + seqCount() + "','"
-                    + startDay + "','"
+                    + pDate.Text + "','"
                     + account + "','"
                     + getItemSeq(account, comboBoxName.Text) + "','"
                     + comboBoxName.Text.Trim() + "','"
-                    + LetMoneyTYPE(textBoxMoney.Text) + "','"
+                    + moneydot + "','"
                     + textBoxContent.Text.Trim() + "','"
                     + textBoxMemo.Text.Trim()
                     + "','Y',now(),now(),'CDY');";
@@ -271,7 +272,8 @@ namespace accountBook
         {
             textBoxSearch.Text = "";
             textBoxMemo.Text = "";
-            textBoxMoney.Text = "";
+            
+            textBoxMoney.Text = "0";
             textBoxContent.Text = "";
         }
 
@@ -369,13 +371,6 @@ namespace accountBook
         {
             buttonLogin_Click(sender, e);
             buttonSearch_Click(sender, e);
-
-         
-
-            
-
-       
-
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -421,6 +416,8 @@ namespace accountBook
         }
         private void textBoxMoney_TextChanged(object sender, EventArgs e)
         {
+           
+
         }
         private void label2_Click(object sender, EventArgs e)
         {
@@ -432,10 +429,12 @@ namespace accountBook
         {
             if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
             {
+
                 e.Handled = true;
                
             }
-            
+
+
         }
 
         private void pDate_ValueChanged_1(object sender, EventArgs e)
@@ -476,6 +475,26 @@ namespace accountBook
         {
             //dateTimePicker1.Text = baseYear + "-" + int.Parse(f.Mon).ToString("00");
             //    buttonSearch_Click(sender,e);
+        }
+
+        private void textBoxMoney_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                string lgsText;
+                lgsText = textBoxMoney.Text.Replace(",", ""); //** 숫자변환시 콤마로 발생하는 에러방지...
+                textBoxMoney.Text = String.Format("{0:#,##0}", Convert.ToDouble(lgsText));
+                textBoxMoney.SelectionStart = textBoxMoney.TextLength; //** 캐럿을 맨 뒤로 보낸다...
+                textBoxMoney.SelectionLength = 0;
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.ToString() == "입력 문자열의 형식이 잘못되었습니다.")
+                {
+                    MessageBox.Show("숫자를 입력해주세요");
+                }
+            }
+
         }
     }
 }
