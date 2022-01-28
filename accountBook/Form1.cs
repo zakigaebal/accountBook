@@ -6,9 +6,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace accountBook
-{
-  
-
+{ 
     public partial class Form1 : Form
     {
        
@@ -150,12 +148,14 @@ namespace accountBook
 
         
 
+
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (textBoxMoney.Text == "")
+            if (textBoxContent.Text == "")
             {
-                MessageBox.Show("금액을 입력해주세요");
-                textBoxMoney.Focus();
+                MessageBox.Show("내용을 입력해주세요");
+                textBoxContent.Focus();
                 return;
             }
 
@@ -459,6 +459,23 @@ namespace accountBook
                 e.CellStyle.BackColor = Color.CornflowerBlue;
                 e.CellStyle.ForeColor = Color.White;
             }
+        }
+
+        private void buttonTerm_Click(object sender, EventArgs e)
+        {
+            
+            //var f = new FormTerm();
+            //if (f.ShowDialog() == DialogResult.OK)
+            //{
+              
+            //    buttonSearch_Click(sender,e);
+            //}
+        }
+
+        private void buttonDate_Click(object sender, EventArgs e)
+        {
+            //dateTimePicker1.Text = baseYear + "-" + int.Parse(f.Mon).ToString("00");
+            //    buttonSearch_Click(sender,e);
         }
     }
 }

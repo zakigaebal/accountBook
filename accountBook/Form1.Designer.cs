@@ -50,10 +50,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxMemo = new System.Windows.Forms.TextBox();
             this.buttonForm2 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.buttonTerm = new System.Windows.Forms.Button();
+            this.buttonDate = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +61,7 @@
             // labelWhy
             // 
             this.labelWhy.AutoSize = true;
-            this.labelWhy.Location = new System.Drawing.Point(33, 218);
+            this.labelWhy.Location = new System.Drawing.Point(29, 208);
             this.labelWhy.Name = "labelWhy";
             this.labelWhy.Size = new System.Drawing.Size(29, 12);
             this.labelWhy.TabIndex = 3;
@@ -69,7 +69,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(35, 371);
+            this.buttonSave.Location = new System.Drawing.Point(271, 87);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(94, 71);
             this.buttonSave.TabIndex = 5;
@@ -79,7 +79,7 @@
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(134, 371);
+            this.buttonDel.Location = new System.Drawing.Point(269, 179);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(99, 71);
             this.buttonDel.TabIndex = 6;
@@ -89,7 +89,7 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(239, 371);
+            this.buttonUpdate.Location = new System.Drawing.Point(269, 269);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(101, 71);
             this.buttonUpdate.TabIndex = 7;
@@ -106,7 +106,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(636, 409);
+            this.dataGridView1.Size = new System.Drawing.Size(745, 410);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
@@ -146,7 +146,7 @@
             // checkBoxDelShow
             // 
             this.checkBoxDelShow.AutoSize = true;
-            this.checkBoxDelShow.Location = new System.Drawing.Point(500, 13);
+            this.checkBoxDelShow.Location = new System.Drawing.Point(280, 44);
             this.checkBoxDelShow.Name = "checkBoxDelShow";
             this.checkBoxDelShow.Size = new System.Drawing.Size(76, 16);
             this.checkBoxDelShow.TabIndex = 13;
@@ -156,27 +156,29 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(919, 0);
+            this.buttonLogin.Location = new System.Drawing.Point(1040, 1);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(95, 38);
             this.buttonLogin.TabIndex = 5;
             this.buttonLogin.Text = "로그인";
             this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Visible = false;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // comboBoxName
             // 
             this.comboBoxName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxName.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.comboBoxName.FormattingEnabled = true;
-            this.comboBoxName.Location = new System.Drawing.Point(109, 127);
+            this.comboBoxName.Location = new System.Drawing.Point(64, 68);
             this.comboBoxName.Name = "comboBoxName";
-            this.comboBoxName.Size = new System.Drawing.Size(60, 20);
+            this.comboBoxName.Size = new System.Drawing.Size(186, 29);
             this.comboBoxName.TabIndex = 8;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(64, 160);
+            this.label2.Location = new System.Drawing.Point(29, 149);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 12;
@@ -185,10 +187,11 @@
             // 
             // textBoxMoney
             // 
+            this.textBoxMoney.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBoxMoney.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.textBoxMoney.Location = new System.Drawing.Point(99, 157);
+            this.textBoxMoney.Location = new System.Drawing.Point(64, 138);
             this.textBoxMoney.Name = "textBoxMoney";
-            this.textBoxMoney.Size = new System.Drawing.Size(186, 21);
+            this.textBoxMoney.Size = new System.Drawing.Size(186, 29);
             this.textBoxMoney.TabIndex = 1;
             this.textBoxMoney.Text = "0";
             this.textBoxMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -197,44 +200,46 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.pDate);
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.textBoxContent);
             this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.checkBoxDelShow);
             this.panel1.Controls.Add(this.textBoxMemo);
             this.panel1.Controls.Add(this.buttonForm2);
             this.panel1.Controls.Add(this.textBoxMoney);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.comboBoxName);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.labelWhy);
-            this.panel1.Controls.Add(this.comboBoxName);
             this.panel1.Controls.Add(this.buttonSave);
             this.panel1.Controls.Add(this.buttonDel);
             this.panel1.Controls.Add(this.buttonUpdate);
-            this.panel1.Location = new System.Drawing.Point(-6, 0);
+            this.panel1.Location = new System.Drawing.Point(-6, 105);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(378, 452);
+            this.panel1.Size = new System.Drawing.Size(378, 358);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pDate
             // 
             this.pDate.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.pDate.CustomFormat = "yyyy-MM-01";
+            this.pDate.CustomFormat = "yyyy-MM-dd";
             this.pDate.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.pDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.pDate.Location = new System.Drawing.Point(39, 13);
+            this.pDate.Location = new System.Drawing.Point(64, 103);
             this.pDate.Name = "pDate";
-            this.pDate.Size = new System.Drawing.Size(134, 29);
+            this.pDate.Size = new System.Drawing.Size(186, 29);
             this.pDate.TabIndex = 14;
+            this.pDate.Value = new System.DateTime(2022, 1, 28, 0, 0, 0, 0);
             this.pDate.ValueChanged += new System.EventHandler(this.pDate_ValueChanged_1);
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(137, 60);
+            this.radioButton1.Location = new System.Drawing.Point(134, 19);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(47, 16);
             this.radioButton1.TabIndex = 10;
@@ -245,7 +250,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(210, 60);
+            this.radioButton2.Location = new System.Drawing.Point(203, 19);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(47, 16);
             this.radioButton2.TabIndex = 11;
@@ -255,17 +260,18 @@
             // 
             // textBoxContent
             // 
+            this.textBoxContent.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBoxContent.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.textBoxContent.Location = new System.Drawing.Point(99, 184);
+            this.textBoxContent.Location = new System.Drawing.Point(64, 173);
             this.textBoxContent.Name = "textBoxContent";
-            this.textBoxContent.Size = new System.Drawing.Size(186, 21);
+            this.textBoxContent.Size = new System.Drawing.Size(186, 29);
             this.textBoxContent.TabIndex = 2;
             this.textBoxContent.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 187);
+            this.label3.Location = new System.Drawing.Point(29, 183);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 13;
@@ -275,15 +281,15 @@
             // textBoxMemo
             // 
             this.textBoxMemo.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.textBoxMemo.Location = new System.Drawing.Point(35, 233);
+            this.textBoxMemo.Location = new System.Drawing.Point(64, 208);
             this.textBoxMemo.Multiline = true;
             this.textBoxMemo.Name = "textBoxMemo";
-            this.textBoxMemo.Size = new System.Drawing.Size(290, 132);
+            this.textBoxMemo.Size = new System.Drawing.Size(186, 132);
             this.textBoxMemo.TabIndex = 4;
             // 
             // buttonForm2
             // 
-            this.buttonForm2.Location = new System.Drawing.Point(182, 124);
+            this.buttonForm2.Location = new System.Drawing.Point(280, 11);
             this.buttonForm2.Name = "buttonForm2";
             this.buttonForm2.Size = new System.Drawing.Size(85, 27);
             this.buttonForm2.TabIndex = 9;
@@ -292,55 +298,56 @@
             this.buttonForm2.TextChanged += new System.EventHandler(this.buttonForm2_TextChanged);
             this.buttonForm2.Click += new System.EventHandler(this.buttonForm2_Click);
             // 
-            // dateTimePicker1
+            // buttonTerm
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dateTimePicker1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(210, 12);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(130, 29);
-            this.dateTimePicker1.TabIndex = 14;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.pDate_ValueChanged_1);
+            this.buttonTerm.Location = new System.Drawing.Point(378, 4);
+            this.buttonTerm.Name = "buttonTerm";
+            this.buttonTerm.Size = new System.Drawing.Size(55, 33);
+            this.buttonTerm.TabIndex = 19;
+            this.buttonTerm.Text = "기간";
+            this.buttonTerm.UseVisualStyleBackColor = true;
+            this.buttonTerm.Click += new System.EventHandler(this.buttonTerm_Click);
+            // 
+            // buttonDate
+            // 
+            this.buttonDate.Location = new System.Drawing.Point(439, 4);
+            this.buttonDate.Name = "buttonDate";
+            this.buttonDate.Size = new System.Drawing.Size(55, 33);
+            this.buttonDate.TabIndex = 19;
+            this.buttonDate.Text = "날짜";
+            this.buttonDate.UseVisualStyleBackColor = true;
+            this.buttonDate.Click += new System.EventHandler(this.buttonDate_Click);
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(179, 15);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 112);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 23);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "~";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "날짜";
+            this.label1.Click += new System.EventHandler(this.label2_Click);
             // 
-            // button1
+            // label4
             // 
-            this.button1.Location = new System.Drawing.Point(378, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(55, 33);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "기간";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(439, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(55, 33);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "날짜";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(29, 78);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "항목";
+            this.label4.Click += new System.EventHandler(this.label2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 462);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1135, 475);
+            this.Controls.Add(this.buttonDate);
+            this.Controls.Add(this.buttonTerm);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.buttonSearch);
-            this.Controls.Add(this.checkBoxDelShow);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.comboBoxSearch);
             this.Controls.Add(this.dataGridView1);
@@ -378,10 +385,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.DateTimePicker pDate;
+        private System.Windows.Forms.Button buttonTerm;
+        private System.Windows.Forms.Button buttonDate;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }
 
