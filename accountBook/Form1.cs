@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace accountBook
 {
+  
+
     public partial class Form1 : Form
     {
        
@@ -44,7 +48,7 @@ namespace accountBook
         }
 
         /*
-         * 금액 타입으로 바꿔주는 함수
+         * 금액 타입으로 바꿔주기
          */
         private string LetMoneyTYPE(string Num)
         {
@@ -143,6 +147,9 @@ namespace accountBook
             }
             return "";
         }
+
+        
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (textBoxMoney.Text == "")
@@ -154,17 +161,21 @@ namespace accountBook
 
             try
             {
+              
+                var startDay = DateTime.Parse(pDate.Value.ToString("yyyy-MM-01"));
+                var endDay = DateTime.Parse(startDay.AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd"));
+              // 마감날짜 해아함
                 string account = "지출";
                 if (radioButton2.Checked)
                     account = "수입";
                 string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
                 string Query = "insert into dawoon.dc_account(accSeq,usedDate,accAcount,itemSeq,subject,money,content,memo,flagYN,regDate,issueDate,issueID) values('"
                     + seqCount() + "','"
-                    + dateTimePickerCalender.Text.Trim() + "','"
+                    + startDay + "','"
                     + account + "','"
                     + getItemSeq(account, comboBoxName.Text) + "','"
                     + comboBoxName.Text.Trim() + "','"
-                    + textBoxMoney.Text.Trim() + "','"
+                    + LetMoneyTYPE(textBoxMoney.Text) + "','"
                     + textBoxContent.Text.Trim() + "','"
                     + textBoxMemo.Text.Trim()
                     + "','Y',now(),now(),'CDY');";
@@ -274,7 +285,7 @@ namespace accountBook
             {
                 return;
             }
-            dateTimePickerCalender.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            pDate.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             account = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             //accountName = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
             comboBoxName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -316,7 +327,7 @@ namespace accountBook
                 string seqstr = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString();
                 string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
                 string Query = "UPDATE dc_account AS a, dc_items AS b SET a.accSeq='" + seqstr +
-                  "',a.usedDate='" + dateTimePickerCalender.Text.Trim() +
+                  "',a.usedDate='" + pDate.Text.Trim() +
                   "',b.acount='" + account +
                   "',a.subject='" + comboBoxName.Text +
                   "',a.money='" + textBoxMoney.Text +
@@ -358,6 +369,13 @@ namespace accountBook
         {
             buttonLogin_Click(sender, e);
             buttonSearch_Click(sender, e);
+
+         
+
+            
+
+       
+
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -382,7 +400,9 @@ namespace accountBook
             Form2 newform2 = new Form2();
             newform2.ShowDialog(this);
         }
-     
+
+    
+
         private void ComBoChange()
         {
         }
@@ -390,7 +410,7 @@ namespace accountBook
         {
         }
 
-        private void dateTimePickerCalender_ValueChanged(object sender, EventArgs e)
+        private void pDate_ValueChanged(object sender, EventArgs e)
         {
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -417,5 +437,30 @@ namespace accountBook
             }
             
         }
+
+        private void pDate_ValueChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridView1.Rows[e.RowIndex].Cells[0].Value == null)
+                return;
+            // 데이터가 Red인 경우 배경색을 빨강으로 변경
+            if (dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString() == "지출")
+            {
+                e.CellStyle.BackColor = Color.PaleVioletRed;
+                e.CellStyle.ForeColor = Color.White;
+            }
+            // 데이터가 Blue인 경우 배경색을 파랑으로 변경
+            else if (dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString() == "수입")
+            {
+                e.CellStyle.BackColor = Color.CornflowerBlue;
+                e.CellStyle.ForeColor = Color.White;
+            }
+        }
     }
 }
+
+
