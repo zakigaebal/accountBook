@@ -19,8 +19,9 @@ namespace accountBook
             if (radioButton1.Checked)
             {
                 string account = "지출";
+                comboBoxName.Text = "간식";
                 comboBoxName.Items.Clear();
-
+                
 
                 try
                 {
@@ -76,7 +77,7 @@ namespace accountBook
             if (radioButton2.Checked)
             {
                 string account = "수입";
-               
+                comboBoxName.Text = "보너스";
                 comboBoxName.Items.Clear();
                 try
                 {
@@ -495,6 +496,11 @@ namespace accountBook
                 }
             }
 
+        }
+
+        private void comboBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

@@ -102,11 +102,11 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(378, 43);
+            this.dataGridView1.Location = new System.Drawing.Point(396, 89);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(745, 410);
+            this.dataGridView1.Size = new System.Drawing.Size(634, 315);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
@@ -117,7 +117,7 @@
             this.comboBoxSearch.Items.AddRange(new object[] {
             "금액",
             "메모"});
-            this.comboBoxSearch.Location = new System.Drawing.Point(597, 9);
+            this.comboBoxSearch.Location = new System.Drawing.Point(699, 57);
             this.comboBoxSearch.Name = "comboBoxSearch";
             this.comboBoxSearch.Size = new System.Drawing.Size(94, 20);
             this.comboBoxSearch.TabIndex = 2;
@@ -127,7 +127,7 @@
             // textBoxSearch
             // 
             this.textBoxSearch.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.textBoxSearch.Location = new System.Drawing.Point(697, 9);
+            this.textBoxSearch.Location = new System.Drawing.Point(799, 57);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(144, 21);
             this.textBoxSearch.TabIndex = 3;
@@ -135,9 +135,9 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(847, 8);
+            this.buttonSearch.Location = new System.Drawing.Point(957, 57);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(66, 23);
+            this.buttonSearch.Size = new System.Drawing.Size(66, 21);
             this.buttonSearch.TabIndex = 4;
             this.buttonSearch.Text = "검색";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -156,9 +156,9 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(1040, 1);
+            this.buttonLogin.Location = new System.Drawing.Point(578, 53);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(95, 38);
+            this.buttonLogin.Size = new System.Drawing.Size(71, 28);
             this.buttonLogin.TabIndex = 5;
             this.buttonLogin.Text = "로그인";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -167,13 +167,13 @@
             // 
             // comboBoxName
             // 
-            this.comboBoxName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxName.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.comboBoxName.FormattingEnabled = true;
             this.comboBoxName.Location = new System.Drawing.Point(64, 68);
             this.comboBoxName.Name = "comboBoxName";
             this.comboBoxName.Size = new System.Drawing.Size(186, 29);
             this.comboBoxName.TabIndex = 8;
+            this.comboBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxName_KeyPress);
             // 
             // label2
             // 
@@ -218,7 +218,7 @@
             this.panel1.Controls.Add(this.buttonSave);
             this.panel1.Controls.Add(this.buttonDel);
             this.panel1.Controls.Add(this.buttonUpdate);
-            this.panel1.Location = new System.Drawing.Point(-6, 105);
+            this.panel1.Location = new System.Drawing.Point(12, 46);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(378, 358);
             this.panel1.TabIndex = 1;
@@ -301,7 +301,7 @@
             // 
             // buttonTerm
             // 
-            this.buttonTerm.Location = new System.Drawing.Point(378, 4);
+            this.buttonTerm.Location = new System.Drawing.Point(396, 12);
             this.buttonTerm.Name = "buttonTerm";
             this.buttonTerm.Size = new System.Drawing.Size(55, 33);
             this.buttonTerm.TabIndex = 19;
@@ -311,7 +311,7 @@
             // 
             // buttonDate
             // 
-            this.buttonDate.Location = new System.Drawing.Point(439, 4);
+            this.buttonDate.Location = new System.Drawing.Point(457, 12);
             this.buttonDate.Name = "buttonDate";
             this.buttonDate.Size = new System.Drawing.Size(55, 33);
             this.buttonDate.TabIndex = 19;
@@ -343,7 +343,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 475);
+            this.ClientSize = new System.Drawing.Size(1039, 412);
             this.Controls.Add(this.buttonDate);
             this.Controls.Add(this.buttonTerm);
             this.Controls.Add(this.panel1);
