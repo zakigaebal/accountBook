@@ -405,10 +405,6 @@ namespace accountBook
         private void buttonForm2_TextChanged(object sender, EventArgs e)
         {
         }
-
-        private void pDate_ValueChanged(object sender, EventArgs e)
-        {
-        }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
         }

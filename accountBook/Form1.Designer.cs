@@ -54,6 +54,9 @@
             this.buttonDate = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -102,7 +105,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(396, 89);
+            this.dataGridView1.Location = new System.Drawing.Point(396, 46);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
@@ -117,7 +120,7 @@
             this.comboBoxSearch.Items.AddRange(new object[] {
             "금액",
             "메모"});
-            this.comboBoxSearch.Location = new System.Drawing.Point(699, 57);
+            this.comboBoxSearch.Location = new System.Drawing.Point(703, 12);
             this.comboBoxSearch.Name = "comboBoxSearch";
             this.comboBoxSearch.Size = new System.Drawing.Size(94, 20);
             this.comboBoxSearch.TabIndex = 2;
@@ -127,7 +130,7 @@
             // textBoxSearch
             // 
             this.textBoxSearch.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.textBoxSearch.Location = new System.Drawing.Point(799, 57);
+            this.textBoxSearch.Location = new System.Drawing.Point(803, 12);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(144, 21);
             this.textBoxSearch.TabIndex = 3;
@@ -135,7 +138,7 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(957, 57);
+            this.buttonSearch.Location = new System.Drawing.Point(961, 12);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(66, 21);
             this.buttonSearch.TabIndex = 4;
@@ -146,7 +149,7 @@
             // checkBoxDelShow
             // 
             this.checkBoxDelShow.AutoSize = true;
-            this.checkBoxDelShow.Location = new System.Drawing.Point(280, 44);
+            this.checkBoxDelShow.Location = new System.Drawing.Point(294, 65);
             this.checkBoxDelShow.Name = "checkBoxDelShow";
             this.checkBoxDelShow.Size = new System.Drawing.Size(76, 16);
             this.checkBoxDelShow.TabIndex = 13;
@@ -156,7 +159,7 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(578, 53);
+            this.buttonLogin.Location = new System.Drawing.Point(574, 7);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(71, 28);
             this.buttonLogin.TabIndex = 5;
@@ -301,7 +304,7 @@
             // 
             // buttonTerm
             // 
-            this.buttonTerm.Location = new System.Drawing.Point(396, 12);
+            this.buttonTerm.Location = new System.Drawing.Point(396, 5);
             this.buttonTerm.Name = "buttonTerm";
             this.buttonTerm.Size = new System.Drawing.Size(55, 33);
             this.buttonTerm.TabIndex = 19;
@@ -311,7 +314,7 @@
             // 
             // buttonDate
             // 
-            this.buttonDate.Location = new System.Drawing.Point(457, 12);
+            this.buttonDate.Location = new System.Drawing.Point(457, 5);
             this.buttonDate.Name = "buttonDate";
             this.buttonDate.Size = new System.Drawing.Size(55, 33);
             this.buttonDate.TabIndex = 19;
@@ -339,11 +342,45 @@
             this.label4.Text = "항목";
             this.label4.Click += new System.EventHandler(this.label2_Click);
             // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(219, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(25, 23);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "~";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.dateTimePicker1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(250, 7);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(130, 29);
+            this.dateTimePicker1.TabIndex = 22;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.dateTimePicker2.CustomFormat = "yyyy-MM-01";
+            this.dateTimePicker2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(79, 8);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(134, 29);
+            this.dateTimePicker2.TabIndex = 23;
+            this.dateTimePicker2.Value = new System.DateTime(2022, 1, 28, 0, 0, 0, 0);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1039, 412);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.buttonDate);
             this.Controls.Add(this.buttonTerm);
             this.Controls.Add(this.panel1);
@@ -390,6 +427,9 @@
         private System.Windows.Forms.Button buttonDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }
 
