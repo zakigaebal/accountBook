@@ -46,29 +46,6 @@ namespace accountBook
             }
         }
 
-        /*
-         * 금액 타입으로 바꿔주기
-         */
-        private string LetMoneyTYPE(string Num)
-        {
-            if (Num.Contains("."))
-            {
-                //소수점 이하의 스트링을 저장한다.
-                int Check = Num.Substring(Num.IndexOf('.')).Length;
-                char[] delimiterChars = { '.' };
-                string[] words = Num.Split(delimiterChars);
-                string mntyNum = string.Format("{0:#,0}", int.Parse(words[0]));
-                string ComplateNum = string.Format("{0}.{1}", mntyNum, words[1]);
-                return ComplateNum;
-            }
-            else
-            {
-                string mntyNum = string.Format("{0:#,0}", int.Parse(Num));
-                string ComplateNum = string.Format("{0}", mntyNum);
-                return ComplateNum;
-            }
-        }
-
 
 
         
@@ -411,9 +388,28 @@ namespace accountBook
         private void label3_Click(object sender, EventArgs e)
         {
         }
+        
         private void textBoxMoney_TextChanged(object sender, EventArgs e)
         {
-           
+
+            string prevValue = string.Empty;
+            TextBox textBox = sender as TextBox;
+
+            string text = textBox.Text.Replace(",", ""); // 입력되는 텍스트들의 ','를 전부 삭제하기
+
+            long num = 0;
+            if (long.TryParse(text, out num))//숫자형태의 값일 때만 처리
+            {
+                textBox.Text = string.Format("{0:#,##0}", num); // 천단위 콤마 표시
+                textBox.SelectionStart = textBox.TextLength;//커서를 항상 글자 제일 뒤로 위치시킴
+                textBox.SelectionLength = 0;
+            }
+            else
+            {
+                textBox.Text = prevValue;//숫자형태의 값이 아니면 이전값으로 설정
+            }
+
+            prevValue = textBox.Text;
 
         }
         private void label2_Click(object sender, EventArgs e)
@@ -459,13 +455,7 @@ namespace accountBook
 
         private void buttonTerm_Click(object sender, EventArgs e)
         {
-            
-            //var f = new FormTerm();
-            //if (f.ShowDialog() == DialogResult.OK)
-            //{
-              
-            //    buttonSearch_Click(sender,e);
-            //}
+            buttonSearch_Click(sender, e);
         }
 
         private void buttonDate_Click(object sender, EventArgs e)
@@ -476,21 +466,11 @@ namespace accountBook
 
         private void textBoxMoney_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
-                string lgsText;
-                lgsText = textBoxMoney.Text.Replace(",", ""); //** 숫자변환시 콤마로 발생하는 에러방지...
-                textBoxMoney.Text = String.Format("{0:#,##0}", Convert.ToDouble(lgsText));
-                textBoxMoney.SelectionStart = textBoxMoney.TextLength; //** 캐럿을 맨 뒤로 보낸다...
-                textBoxMoney.SelectionLength = 0;
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message.ToString() == "입력 문자열의 형식이 잘못되었습니다.")
-                {
-                    MessageBox.Show("숫자를 입력해주세요");
-                }
-            }
+          
+         
+
+            
+
 
         }
 
