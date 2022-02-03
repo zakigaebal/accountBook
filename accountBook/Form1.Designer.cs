@@ -343,9 +343,9 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(219, 10);
+            this.label5.Location = new System.Drawing.Point(149, 10);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(25, 23);
+            this.label5.Size = new System.Drawing.Size(30, 23);
             this.label5.TabIndex = 24;
             this.label5.Text = "~";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -355,9 +355,9 @@
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(250, 7);
+            this.dateTimePicker1.Location = new System.Drawing.Point(180, 7);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(130, 29);
+            this.dateTimePicker1.Size = new System.Drawing.Size(135, 29);
             this.dateTimePicker1.TabIndex = 22;
             // 
             // dateTimePicker2
@@ -366,9 +366,9 @@
             this.dateTimePicker2.CustomFormat = "yyyy-MM-01";
             this.dateTimePicker2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(79, 8);
+            this.dateTimePicker2.Location = new System.Drawing.Point(9, 8);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(134, 29);
+            this.dateTimePicker2.Size = new System.Drawing.Size(139, 29);
             this.dateTimePicker2.TabIndex = 23;
             this.dateTimePicker2.Value = new System.DateTime(2022, 1, 28, 0, 0, 0, 0);
             // 

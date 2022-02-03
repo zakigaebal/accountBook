@@ -35,14 +35,16 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBoxAccount = new System.Windows.Forms.ComboBox();
             this.textBoxSubject = new System.Windows.Forms.TextBox();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonDel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(206, 84);
+            this.buttonSave.Location = new System.Drawing.Point(231, 14);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(108, 22);
+            this.buttonSave.Size = new System.Drawing.Size(58, 47);
             this.buttonSave.TabIndex = 3;
             this.buttonSave.Text = "저장";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -71,12 +73,13 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 130);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 139);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(365, 243);
+            this.dataGridView1.Size = new System.Drawing.Size(365, 234);
             this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // comboBoxAccount
             // 
@@ -98,11 +101,33 @@
             this.textBoxSubject.Size = new System.Drawing.Size(139, 21);
             this.textBoxSubject.TabIndex = 11;
             // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Location = new System.Drawing.Point(315, 70);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(62, 48);
+            this.buttonUpdate.TabIndex = 12;
+            this.buttonUpdate.Text = "수정";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // buttonDel
+            // 
+            this.buttonDel.Location = new System.Drawing.Point(315, 14);
+            this.buttonDel.Name = "buttonDel";
+            this.buttonDel.Size = new System.Drawing.Size(62, 47);
+            this.buttonDel.TabIndex = 12;
+            this.buttonDel.Text = "삭제";
+            this.buttonDel.UseVisualStyleBackColor = true;
+            this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 397);
+            this.Controls.Add(this.buttonDel);
+            this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.textBoxSubject);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBoxAccount);
@@ -126,5 +151,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBoxAccount;
         private System.Windows.Forms.TextBox textBoxSubject;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonDel;
     }
 }

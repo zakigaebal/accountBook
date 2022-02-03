@@ -25,7 +25,7 @@ namespace accountBook
         {
             //  ComBoChange();
         }
-     
+
         private string seqCount()
         {
             try
@@ -60,7 +60,7 @@ namespace accountBook
             {
                 string Connect = "datasource=127.0.0.1;database=dawoon;port=3306;username=root;password=ekdnsel;Charset=utf8";
                 string Query = "select * from dc_items;";
-                Query = "select * from dc_items";
+                Query = "select * from dawoon.dc_items where flagYN = 'Y';";
                 MySqlConnection con = new MySqlConnection(Connect);
                 MySqlCommand Comm = new MySqlCommand(Query, con);
                 MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
@@ -78,7 +78,7 @@ namespace accountBook
             catch (Exception ex)
             {
                 string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
-                string Query = "select * from dawoon.dc_items;";
+                string Query = "select * from dawoon.dc_items where flagYN = Y;";
                 if (ex.Message.ToString() == "Table 'dawoon.dc_items' doesn't exist")
                 {
                     Query = "CREATE TABLE IF NOT EXISTS `dc_itmes` (" +
@@ -107,7 +107,7 @@ namespace accountBook
         {
             try
             {
-               
+
                 //ignore로 중복된 키를 주는게 아니라 메세지박스 나오게하기
                 string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
                 string Query = "insert into dawoon.dc_items(itemSeq,acount,subject,flagYN,regDate,issueDate,issueID) values('"
@@ -128,12 +128,74 @@ namespace accountBook
                 MainForm.buttonSearch_Click(sender, e);
                 MainForm.radioButton1_CheckedChanged(sender, e);
                 MainForm.radioButton2_CheckedChanged(sender, e);
+
+                // 추가
+                // 조건문 만약 서브젝트와 타이틀이 둘다 같으면 키워드가 존재한다고 메세지 띄우기
+                    MessageBox.Show(textBoxSubject.Text.Trim() + "키워드가 이미 들어가 있습니다.");
+
             }
             catch (Exception ex)
             {
-                if (ex.Message.ToString() == "Duplicate entry '" + textBoxSubject.Text.Trim() + "' for key 'PRIMARY'")
-                    MessageBox.Show(textBoxSubject.Text.Trim() + "키워드가 이미 들어가 있습니다.");
+               
             }
+        }
+
+        private void buttonDel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string seqstr = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
+                string Query = "update dawoon.dc_items set flagYN='N' WHERE itemSeq=" + seqstr;
+                MySqlConnection con = new MySqlConnection(Connect);
+                MySqlCommand Comm = new MySqlCommand(Query, con);
+                MySqlDataReader Read;
+                con.Open();
+                Read = Comm.ExecuteReader();
+                MessageBox.Show("삭제완료");
+                con.Close();
+                show2();
+                clear();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string seqstr = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
+                string Query = "update dawoon.dc_items set itemSeq='" + seqstr 
+                    + "',acount='" 
+                    + comboBoxAccount.Text
+                    + "',subject='" + textBoxSubject.Text
+                    + "' where itemSeq='" + seqstr + "';";
+                MySqlConnection con = new MySqlConnection(Connect);
+                MySqlCommand Comm = new MySqlCommand(Query, con);
+                MySqlDataReader Read;
+                con.Open();
+                Read = Comm.ExecuteReader();
+                MessageBox.Show("수정완료");
+                con.Close();
+                show2();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+            comboBoxAccount.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            textBoxSubject.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+      
         }
     }
 }
