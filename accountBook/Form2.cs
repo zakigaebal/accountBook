@@ -158,14 +158,19 @@ namespace accountBook
             }
             // 1. 키값을 가져와서 저장시켜야됨. 저장시키고 변수 선언
             string sub = Read3.GetString("subject");
+            string aco = Read3.GetString("acount");
             // sub에 저장됨
-            string test = textBoxSubject.Text;
-            if (sub.Contains(test))
+            string subject2 = textBoxSubject.Text;
+            string acccount = comboBoxAccount.Text;
+            
+            if (sub.Contains(subject2))
                     {
-                        MessageBox.Show(textBoxSubject.Text + "키워드가 이미 들어가 있습니다.");
+                        MessageBox.Show(acccount + textBoxSubject.Text + "키워드가 이미 들어가 있습니다.");
                 // 2. 키값이랑 텍스트박스 서브젝트랑 존재하면 메세지박스 띄우기
             }
+           
             else { 
+                // 지출인데 보너스가 없으면 보너스를 추가
                 string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
                 string Query = "insert into dawoon.dc_items(itemSeq,acount,subject,flagYN,regDate,issueDate,issueID) values('"
                     + seqCount() + "','" + comboBoxAccount.Text.Trim() + "','" + textBoxSubject.Text.Trim()

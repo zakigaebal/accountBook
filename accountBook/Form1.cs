@@ -355,7 +355,6 @@ namespace accountBook
                 MessageBox.Show("수정완료");
                 while (Read.Read())
                 {
-
                 }
                 con.Close();
                 buttonSearch_Click(sender, e);
