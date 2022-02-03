@@ -118,13 +118,13 @@
             // 
             this.comboBoxSearch.FormattingEnabled = true;
             this.comboBoxSearch.Items.AddRange(new object[] {
-            "금액",
-            "메모"});
+            "항목",
+            "내용"});
             this.comboBoxSearch.Location = new System.Drawing.Point(856, 11);
             this.comboBoxSearch.Name = "comboBoxSearch";
             this.comboBoxSearch.Size = new System.Drawing.Size(94, 20);
             this.comboBoxSearch.TabIndex = 2;
-            this.comboBoxSearch.Text = "금액";
+            this.comboBoxSearch.Text = "항목";
             this.comboBoxSearch.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearch_SelectedIndexChanged);
             // 
             // textBoxSearch

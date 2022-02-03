@@ -197,12 +197,12 @@ namespace accountBook
                 string searchtext = textBoxSearch.Text.Trim();
                 string keyText = comboBoxSearch.Text;
                 string field = "";
-                if (keyText == "금액") field = "dc_account.money";
-                else if (keyText == "메모") field = "dc_account.memo";
+                if (keyText == "항목") field = "항목.subject ";
+                else if (keyText == "내용") field = "가계부.content";
                 string flagYN = "";
                 if (checkBoxDelShow.Checked == true)
                 {
-                    flagYN = "";
+                    flagYN = "가계부.flagYN = 'N'";
                 }
                 else
                 {
