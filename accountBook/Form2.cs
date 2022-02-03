@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 namespace accountBook
@@ -15,6 +16,7 @@ namespace accountBook
         private void Form2_Load(object sender, EventArgs e)
         {
             show2();
+            aaaa();
         }
         private void buttonClose_Click(object sender, EventArgs e)
         {
@@ -53,6 +55,8 @@ namespace accountBook
             textBoxSubject.Text = "";
 
         }
+
+
 
         private void show2()
         {
@@ -103,12 +107,65 @@ namespace accountBook
                 }
             }
         }
-        private void buttonSave_Click(object sender, EventArgs e)
+
+
+        private void button1_Click(object sender, EventArgs e)
         {
             try
             {
+                string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
+                string Query = "SELECT acount, subject, COUNT(*) FROM dawoon.dc_items GROUP BY acount, subject HAVING COUNT(*) > 1;";
+                MySqlConnection con = new MySqlConnection(Connect);
+                MySqlCommand Comm = new MySqlCommand(Query, con);
+                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+                MyAdapter.SelectCommand = Comm;
+                DataTable dTable = new DataTable();
 
-                //ignore로 중복된 키를 주는게 아니라 메세지박스 나오게하기
+                MyAdapter.Fill(dTable);
+                con.Open();
+
+                int count = dTable.Rows.Count;
+                if (count != 0) { MessageBox.Show("키워드가 이미 들어가 있습니다."); }
+                else if (count == 0) { buttonSave_Click(sender, e); }
+                con.Close();
+                clear();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void aaaa()
+        {
+           
+        }
+
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            string constring = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
+            string Query3 = "select * from dawoon.dc_items";
+            MySqlConnection con3 = new MySqlConnection(constring);
+            MySqlCommand Comm3 = new MySqlCommand(Query3, con3);
+            MySqlDataReader Read3;
+            con3.Open();
+            Read3 = Comm3.ExecuteReader();
+            // select 문으로 동일한 값이 있으면 메세지박스를 띄우고 없으면 인서트 실행
+            // 조건문 만약 서브젝트와 타이틀이 둘다 같으면 키워드가 존재한다고 메세지 띄우기
+            while (Read3.Read())
+            {
+            }
+            // 1. 키값을 가져와서 저장시켜야됨. 저장시키고 변수 선언
+            string sub = Read3.GetString("subject");
+            // sub에 저장됨
+            string test = textBoxSubject.Text;
+            if (sub.Contains(test))
+                    {
+                        MessageBox.Show(textBoxSubject.Text + "키워드가 이미 들어가 있습니다.");
+                // 2. 키값이랑 텍스트박스 서브젝트랑 존재하면 메세지박스 띄우기
+            }
+            else { 
                 string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
                 string Query = "insert into dawoon.dc_items(itemSeq,acount,subject,flagYN,regDate,issueDate,issueID) values('"
                     + seqCount() + "','" + comboBoxAccount.Text.Trim() + "','" + textBoxSubject.Text.Trim()
@@ -128,18 +185,9 @@ namespace accountBook
                 MainForm.buttonSearch_Click(sender, e);
                 MainForm.radioButton1_CheckedChanged(sender, e);
                 MainForm.radioButton2_CheckedChanged(sender, e);
-
-                // 추가
-                // 조건문 만약 서브젝트와 타이틀이 둘다 같으면 키워드가 존재한다고 메세지 띄우기
-                    MessageBox.Show(textBoxSubject.Text.Trim() + "키워드가 이미 들어가 있습니다.");
-
-            }
-            catch (Exception ex)
-            {
                
             }
         }
-
         private void buttonDel_Click(object sender, EventArgs e)
         {
             try
@@ -197,6 +245,8 @@ namespace accountBook
             textBoxSubject.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
       
         }
+
+       
     }
 }
 
