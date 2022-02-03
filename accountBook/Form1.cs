@@ -181,7 +181,19 @@ namespace accountBook
             {
                 string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
                 string Query = "select * from dc_account;";
-                string Query2 = "SELECT accSeq, usedDate, dc_items.acount, dc_account.subject, dc_account.money, content, dc_account.memo, dc_items.flagYN, dc_items.regDate, dc_items.issueDate, dc_items.issueID FROM dc_account RIGHT OUTER JOIN dc_items ON dc_account.subject = dc_items.subject";
+                string Query2 = "SELECT" +
+                   " 가계부.usedDate," +
+                   " 항목.acount," +
+                   " 항목.subject," +
+                   " 가계부.money," +
+                   " 가계부.content," +
+                   " 가계부.memo," +
+                   " 가계부.flagYN," +
+                   " 가계부.regDate," +
+                   " 가계부.issueDate," +
+                   " 가계부.issueID" +
+                   " FROM dc_account 가계부" +
+                   " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject)";
                 string searchtext = textBoxSearch.Text.Trim();
                 string keyText = comboBoxSearch.Text;
                 string field = "";
@@ -194,12 +206,24 @@ namespace accountBook
                 }
                 else
                 {
-                    flagYN = "AND dc_items.flagYN = 'Y'";
+                    flagYN = "가계부.flagYN = 'Y'";
                 }
                 // SELECT  accSeq, usedDate, dc_items.acount, dc_items.itemSeq, dc_items.subject, money, content, memo, dc_items.flagYN, dc_items.regDate, dc_items.issueDate, dc_items.issueID FROM dc_account LEFT JOIN dc_items ON dc_account.subject = dc_items.subject;
                 Query = "select * from dc_account " +
                     "WHERE " + field + " like '%" + searchtext + "%' " + flagYN;
-                Query2 = "SELECT accSeq, usedDate, dc_items.acount, dc_account.subject, dc_account.money, content, dc_account.memo, dc_items.flagYN, dc_items.regDate, dc_items.issueDate, dc_items.issueID FROM dc_account RIGHT OUTER JOIN dc_items ON dc_account.subject = dc_items.subject WHERE dc_account.flagYN = 'Y' AND dc_items.flagYN = 'Y'";
+                Query2 = "SELECT" +
+                   " 가계부.usedDate," +
+                   " 항목.acount," +
+                   " 항목.subject," +
+                   " 가계부.money," +
+                   " 가계부.content," +
+                   " 가계부.memo," +
+                   " 가계부.flagYN," +
+                   " 가계부.regDate," +
+                   " 가계부.issueDate," +
+                   " 가계부.issueID" +
+                   " FROM dc_account 가계부" +
+                   " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE " + flagYN;
                 MySqlConnection con = new MySqlConnection(Connect);
                 MySqlCommand Comm = new MySqlCommand(Query2, con);
                 MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
@@ -207,7 +231,7 @@ namespace accountBook
                 DataTable dTable = new DataTable();
                 MyAdapter.Fill(dTable);
                 dataGridView1.DataSource = dTable;
-                dataGridView1.Columns[0].Visible = false;
+               
                 dataGridView1.Columns[dataGridView1.Columns.Count - 4].Visible = false;
                 dataGridView1.Columns[dataGridView1.Columns.Count - 3].Visible = false;
                 dataGridView1.Columns[dataGridView1.Columns.Count - 2].Visible = false;
@@ -260,19 +284,26 @@ namespace accountBook
             string account = "지출";
             if (radioButton2.Checked)
                 account = "수입";
+     
+
             string accountName = getItemSeq(account, comboBoxName.Text);
             if (e.RowIndex < 0)
             {
                 return;
             }
-            pDate.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            account = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            pDate.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            account = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             //accountName = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-            comboBoxName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-            textBoxMoney.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-            textBoxContent.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-            textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+            comboBoxName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            textBoxMoney.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+            textBoxContent.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+            textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+
         }
+
+    
+        
+
         private void buttonDel_Click(object sender, EventArgs e)
         {
             try
