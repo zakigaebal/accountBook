@@ -28,387 +28,449 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.labelWhy = new System.Windows.Forms.Label();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonDel = new System.Windows.Forms.Button();
-            this.buttonUpdate = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBoxSearch = new System.Windows.Forms.ComboBox();
-            this.textBoxSearch = new System.Windows.Forms.TextBox();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.checkBoxDelShow = new System.Windows.Forms.CheckBox();
-            this.buttonLogin = new System.Windows.Forms.Button();
-            this.comboBoxName = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxMoney = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pDate = new System.Windows.Forms.DateTimePicker();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.textBoxContent = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxMemo = new System.Windows.Forms.TextBox();
-            this.buttonForm2 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonTerm = new System.Windows.Forms.Button();
-            this.buttonDate = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.buttontest = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // labelWhy
-            // 
-            this.labelWhy.AutoSize = true;
-            this.labelWhy.Location = new System.Drawing.Point(29, 208);
-            this.labelWhy.Name = "labelWhy";
-            this.labelWhy.Size = new System.Drawing.Size(29, 12);
-            this.labelWhy.TabIndex = 3;
-            this.labelWhy.Text = "메모";
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Location = new System.Drawing.Point(271, 87);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(94, 71);
-            this.buttonSave.TabIndex = 5;
-            this.buttonSave.Text = "저장";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
-            // buttonDel
-            // 
-            this.buttonDel.Location = new System.Drawing.Point(269, 179);
-            this.buttonDel.Name = "buttonDel";
-            this.buttonDel.Size = new System.Drawing.Size(99, 71);
-            this.buttonDel.TabIndex = 6;
-            this.buttonDel.Text = "삭제";
-            this.buttonDel.UseVisualStyleBackColor = true;
-            this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
-            // 
-            // buttonUpdate
-            // 
-            this.buttonUpdate.Location = new System.Drawing.Point(269, 269);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(101, 71);
-            this.buttonUpdate.TabIndex = 7;
-            this.buttonUpdate.Text = "수정";
-            this.buttonUpdate.UseVisualStyleBackColor = true;
-            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(457, 46);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(723, 315);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
-            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
-            // 
-            // comboBoxSearch
-            // 
-            this.comboBoxSearch.FormattingEnabled = true;
-            this.comboBoxSearch.Items.AddRange(new object[] {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+			this.labelWhy = new System.Windows.Forms.Label();
+			this.buttonSave = new System.Windows.Forms.Button();
+			this.buttonDel = new System.Windows.Forms.Button();
+			this.buttonUpdate = new System.Windows.Forms.Button();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.comboBoxSearch = new System.Windows.Forms.ComboBox();
+			this.textBoxSearch = new System.Windows.Forms.TextBox();
+			this.buttonSearch = new System.Windows.Forms.Button();
+			this.checkBoxDelShow = new System.Windows.Forms.CheckBox();
+			this.buttonLogin = new System.Windows.Forms.Button();
+			this.comboBoxName = new System.Windows.Forms.ComboBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.textBoxMoney = new System.Windows.Forms.TextBox();
+			this.pDate = new System.Windows.Forms.DateTimePicker();
+			this.radioButton1 = new System.Windows.Forms.RadioButton();
+			this.radioButton2 = new System.Windows.Forms.RadioButton();
+			this.textBoxContent = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.textBoxMemo = new System.Windows.Forms.TextBox();
+			this.buttonForm2 = new System.Windows.Forms.Button();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.buttonTerm = new System.Windows.Forms.Button();
+			this.buttonDate = new System.Windows.Forms.Button();
+			this.label5 = new System.Windows.Forms.Label();
+			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.label6 = new System.Windows.Forms.Label();
+			this.panel1 = new System.Windows.Forms.Panel();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			this.panel2.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
+			this.panel1.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// labelWhy
+			// 
+			this.labelWhy.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.labelWhy.AutoSize = true;
+			this.labelWhy.Location = new System.Drawing.Point(26, 338);
+			this.labelWhy.Name = "labelWhy";
+			this.labelWhy.Size = new System.Drawing.Size(29, 12);
+			this.labelWhy.TabIndex = 3;
+			this.labelWhy.Text = "메모";
+			// 
+			// buttonSave
+			// 
+			this.buttonSave.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonSave.Location = new System.Drawing.Point(442, 65);
+			this.buttonSave.Name = "buttonSave";
+			this.buttonSave.Size = new System.Drawing.Size(70, 28);
+			this.buttonSave.TabIndex = 5;
+			this.buttonSave.Text = "저장";
+			this.buttonSave.UseVisualStyleBackColor = true;
+			this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+			// 
+			// buttonDel
+			// 
+			this.buttonDel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonDel.Location = new System.Drawing.Point(442, 99);
+			this.buttonDel.Name = "buttonDel";
+			this.buttonDel.Size = new System.Drawing.Size(70, 25);
+			this.buttonDel.TabIndex = 6;
+			this.buttonDel.Text = "삭제";
+			this.buttonDel.UseVisualStyleBackColor = true;
+			this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
+			// 
+			// buttonUpdate
+			// 
+			this.buttonUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonUpdate.Location = new System.Drawing.Point(442, 130);
+			this.buttonUpdate.Name = "buttonUpdate";
+			this.buttonUpdate.Size = new System.Drawing.Size(70, 24);
+			this.buttonUpdate.TabIndex = 7;
+			this.buttonUpdate.Text = "수정";
+			this.buttonUpdate.UseVisualStyleBackColor = true;
+			this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+			// 
+			// dataGridView1
+			// 
+			this.dataGridView1.AllowUserToAddRows = false;
+			this.dataGridView1.AllowUserToDeleteRows = false;
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Right;
+			this.dataGridView1.Location = new System.Drawing.Point(621, 48);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.ReadOnly = true;
+			this.dataGridView1.RowTemplate.Height = 23;
+			this.dataGridView1.Size = new System.Drawing.Size(698, 531);
+			this.dataGridView1.TabIndex = 9;
+			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+			this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+			this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
+			// 
+			// comboBoxSearch
+			// 
+			this.comboBoxSearch.FormattingEnabled = true;
+			this.comboBoxSearch.Items.AddRange(new object[] {
             "항목",
             "내용"});
-            this.comboBoxSearch.Location = new System.Drawing.Point(856, 11);
-            this.comboBoxSearch.Name = "comboBoxSearch";
-            this.comboBoxSearch.Size = new System.Drawing.Size(94, 20);
-            this.comboBoxSearch.TabIndex = 2;
-            this.comboBoxSearch.Text = "항목";
-            this.comboBoxSearch.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearch_SelectedIndexChanged);
-            // 
-            // textBoxSearch
-            // 
-            this.textBoxSearch.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.textBoxSearch.Location = new System.Drawing.Point(956, 11);
-            this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(144, 21);
-            this.textBoxSearch.TabIndex = 3;
-            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
-            // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Location = new System.Drawing.Point(1114, 11);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(66, 21);
-            this.buttonSearch.TabIndex = 4;
-            this.buttonSearch.Text = "검색";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
-            // 
-            // checkBoxDelShow
-            // 
-            this.checkBoxDelShow.AutoSize = true;
-            this.checkBoxDelShow.Location = new System.Drawing.Point(294, 65);
-            this.checkBoxDelShow.Name = "checkBoxDelShow";
-            this.checkBoxDelShow.Size = new System.Drawing.Size(76, 16);
-            this.checkBoxDelShow.TabIndex = 13;
-            this.checkBoxDelShow.Text = "삭제 보기";
-            this.checkBoxDelShow.UseVisualStyleBackColor = true;
-            this.checkBoxDelShow.CheckedChanged += new System.EventHandler(this.checkBoxDelShow_CheckedChanged);
-            // 
-            // buttonLogin
-            // 
-            this.buttonLogin.Location = new System.Drawing.Point(574, 7);
-            this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(71, 28);
-            this.buttonLogin.TabIndex = 5;
-            this.buttonLogin.Text = "로그인";
-            this.buttonLogin.UseVisualStyleBackColor = true;
-            this.buttonLogin.Visible = false;
-            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
-            // 
-            // comboBoxName
-            // 
-            this.comboBoxName.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.comboBoxName.FormattingEnabled = true;
-            this.comboBoxName.Location = new System.Drawing.Point(64, 68);
-            this.comboBoxName.Name = "comboBoxName";
-            this.comboBoxName.Size = new System.Drawing.Size(186, 29);
-            this.comboBoxName.TabIndex = 8;
-            this.comboBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxName_KeyPress);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 149);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "금액";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // textBoxMoney
-            // 
-            this.textBoxMoney.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBoxMoney.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.textBoxMoney.Location = new System.Drawing.Point(64, 138);
-            this.textBoxMoney.Name = "textBoxMoney";
-            this.textBoxMoney.Size = new System.Drawing.Size(186, 29);
-            this.textBoxMoney.TabIndex = 1;
-            this.textBoxMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxMoney.TextChanged += new System.EventHandler(this.textBoxMoney_TextChanged);
-            this.textBoxMoney.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMoney_KeyDown);
-            this.textBoxMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMoney_KeyPress);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.buttontest);
-            this.panel1.Controls.Add(this.pDate);
-            this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Controls.Add(this.textBoxContent);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.checkBoxDelShow);
-            this.panel1.Controls.Add(this.textBoxMemo);
-            this.panel1.Controls.Add(this.buttonForm2);
-            this.panel1.Controls.Add(this.textBoxMoney);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.comboBoxName);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.labelWhy);
-            this.panel1.Controls.Add(this.buttonSave);
-            this.panel1.Controls.Add(this.buttonDel);
-            this.panel1.Controls.Add(this.buttonUpdate);
-            this.panel1.Location = new System.Drawing.Point(12, 46);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(378, 358);
-            this.panel1.TabIndex = 1;
-            // 
-            // pDate
-            // 
-            this.pDate.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.pDate.CustomFormat = "yyyy-MM-dd";
-            this.pDate.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.pDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.pDate.Location = new System.Drawing.Point(64, 103);
-            this.pDate.Name = "pDate";
-            this.pDate.Size = new System.Drawing.Size(186, 29);
-            this.pDate.TabIndex = 14;
-            this.pDate.Value = new System.DateTime(2022, 1, 28, 0, 0, 0, 0);
-            this.pDate.ValueChanged += new System.EventHandler(this.pDate_ValueChanged_1);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(134, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 16);
-            this.radioButton1.TabIndex = 10;
-            this.radioButton1.Text = "지출";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(203, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 16);
-            this.radioButton2.TabIndex = 11;
-            this.radioButton2.Text = "수입";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // textBoxContent
-            // 
-            this.textBoxContent.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBoxContent.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.textBoxContent.Location = new System.Drawing.Point(64, 173);
-            this.textBoxContent.Name = "textBoxContent";
-            this.textBoxContent.Size = new System.Drawing.Size(186, 29);
-            this.textBoxContent.TabIndex = 2;
-            this.textBoxContent.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 183);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "내용";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // textBoxMemo
-            // 
-            this.textBoxMemo.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.textBoxMemo.Location = new System.Drawing.Point(64, 208);
-            this.textBoxMemo.Multiline = true;
-            this.textBoxMemo.Name = "textBoxMemo";
-            this.textBoxMemo.Size = new System.Drawing.Size(186, 132);
-            this.textBoxMemo.TabIndex = 4;
-            // 
-            // buttonForm2
-            // 
-            this.buttonForm2.Location = new System.Drawing.Point(280, 11);
-            this.buttonForm2.Name = "buttonForm2";
-            this.buttonForm2.Size = new System.Drawing.Size(85, 27);
-            this.buttonForm2.TabIndex = 9;
-            this.buttonForm2.Text = "항목 추가";
-            this.buttonForm2.UseVisualStyleBackColor = true;
-            this.buttonForm2.TextChanged += new System.EventHandler(this.buttonForm2_TextChanged);
-            this.buttonForm2.Click += new System.EventHandler(this.buttonForm2_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 78);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 12);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "항목";
-            this.label4.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 112);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "날짜";
-            this.label1.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // buttonTerm
-            // 
-            this.buttonTerm.Location = new System.Drawing.Point(396, 5);
-            this.buttonTerm.Name = "buttonTerm";
-            this.buttonTerm.Size = new System.Drawing.Size(55, 33);
-            this.buttonTerm.TabIndex = 19;
-            this.buttonTerm.Text = "기간";
-            this.buttonTerm.UseVisualStyleBackColor = true;
-            this.buttonTerm.Click += new System.EventHandler(this.buttonTerm_Click);
-            // 
-            // buttonDate
-            // 
-            this.buttonDate.Location = new System.Drawing.Point(457, 5);
-            this.buttonDate.Name = "buttonDate";
-            this.buttonDate.Size = new System.Drawing.Size(55, 33);
-            this.buttonDate.TabIndex = 19;
-            this.buttonDate.Text = "날짜";
-            this.buttonDate.UseVisualStyleBackColor = true;
-            this.buttonDate.Click += new System.EventHandler(this.buttonDate_Click);
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(149, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 23);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "~";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dateTimePicker1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(180, 7);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(135, 29);
-            this.dateTimePicker1.TabIndex = 22;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dateTimePicker2.CustomFormat = "yyyy-MM-01";
-            this.dateTimePicker2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(9, 8);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(139, 29);
-            this.dateTimePicker2.TabIndex = 23;
-            this.dateTimePicker2.Value = new System.DateTime(2022, 1, 28, 0, 0, 0, 0);
-            // 
-            // buttontest
-            // 
-            this.buttontest.Location = new System.Drawing.Point(17, 19);
-            this.buttontest.Name = "buttontest";
-            this.buttontest.Size = new System.Drawing.Size(75, 23);
-            this.buttontest.TabIndex = 15;
-            this.buttontest.Text = "test";
-            this.buttontest.UseVisualStyleBackColor = true;
-            this.buttontest.Click += new System.EventHandler(this.buttontest_Click);
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1192, 435);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.buttonDate);
-            this.Controls.Add(this.buttonTerm);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.buttonLogin);
-            this.Controls.Add(this.buttonSearch);
-            this.Controls.Add(this.textBoxSearch);
-            this.Controls.Add(this.comboBoxSearch);
-            this.Controls.Add(this.dataGridView1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
-            this.Text = "매일매일 가계부";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+			this.comboBoxSearch.Location = new System.Drawing.Point(484, 14);
+			this.comboBoxSearch.Name = "comboBoxSearch";
+			this.comboBoxSearch.Size = new System.Drawing.Size(51, 20);
+			this.comboBoxSearch.TabIndex = 2;
+			this.comboBoxSearch.Text = "항목";
+			this.comboBoxSearch.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearch_SelectedIndexChanged);
+			// 
+			// textBoxSearch
+			// 
+			this.textBoxSearch.ImeMode = System.Windows.Forms.ImeMode.Hangul;
+			this.textBoxSearch.Location = new System.Drawing.Point(541, 14);
+			this.textBoxSearch.Name = "textBoxSearch";
+			this.textBoxSearch.Size = new System.Drawing.Size(103, 21);
+			this.textBoxSearch.TabIndex = 3;
+			this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
+			// 
+			// buttonSearch
+			// 
+			this.buttonSearch.Location = new System.Drawing.Point(650, 6);
+			this.buttonSearch.Name = "buttonSearch";
+			this.buttonSearch.Size = new System.Drawing.Size(42, 37);
+			this.buttonSearch.TabIndex = 4;
+			this.buttonSearch.Text = "검색";
+			this.buttonSearch.UseVisualStyleBackColor = true;
+			this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+			// 
+			// checkBoxDelShow
+			// 
+			this.checkBoxDelShow.AutoSize = true;
+			this.checkBoxDelShow.Location = new System.Drawing.Point(12, 16);
+			this.checkBoxDelShow.Name = "checkBoxDelShow";
+			this.checkBoxDelShow.Size = new System.Drawing.Size(76, 16);
+			this.checkBoxDelShow.TabIndex = 13;
+			this.checkBoxDelShow.Text = "삭제 보기";
+			this.checkBoxDelShow.UseVisualStyleBackColor = true;
+			this.checkBoxDelShow.CheckedChanged += new System.EventHandler(this.checkBoxDelShow_CheckedChanged);
+			// 
+			// buttonLogin
+			// 
+			this.buttonLogin.Location = new System.Drawing.Point(530, 10);
+			this.buttonLogin.Name = "buttonLogin";
+			this.buttonLogin.Size = new System.Drawing.Size(71, 28);
+			this.buttonLogin.TabIndex = 5;
+			this.buttonLogin.Text = "로그인";
+			this.buttonLogin.UseVisualStyleBackColor = true;
+			this.buttonLogin.Visible = false;
+			this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+			// 
+			// comboBoxName
+			// 
+			this.tableLayoutPanel2.SetColumnSpan(this.comboBoxName, 2);
+			this.comboBoxName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.comboBoxName.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.comboBoxName.FormattingEnabled = true;
+			this.comboBoxName.Location = new System.Drawing.Point(85, 31);
+			this.comboBoxName.Name = "comboBoxName";
+			this.comboBoxName.Size = new System.Drawing.Size(351, 29);
+			this.comboBoxName.TabIndex = 8;
+			this.comboBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxName_KeyPress);
+			// 
+			// label2
+			// 
+			this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(26, 105);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(29, 12);
+			this.label2.TabIndex = 12;
+			this.label2.Text = "금액";
+			this.label2.Click += new System.EventHandler(this.label2_Click);
+			// 
+			// textBoxMoney
+			// 
+			this.tableLayoutPanel2.SetColumnSpan(this.textBoxMoney, 2);
+			this.textBoxMoney.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxMoney.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.textBoxMoney.ImeMode = System.Windows.Forms.ImeMode.Hangul;
+			this.textBoxMoney.Location = new System.Drawing.Point(85, 99);
+			this.textBoxMoney.Name = "textBoxMoney";
+			this.textBoxMoney.Size = new System.Drawing.Size(351, 29);
+			this.textBoxMoney.TabIndex = 1;
+			this.textBoxMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.textBoxMoney.TextChanged += new System.EventHandler(this.textBoxMoney_TextChanged);
+			this.textBoxMoney.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMoney_KeyDown);
+			this.textBoxMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMoney_KeyPress);
+			// 
+			// pDate
+			// 
+			this.pDate.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.tableLayoutPanel2.SetColumnSpan(this.pDate, 2);
+			this.pDate.CustomFormat = "yyyy-MM-dd";
+			this.pDate.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pDate.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.pDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.pDate.Location = new System.Drawing.Point(85, 65);
+			this.pDate.Name = "pDate";
+			this.pDate.Size = new System.Drawing.Size(351, 29);
+			this.pDate.TabIndex = 14;
+			this.pDate.Value = new System.DateTime(2022, 1, 28, 0, 0, 0, 0);
+			this.pDate.ValueChanged += new System.EventHandler(this.pDate_ValueChanged_1);
+			// 
+			// radioButton1
+			// 
+			this.radioButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.radioButton1.AutoSize = true;
+			this.radioButton1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.radioButton1.Location = new System.Drawing.Point(331, 3);
+			this.radioButton1.Name = "radioButton1";
+			this.radioButton1.Size = new System.Drawing.Size(60, 22);
+			this.radioButton1.TabIndex = 10;
+			this.radioButton1.Text = "지출";
+			this.radioButton1.UseVisualStyleBackColor = true;
+			this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+			// 
+			// radioButton2
+			// 
+			this.radioButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.radioButton2.AutoSize = true;
+			this.radioButton2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.radioButton2.Location = new System.Drawing.Point(153, 3);
+			this.radioButton2.Name = "radioButton2";
+			this.radioButton2.Size = new System.Drawing.Size(60, 22);
+			this.radioButton2.TabIndex = 11;
+			this.radioButton2.Text = "수입";
+			this.radioButton2.UseVisualStyleBackColor = true;
+			this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+			// 
+			// textBoxContent
+			// 
+			this.tableLayoutPanel2.SetColumnSpan(this.textBoxContent, 2);
+			this.textBoxContent.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxContent.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.textBoxContent.ImeMode = System.Windows.Forms.ImeMode.Hangul;
+			this.textBoxContent.Location = new System.Drawing.Point(85, 130);
+			this.textBoxContent.Name = "textBoxContent";
+			this.textBoxContent.Size = new System.Drawing.Size(351, 29);
+			this.textBoxContent.TabIndex = 2;
+			this.textBoxContent.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+			// 
+			// label3
+			// 
+			this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(26, 136);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(29, 12);
+			this.label3.TabIndex = 13;
+			this.label3.Text = "내용";
+			this.label3.Click += new System.EventHandler(this.label3_Click);
+			// 
+			// textBoxMemo
+			// 
+			this.tableLayoutPanel2.SetColumnSpan(this.textBoxMemo, 3);
+			this.textBoxMemo.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxMemo.ImeMode = System.Windows.Forms.ImeMode.Hangul;
+			this.textBoxMemo.Location = new System.Drawing.Point(85, 160);
+			this.textBoxMemo.Multiline = true;
+			this.textBoxMemo.Name = "textBoxMemo";
+			this.textBoxMemo.Size = new System.Drawing.Size(427, 368);
+			this.textBoxMemo.TabIndex = 4;
+			// 
+			// buttonForm2
+			// 
+			this.buttonForm2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonForm2.Location = new System.Drawing.Point(442, 31);
+			this.buttonForm2.Name = "buttonForm2";
+			this.buttonForm2.Size = new System.Drawing.Size(70, 28);
+			this.buttonForm2.TabIndex = 9;
+			this.buttonForm2.Text = "항목 추가";
+			this.buttonForm2.UseVisualStyleBackColor = true;
+			this.buttonForm2.TextChanged += new System.EventHandler(this.buttonForm2_TextChanged);
+			this.buttonForm2.Click += new System.EventHandler(this.buttonForm2_Click);
+			// 
+			// label4
+			// 
+			this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(26, 39);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(29, 12);
+			this.label4.TabIndex = 12;
+			this.label4.Text = "항목";
+			this.label4.Click += new System.EventHandler(this.label2_Click);
+			// 
+			// label1
+			// 
+			this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(26, 73);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(29, 12);
+			this.label1.TabIndex = 12;
+			this.label1.Text = "날짜";
+			this.label1.Click += new System.EventHandler(this.label2_Click);
+			// 
+			// buttonTerm
+			// 
+			this.buttonTerm.Location = new System.Drawing.Point(386, 9);
+			this.buttonTerm.Name = "buttonTerm";
+			this.buttonTerm.Size = new System.Drawing.Size(55, 33);
+			this.buttonTerm.TabIndex = 19;
+			this.buttonTerm.Text = "기간";
+			this.buttonTerm.UseVisualStyleBackColor = true;
+			this.buttonTerm.Click += new System.EventHandler(this.buttonTerm_Click);
+			// 
+			// buttonDate
+			// 
+			this.buttonDate.Location = new System.Drawing.Point(325, 9);
+			this.buttonDate.Name = "buttonDate";
+			this.buttonDate.Size = new System.Drawing.Size(55, 33);
+			this.buttonDate.TabIndex = 19;
+			this.buttonDate.Text = "날짜";
+			this.buttonDate.UseVisualStyleBackColor = true;
+			this.buttonDate.Click += new System.EventHandler(this.buttonDate_Click);
+			// 
+			// label5
+			// 
+			this.label5.Location = new System.Drawing.Point(145, 13);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(30, 23);
+			this.label5.TabIndex = 24;
+			this.label5.Text = "~";
+			this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// dateTimePicker1
+			// 
+			this.dateTimePicker1.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.dateTimePicker1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dateTimePicker1.Location = new System.Drawing.Point(181, 10);
+			this.dateTimePicker1.Name = "dateTimePicker1";
+			this.dateTimePicker1.Size = new System.Drawing.Size(135, 29);
+			this.dateTimePicker1.TabIndex = 22;
+			// 
+			// dateTimePicker2
+			// 
+			this.dateTimePicker2.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.dateTimePicker2.CustomFormat = "yyyy-MM-01";
+			this.dateTimePicker2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateTimePicker2.Location = new System.Drawing.Point(0, 10);
+			this.dateTimePicker2.Name = "dateTimePicker2";
+			this.dateTimePicker2.Size = new System.Drawing.Size(139, 29);
+			this.dateTimePicker2.TabIndex = 23;
+			this.dateTimePicker2.Value = new System.DateTime(2022, 1, 28, 0, 0, 0, 0);
+			// 
+			// panel2
+			// 
+			this.panel2.Controls.Add(this.panel1);
+			this.panel2.Controls.Add(this.checkBoxDelShow);
+			this.panel2.Controls.Add(this.buttonLogin);
+			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel2.Location = new System.Drawing.Point(0, 0);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(1319, 48);
+			this.panel2.TabIndex = 25;
+			this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+			// 
+			// tableLayoutPanel2
+			// 
+			this.tableLayoutPanel2.ColumnCount = 4;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.10448F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.89552F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+			this.tableLayoutPanel2.Controls.Add(this.pDate, 1, 2);
+			this.tableLayoutPanel2.Controls.Add(this.buttonUpdate, 3, 4);
+			this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.buttonDel, 3, 3);
+			this.tableLayoutPanel2.Controls.Add(this.buttonForm2, 3, 1);
+			this.tableLayoutPanel2.Controls.Add(this.buttonSave, 3, 2);
+			this.tableLayoutPanel2.Controls.Add(this.label4, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.label1, 0, 2);
+			this.tableLayoutPanel2.Controls.Add(this.label2, 0, 3);
+			this.tableLayoutPanel2.Controls.Add(this.label3, 0, 4);
+			this.tableLayoutPanel2.Controls.Add(this.textBoxMoney, 1, 3);
+			this.tableLayoutPanel2.Controls.Add(this.labelWhy, 0, 5);
+			this.tableLayoutPanel2.Controls.Add(this.textBoxContent, 1, 4);
+			this.tableLayoutPanel2.Controls.Add(this.textBoxMemo, 1, 5);
+			this.tableLayoutPanel2.Controls.Add(this.comboBoxName, 1, 1);
+			this.tableLayoutPanel2.Controls.Add(this.radioButton1, 2, 0);
+			this.tableLayoutPanel2.Controls.Add(this.radioButton2, 1, 0);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 48);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.tableLayoutPanel2.RowCount = 6;
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.07042F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.92958F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 373F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(515, 531);
+			this.tableLayoutPanel2.TabIndex = 16;
+			// 
+			// label6
+			// 
+			this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(26, 8);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(29, 12);
+			this.label6.TabIndex = 15;
+			this.label6.Text = "계정";
+			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.dateTimePicker1);
+			this.panel1.Controls.Add(this.comboBoxSearch);
+			this.panel1.Controls.Add(this.label5);
+			this.panel1.Controls.Add(this.buttonSearch);
+			this.panel1.Controls.Add(this.textBoxSearch);
+			this.panel1.Controls.Add(this.buttonTerm);
+			this.panel1.Controls.Add(this.dateTimePicker2);
+			this.panel1.Controls.Add(this.buttonDate);
+			this.panel1.Location = new System.Drawing.Point(621, 0);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(695, 46);
+			this.panel1.TabIndex = 25;
+			// 
+			// Form1
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(1319, 579);
+			this.Controls.Add(this.dataGridView1);
+			this.Controls.Add(this.tableLayoutPanel2);
+			this.Controls.Add(this.panel2);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Name = "Form1";
+			this.Text = "매일매일 가계부";
+			this.Load += new System.EventHandler(this.Form1_Load);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			this.panel2.ResumeLayout(false);
+			this.panel2.PerformLayout();
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
+			this.ResumeLayout(false);
 
         }
 
@@ -426,7 +488,6 @@
         private System.Windows.Forms.ComboBox comboBoxName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxMoney;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonForm2;
         private System.Windows.Forms.TextBox textBoxMemo;
         private System.Windows.Forms.RadioButton radioButton2;
@@ -441,7 +502,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button buttontest;
-    }
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Panel panel1;
+	}
 }
 

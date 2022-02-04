@@ -13,12 +13,6 @@ namespace accountBook
 
     public class CMysql
     {
-       
-
-       
-
-       
-
         private void CrudSql(string Query, string 메세지)
         {
             string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
