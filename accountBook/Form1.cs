@@ -11,6 +11,9 @@ namespace accountBook
 	{
 		MySqlConnection connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8");
 		bool changSaveUpdate = true;
+
+
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -234,6 +237,12 @@ namespace accountBook
 				dataGridView1.Columns[dataGridView1.Columns.Count - 3].Visible = false;
 				dataGridView1.Columns[dataGridView1.Columns.Count - 2].Visible = false;
 				dataGridView1.Columns[dataGridView1.Columns.Count - 1].Visible = false;
+				dataGridView1.Columns[1].HeaderText = "날짜";
+				dataGridView1.Columns[2].HeaderText = "계정";
+				dataGridView1.Columns[3].HeaderText = "항목";
+				dataGridView1.Columns[4].HeaderText = "금액";
+				dataGridView1.Columns[5].HeaderText = "내용";
+				dataGridView1.Columns[3].HeaderText = "메모";
 			}
 			catch (Exception ex)
 			{
