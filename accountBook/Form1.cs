@@ -9,35 +9,88 @@ namespace accountBook
 { 
     public partial class Form1 : Form
     {
+        MySqlConnection connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8");
+       
+
+     
+
         bool 저장수정변경 = true;
+
+
         public Form1()
         {
             InitializeComponent();
         }
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            buttonLogin_Click(sender, e);
+            buttonSearch_Click(sender, e);
+            buttonUpdate.Enabled = false;
+          
+        }
+
+        private void 연결(string selectQuery, string account)
+        {
+            selectQuery = "SELECT * FROM dawoon.dc_items";
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+
+                //지출로 저장한 account변수가 sql 필드 acoount가 맞으면 subject를 추가해라
+                if (account == reader.GetString("acount"))
+                {
+                    comboBoxName.Items.Add(reader.GetString("subject"));
+                }
+            }
+            connection.Close();
+        }
+
+        private void CrudSql(string Query, string 메세지)
+        {
+            string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
+            MySqlConnection con = new MySqlConnection(Connect);
+            MySqlCommand Comm = new MySqlCommand(Query, con);
+            MySqlDataReader Read;
+            con.Open();
+            Read = Comm.ExecuteReader();
+            MessageBox.Show(메세지);
+            con.Close();
+        }
+
+
+        public void 읽기(string txt, string account)
+        {
+            string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
+            string Query = "SELECT itemSeq FROM dawoon.dc_items WHERE subject = '" + txt + "' AND acount ='" + account + "';";
+            MySqlConnection con = new MySqlConnection(Connect);
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand(Query, con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                rdr["itemSeq"].ToString();
+            }
+            rdr.Close();
+        }
+
+
         public void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
+
             if (radioButton1.Checked)
             {
                 string account = "지출";
                 comboBoxName.Text = "간식";
                 comboBoxName.Items.Clear();
-                
-
                 try
                 {
-                    MySqlConnection connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8");
                     string selectQuery = "SELECT * FROM dawoon.dc_items";
-                    connection.Open();
-                    MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        //지출로 저장한 account변수가 sql 필드 acoount가 맞으면 subject를 추가해라
-                        if (account == reader.GetString("acount"))
-                        {
-                            comboBoxName.Items.Add(reader.GetString("subject"));
-                        }
-                    }
+                    연결(selectQuery, account);
                 }
                 catch (Exception ex)
                 {
@@ -46,9 +99,6 @@ namespace accountBook
             }
         }
 
-
-
-        
         public void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton2.Checked)
@@ -58,19 +108,8 @@ namespace accountBook
                 comboBoxName.Items.Clear();
                 try
                 {
-                    MySqlConnection connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8");
                     string selectQuery = "SELECT * FROM dawoon.dc_items";
-                    connection.Open();
-                    MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        //수입으로 저장한 account변수가 sql 필드 acoount가 맞으면 subject를 추가해라
-                        if (account == reader.GetString("acount"))
-                        {
-                            comboBoxName.Items.Add(reader.GetString("subject"));
-                        }
-                    }
+                    연결(selectQuery, account);
                 }
                 catch (Exception ex)
                 {
@@ -78,7 +117,6 @@ namespace accountBook
                 }
             }
         }
-        // getItemSeq 함수를 만들기
         private string getItemSeq(string account, string txt)
         {
             try
@@ -124,23 +162,16 @@ namespace accountBook
             return "";
         }
 
-        
-
-
+      
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-          
-         
-
             if (textBoxContent.Text == "")
             {
                 MessageBox.Show("내용을 입력해주세요");
                 textBoxContent.Focus();
                 return;
             }
-
-           
             try
             {
                 string moneydot = textBoxMoney.Text;
@@ -150,7 +181,6 @@ namespace accountBook
                 string account = "지출";
                 if (radioButton2.Checked)
                     account = "수입";
-                string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
                 string Query = "insert into dawoon.dc_account(accSeq,usedDate,accAcount,itemSeq,subject,money,content,memo,flagYN,regDate,issueDate,issueID) values('"
                     + seqCount() + "','"
                     + pDate.Text + "','"
@@ -162,14 +192,7 @@ namespace accountBook
                     + textBoxMemo.Text.Trim()
                     + "','Y',now(),now(),'CDY');";
 
-
-                MySqlConnection con = new MySqlConnection(Connect);
-                MySqlCommand Comm = new MySqlCommand(Query, con);
-                MySqlDataReader Read;
-                con.Open();
-                Read = Comm.ExecuteReader();
-                MessageBox.Show("저장완료");
-                con.Close();
+                CrudSql(Query, "저장완료");
                 clear();
                 buttonSearch_Click(sender, e);
             }
@@ -318,7 +341,7 @@ namespace accountBook
            
         }
 
-    
+  
         
 
         private void buttonDel_Click(object sender, EventArgs e)
@@ -326,15 +349,8 @@ namespace accountBook
             try
             {
                 string seqstr = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString();
-                string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
-                string Query = "update dawoon.dc_account set flagYN='N' WHERE accSeq=" + seqstr;
-                MySqlConnection con = new MySqlConnection(Connect);
-                MySqlCommand Comm = new MySqlCommand(Query, con);
-                MySqlDataReader Read;
-                con.Open();
-                Read = Comm.ExecuteReader();
-                MessageBox.Show("삭제완료");
-                con.Close();
+                string QueryDelete = "update dawoon.dc_account set flagYN='N' WHERE accSeq=" + seqstr;
+                CrudSql(QueryDelete, "삭제완료");
                 buttonSearch_Click(sender, e);
                 clear();
 
@@ -346,6 +362,7 @@ namespace accountBook
         }
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
+          
             string account = "지출";
             if (radioButton2.Checked)
                 account = "수입";
@@ -353,9 +370,8 @@ namespace accountBook
             try
             {
                 string seqstr = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString();
-                string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
-                string Query2 = "UPDATE dc_account AS 가계부 RIGHT JOIN dc_items AS 항목 " +
-                    "ON (가계부.subject = 항목.subject)" +
+                string QueryUpdate = "update dawoon.dc_account AS 가계부 RIGHT JOIN dawoon.dc_items AS 항목 " +
+                  "ON (가계부.subject = 항목.subject)" +
                   "SET 가계부.accSeq='" + seqstr +
                   "',가계부.usedDate='" + pDate.Text.Trim() +
                   "',항목.acount='" + account +
@@ -363,16 +379,7 @@ namespace accountBook
                   "',가계부.money='" + textBoxMoney.Text +
                   "',가계부.content='" + textBoxContent.Text +
                   "',가계부.memo='" + textBoxMemo.Text + "' where 가계부.accSeq='" + seqstr + "';";
-                MySqlConnection con = new MySqlConnection(Connect);
-                MySqlCommand Comm = new MySqlCommand(Query2, con);
-                MySqlDataReader Read;
-                con.Open();
-                Read = Comm.ExecuteReader();
-                MessageBox.Show("수정완료");
-                while (Read.Read())
-                {
-                }
-                con.Close();
+                CrudSql(QueryUpdate, "수정완료");
                 buttonSearch_Click(sender, e);
             }
             catch (Exception ex)
@@ -395,12 +402,7 @@ namespace accountBook
         {
             buttonSearch_Click(sender, e);
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            buttonLogin_Click(sender, e);
-            buttonSearch_Click(sender, e);
-            buttonUpdate.Enabled = false;
-        }
+     
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -425,7 +427,8 @@ namespace accountBook
             newform2.ShowDialog(this);
         }
 
-    
+        
+
 
         private void ComBoChange()
         {
@@ -511,25 +514,15 @@ namespace accountBook
             //dateTimePicker1.Text = baseYear + "-" + int.Parse(f.Mon).ToString("00");
             //    buttonSearch_Click(sender,e);
         }
-
         private void textBoxMoney_KeyDown(object sender, KeyEventArgs e)
         {
-          
-         
-
-            
-
-
         }
-
         private void comboBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
-           
         }
        
         private void buttontest_Click(object sender, EventArgs e)

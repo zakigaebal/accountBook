@@ -18,6 +18,10 @@ namespace accountBook
             show2();
             aaaa();
         }
+
+
+
+
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
