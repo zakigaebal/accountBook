@@ -27,7 +27,8 @@ namespace accountBook
 		}
 		private void 연결(string selectQuery, string account)
 		{
-			selectQuery = "SELECT * FROM dawoon.dc_items";
+			
+			selectQuery = "SELECT * FROM dawoon.dc_items where flagYN = 'Y';";
 			connection.Open();
 			MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
 			MySqlDataReader reader = cmd.ExecuteReader();

@@ -162,23 +162,13 @@ namespace accountBook
 			{
 				// 1. 키값을 가져와서 저장시켜야됨. 저장시키고 변수 선언
 				string cnt = Read3.GetString("cnt");
-
-
-
-				// sub에 저장됨
-				string subject2 = textBoxSubject.Text;
-				string acccount = comboBoxAccount.Text;
-
 				// sub.Contains(subject2)
 				if (Convert.ToInt32(cnt) > 0)
 				{
-
 					MessageBox.Show(textBoxSubject.Text + "키워드가 이미 들어가 있습니다.");
 					// 2. 키값이랑 텍스트박스 서브젝트랑 존재하면 메세지박스 띄우기
 				}
 				// 지출이 계정이고 . 들어오는값이 용돈이고 용돈이 서브에 포함되
-
-
 
 				else
 				{
@@ -267,7 +257,7 @@ namespace accountBook
 							+ "',acount='"
 							+ comboBoxAccount.Text
 							+ "',subject='" + textBoxSubject.Text
-							+ "' where itemSeq='" + seqstr + "';";
+							+ "' where itemSeq='" + seqstr + "' and flagYN = 'Y';";
 					MySqlConnection con = new MySqlConnection(Connect);
 					MySqlCommand Comm = new MySqlCommand(Query, con);
 					MySqlDataReader Read;
@@ -278,7 +268,7 @@ namespace accountBook
 					show2();
 					clear();
 				}
-
+				
 			}
 		}
 
