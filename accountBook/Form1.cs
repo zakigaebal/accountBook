@@ -9,7 +9,7 @@ namespace accountBook
 { 
     public partial class Form1 : Form
     {
-       
+        bool 저장수정변경 = true;
         public Form1()
         {
             InitializeComponent();
@@ -130,6 +130,9 @@ namespace accountBook
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+          
+         
+
             if (textBoxContent.Text == "")
             {
                 MessageBox.Show("내용을 입력해주세요");
@@ -281,6 +284,18 @@ namespace accountBook
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (저장수정변경 == true)
+            {
+                저장수정변경 = false;
+                buttontest.Text = "수정";  
+                buttonUpdate.Enabled = true;
+            }
+            else
+            {
+                저장수정변경 = true;
+            }
+
+
             string account = "지출";
             if (radioButton2.Checked)
                 account = "수입";
@@ -300,6 +315,7 @@ namespace accountBook
             textBoxContent.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
             textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
 
+           
         }
 
     
@@ -363,6 +379,7 @@ namespace accountBook
             {
                 MessageBox.Show(ex.Message);
             }
+           
         }
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
@@ -382,6 +399,7 @@ namespace accountBook
         {
             buttonLogin_Click(sender, e);
             buttonSearch_Click(sender, e);
+            buttonUpdate.Enabled = false;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -507,6 +525,16 @@ namespace accountBook
         private void comboBoxName_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
+       
+        private void buttontest_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

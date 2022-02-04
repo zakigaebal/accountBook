@@ -57,6 +57,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.buttontest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -113,6 +114,7 @@
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
             // comboBoxSearch
             // 
@@ -203,6 +205,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttontest);
             this.panel1.Controls.Add(this.pDate);
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Controls.Add(this.radioButton2);
@@ -371,6 +374,16 @@
             this.dateTimePicker2.TabIndex = 23;
             this.dateTimePicker2.Value = new System.DateTime(2022, 1, 28, 0, 0, 0, 0);
             // 
+            // buttontest
+            // 
+            this.buttontest.Location = new System.Drawing.Point(17, 19);
+            this.buttontest.Name = "buttontest";
+            this.buttontest.Size = new System.Drawing.Size(75, 23);
+            this.buttontest.TabIndex = 15;
+            this.buttontest.Text = "test";
+            this.buttontest.UseVisualStyleBackColor = true;
+            this.buttontest.Click += new System.EventHandler(this.buttontest_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -428,6 +441,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button buttontest;
     }
 }
 
