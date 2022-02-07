@@ -44,6 +44,15 @@ namespace accountBook
 				MySqlDataReader rdr = cmd.ExecuteReader();
 				while (rdr.Read())
 				{
+
+					if (rdr["seqMax"].ToString() == "")
+					{
+						string a;
+						a = rdr["seqMax"].ToString();
+						a = "1";
+						return a;
+					}
+
 					return rdr["seqMax"].ToString();
 				}
 				rdr.Close();

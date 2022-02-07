@@ -44,7 +44,7 @@
 			// 
 			// buttonSave
 			// 
-			this.buttonSave.Location = new System.Drawing.Point(221, 3);
+			this.buttonSave.Location = new System.Drawing.Point(220, 3);
 			this.buttonSave.Name = "buttonSave";
 			this.buttonSave.Size = new System.Drawing.Size(213, 34);
 			this.buttonSave.TabIndex = 3;
@@ -99,9 +99,9 @@
 			this.comboBoxAccount.Items.AddRange(new object[] {
             "지출",
             "수입"});
-			this.comboBoxAccount.Location = new System.Drawing.Point(3, 53);
+			this.comboBoxAccount.Location = new System.Drawing.Point(3, 46);
 			this.comboBoxAccount.Name = "comboBoxAccount";
-			this.comboBoxAccount.Size = new System.Drawing.Size(212, 33);
+			this.comboBoxAccount.Size = new System.Drawing.Size(211, 33);
 			this.comboBoxAccount.TabIndex = 7;
 			this.comboBoxAccount.Text = "지출";
 			this.comboBoxAccount.SelectedIndexChanged += new System.EventHandler(this.comboBoxInOut_SelectedIndexChanged);
@@ -113,12 +113,12 @@
 			this.textBoxSubject.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
 			this.textBoxSubject.Location = new System.Drawing.Point(3, 119);
 			this.textBoxSubject.Name = "textBoxSubject";
-			this.textBoxSubject.Size = new System.Drawing.Size(212, 33);
+			this.textBoxSubject.Size = new System.Drawing.Size(211, 33);
 			this.textBoxSubject.TabIndex = 11;
 			// 
 			// buttonUpdate
 			// 
-			this.buttonUpdate.Location = new System.Drawing.Point(221, 89);
+			this.buttonUpdate.Location = new System.Drawing.Point(220, 89);
 			this.buttonUpdate.Name = "buttonUpdate";
 			this.tableLayoutPanel1.SetRowSpan(this.buttonUpdate, 2);
 			this.buttonUpdate.Size = new System.Drawing.Size(213, 67);
@@ -129,7 +129,7 @@
 			// 
 			// buttonDel
 			// 
-			this.buttonDel.Location = new System.Drawing.Point(221, 43);
+			this.buttonDel.Location = new System.Drawing.Point(220, 43);
 			this.buttonDel.Name = "buttonDel";
 			this.buttonDel.Size = new System.Drawing.Size(213, 40);
 			this.buttonDel.TabIndex = 12;
@@ -143,7 +143,7 @@
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.52831F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.4717F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 218F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 219F));
 			this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.buttonDel, 3, 1);
 			this.tableLayoutPanel1.Controls.Add(this.buttonSave, 3, 0);
@@ -173,6 +173,7 @@
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Form2";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "아이템입력";
 			this.Load += new System.EventHandler(this.Form2_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
