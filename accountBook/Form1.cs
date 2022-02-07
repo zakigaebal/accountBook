@@ -24,6 +24,10 @@ namespace accountBook
 			buttonSearch_Click(sender, e);
 			buttonUpdate.Enabled = false;
 		    radioButton1.Checked = true;
+
+			DateTime MonthFirstDay = DateTime.Now.AddDays(1 - DateTime.Now.Day);
+			dateTimePicker2.Value = MonthFirstDay;
+
 		}
 		private void 연결(string selectQuery, string account)
 		{
@@ -182,7 +186,10 @@ namespace accountBook
 			try
 			{
 				string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
-				string Query = "select * from dc_account;";
+				string searchtext = textBoxSearch.Text.Trim();
+				string keyText = comboBoxSearch.Text;
+				string field = "";
+				string flagYN = "";
 				string Query2 = "SELECT 가계부.accSeq," +
 					 " 가계부.usedDate," +
 					 " 항목.acount," +
@@ -195,13 +202,11 @@ namespace accountBook
 					 " 가계부.issueDate," +
 					 " 가계부.issueID" +
 					 " FROM dc_account 가계부" +
-					 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject)";
-				string searchtext = textBoxSearch.Text.Trim();
-				string keyText = comboBoxSearch.Text;
-				string field = "";
+					 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE '" + field + "'" + " like '%" + searchtext + "'% AND " + flagYN;
+			
 				if (keyText == "항목") field = "항목.subject ";
 				else if (keyText == "내용") field = "가계부.content";
-				string flagYN = "";
+			
 				if (checkBoxDelShow.Checked == true)
 				{
 					flagYN = "가계부.flagYN = 'N'";
@@ -211,8 +216,7 @@ namespace accountBook
 					flagYN = "가계부.flagYN = 'Y'";
 				}
 				// SELECT  accSeq, usedDate, dc_items.acount, dc_items.itemSeq, dc_items.subject, money, content, memo, dc_items.flagYN, dc_items.regDate, dc_items.issueDate, dc_items.issueID FROM dc_account LEFT JOIN dc_items ON dc_account.subject = dc_items.subject;
-				Query = "select * from dc_account " +
-						"WHERE " + field + " like '%" + searchtext + "%' " + flagYN;
+		
 				Query2 = "SELECT 가계부.accSeq," +
 					 " 가계부.usedDate," +
 					 " 항목.acount," +
@@ -225,7 +229,9 @@ namespace accountBook
 					 " 가계부.issueDate," +
 					 " 가계부.issueID" +
 					 " FROM dc_account 가계부" +
-					 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE " + flagYN;
+					 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE " + field + " like '" + "%" + searchtext + "%" + "' AND " + flagYN;
+				//  + field + "like '%" + searchtext + "'% AND " + flagYN;
+				//  " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE " + flagYN;
 				MySqlConnection con = new MySqlConnection(Connect);
 				MySqlCommand Comm = new MySqlCommand(Query2, con);
 				MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
@@ -243,7 +249,7 @@ namespace accountBook
 				dataGridView1.Columns[3].HeaderText = "항목";
 				dataGridView1.Columns[4].HeaderText = "금액";
 				dataGridView1.Columns[5].HeaderText = "내용";
-				dataGridView1.Columns[3].HeaderText = "메모";
+				dataGridView1.Columns[6].HeaderText = "메모";
 			}
 			catch (Exception ex)
 			{
@@ -493,9 +499,56 @@ namespace accountBook
 			}
 		}
 
+		
+
 		private void buttonTerm_Click(object sender, EventArgs e)
 		{
-			buttonSearch_Click(sender, e);
+			string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
+			string flagYN = "";
+			string Query2 = "";
+			if (checkBoxDelShow.Checked == true)
+			{
+				flagYN = "가계부.flagYN = 'N'";
+			}
+			else
+			{
+				flagYN = "가계부.flagYN = 'Y'";
+			}
+			// SELECT  accSeq, usedDate, dc_items.acount, dc_items.itemSeq, dc_items.subject, money, content, memo, dc_items.flagYN, dc_items.regDate, dc_items.issueDate, dc_items.issueID FROM dc_account LEFT JOIN dc_items ON dc_account.subject = dc_items.subject;
+			Query2 = "SELECT 가계부.accSeq," +
+							 " 가계부.usedDate," +
+							 " 항목.acount," +
+							 " 항목.subject," +
+							 " 가계부.money," +
+							 " 가계부.content," +
+							 " 가계부.memo," +
+							 " 가계부.flagYN," +
+							 " 가계부.regDate," +
+							 " 가계부.issueDate," +
+							 " 가계부.issueID" +
+							 " FROM dc_account 가계부" +
+							 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject)" +
+							" where 가계부.usedDate between '" + dateTimePicker2.Value.ToString() + "' and '" + dateTimePicker1.Value.ToString() + "' and " + flagYN;
+			//  + field + "like '%" + searchtext + "'% AND " + flagYN;
+			//  " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE " + flagYN;
+			MySqlConnection con = new MySqlConnection(Connect);
+			MySqlCommand Comm = new MySqlCommand(Query2, con);
+			MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+			MyAdapter.SelectCommand = Comm;
+			DataTable dTable = new DataTable();
+			MyAdapter.Fill(dTable);
+			dataGridView1.DataSource = dTable;
+			dataGridView1.Columns[0].Visible = false;
+			dataGridView1.Columns[dataGridView1.Columns.Count - 4].Visible = false;
+			dataGridView1.Columns[dataGridView1.Columns.Count - 3].Visible = false;
+			dataGridView1.Columns[dataGridView1.Columns.Count - 2].Visible = false;
+			dataGridView1.Columns[dataGridView1.Columns.Count - 1].Visible = false;
+			dataGridView1.Columns[1].HeaderText = "날짜";
+			dataGridView1.Columns[2].HeaderText = "계정";
+			dataGridView1.Columns[3].HeaderText = "항목";
+			dataGridView1.Columns[4].HeaderText = "금액";
+			dataGridView1.Columns[5].HeaderText = "내용";
+			dataGridView1.Columns[6].HeaderText = "메모";
 		}
 
 		private void buttonDate_Click(object sender, EventArgs e)

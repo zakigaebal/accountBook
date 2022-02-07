@@ -42,7 +42,6 @@
 			this.comboBoxName = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.textBoxMoney = new System.Windows.Forms.TextBox();
-			this.pDate = new System.Windows.Forms.DateTimePicker();
 			this.radioButton1 = new System.Windows.Forms.RadioButton();
 			this.radioButton2 = new System.Windows.Forms.RadioButton();
 			this.textBoxContent = new System.Windows.Forms.TextBox();
@@ -52,18 +51,18 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.buttonTerm = new System.Windows.Forms.Button();
-			this.buttonDate = new System.Windows.Forms.Button();
 			this.label5 = new System.Windows.Forms.Label();
 			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.panel1 = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.label6 = new System.Windows.Forms.Label();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.pDate = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.panel2.SuspendLayout();
-			this.tableLayoutPanel2.SuspendLayout();
 			this.panel1.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// labelWhy
@@ -79,9 +78,9 @@
 			// buttonSave
 			// 
 			this.buttonSave.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.buttonSave.Location = new System.Drawing.Point(442, 65);
+			this.buttonSave.Location = new System.Drawing.Point(440, 65);
 			this.buttonSave.Name = "buttonSave";
-			this.buttonSave.Size = new System.Drawing.Size(70, 28);
+			this.buttonSave.Size = new System.Drawing.Size(72, 28);
 			this.buttonSave.TabIndex = 5;
 			this.buttonSave.Text = "저장";
 			this.buttonSave.UseVisualStyleBackColor = true;
@@ -90,9 +89,9 @@
 			// buttonDel
 			// 
 			this.buttonDel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.buttonDel.Location = new System.Drawing.Point(442, 99);
+			this.buttonDel.Location = new System.Drawing.Point(440, 99);
 			this.buttonDel.Name = "buttonDel";
-			this.buttonDel.Size = new System.Drawing.Size(70, 25);
+			this.buttonDel.Size = new System.Drawing.Size(72, 25);
 			this.buttonDel.TabIndex = 6;
 			this.buttonDel.Text = "삭제";
 			this.buttonDel.UseVisualStyleBackColor = true;
@@ -101,9 +100,9 @@
 			// buttonUpdate
 			// 
 			this.buttonUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.buttonUpdate.Location = new System.Drawing.Point(442, 130);
+			this.buttonUpdate.Location = new System.Drawing.Point(440, 130);
 			this.buttonUpdate.Name = "buttonUpdate";
-			this.buttonUpdate.Size = new System.Drawing.Size(70, 24);
+			this.buttonUpdate.Size = new System.Drawing.Size(72, 24);
 			this.buttonUpdate.TabIndex = 7;
 			this.buttonUpdate.Text = "수정";
 			this.buttonUpdate.UseVisualStyleBackColor = true;
@@ -187,7 +186,7 @@
 			this.comboBoxName.FormattingEnabled = true;
 			this.comboBoxName.Location = new System.Drawing.Point(85, 31);
 			this.comboBoxName.Name = "comboBoxName";
-			this.comboBoxName.Size = new System.Drawing.Size(351, 29);
+			this.comboBoxName.Size = new System.Drawing.Size(349, 29);
 			this.comboBoxName.TabIndex = 8;
 			this.comboBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxName_KeyPress);
 			// 
@@ -210,34 +209,19 @@
 			this.textBoxMoney.ImeMode = System.Windows.Forms.ImeMode.Hangul;
 			this.textBoxMoney.Location = new System.Drawing.Point(85, 99);
 			this.textBoxMoney.Name = "textBoxMoney";
-			this.textBoxMoney.Size = new System.Drawing.Size(351, 29);
+			this.textBoxMoney.Size = new System.Drawing.Size(349, 29);
 			this.textBoxMoney.TabIndex = 1;
 			this.textBoxMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.textBoxMoney.TextChanged += new System.EventHandler(this.textBoxMoney_TextChanged);
 			this.textBoxMoney.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMoney_KeyDown);
 			this.textBoxMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMoney_KeyPress);
 			// 
-			// pDate
-			// 
-			this.pDate.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.tableLayoutPanel2.SetColumnSpan(this.pDate, 2);
-			this.pDate.CustomFormat = "yyyy-MM-dd";
-			this.pDate.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pDate.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.pDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.pDate.Location = new System.Drawing.Point(85, 65);
-			this.pDate.Name = "pDate";
-			this.pDate.Size = new System.Drawing.Size(351, 29);
-			this.pDate.TabIndex = 14;
-			this.pDate.Value = new System.DateTime(2022, 1, 28, 0, 0, 0, 0);
-			this.pDate.ValueChanged += new System.EventHandler(this.pDate_ValueChanged_1);
-			// 
 			// radioButton1
 			// 
 			this.radioButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.radioButton1.AutoSize = true;
 			this.radioButton1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.radioButton1.Location = new System.Drawing.Point(331, 3);
+			this.radioButton1.Location = new System.Drawing.Point(329, 3);
 			this.radioButton1.Name = "radioButton1";
 			this.radioButton1.Size = new System.Drawing.Size(60, 22);
 			this.radioButton1.TabIndex = 10;
@@ -250,7 +234,7 @@
 			this.radioButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.radioButton2.AutoSize = true;
 			this.radioButton2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.radioButton2.Location = new System.Drawing.Point(153, 3);
+			this.radioButton2.Location = new System.Drawing.Point(152, 3);
 			this.radioButton2.Name = "radioButton2";
 			this.radioButton2.Size = new System.Drawing.Size(60, 22);
 			this.radioButton2.TabIndex = 11;
@@ -266,7 +250,7 @@
 			this.textBoxContent.ImeMode = System.Windows.Forms.ImeMode.Hangul;
 			this.textBoxContent.Location = new System.Drawing.Point(85, 130);
 			this.textBoxContent.Name = "textBoxContent";
-			this.textBoxContent.Size = new System.Drawing.Size(351, 29);
+			this.textBoxContent.Size = new System.Drawing.Size(349, 29);
 			this.textBoxContent.TabIndex = 2;
 			this.textBoxContent.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			// 
@@ -295,9 +279,9 @@
 			// buttonForm2
 			// 
 			this.buttonForm2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.buttonForm2.Location = new System.Drawing.Point(442, 31);
+			this.buttonForm2.Location = new System.Drawing.Point(440, 31);
 			this.buttonForm2.Name = "buttonForm2";
-			this.buttonForm2.Size = new System.Drawing.Size(70, 28);
+			this.buttonForm2.Size = new System.Drawing.Size(72, 28);
 			this.buttonForm2.TabIndex = 9;
 			this.buttonForm2.Text = "항목 추가";
 			this.buttonForm2.UseVisualStyleBackColor = true;
@@ -328,23 +312,13 @@
 			// 
 			// buttonTerm
 			// 
-			this.buttonTerm.Location = new System.Drawing.Point(386, 9);
+			this.buttonTerm.Location = new System.Drawing.Point(336, 9);
 			this.buttonTerm.Name = "buttonTerm";
-			this.buttonTerm.Size = new System.Drawing.Size(55, 33);
+			this.buttonTerm.Size = new System.Drawing.Size(85, 33);
 			this.buttonTerm.TabIndex = 19;
-			this.buttonTerm.Text = "기간";
+			this.buttonTerm.Text = "기간조회";
 			this.buttonTerm.UseVisualStyleBackColor = true;
 			this.buttonTerm.Click += new System.EventHandler(this.buttonTerm_Click);
-			// 
-			// buttonDate
-			// 
-			this.buttonDate.Location = new System.Drawing.Point(325, 9);
-			this.buttonDate.Name = "buttonDate";
-			this.buttonDate.Size = new System.Drawing.Size(55, 33);
-			this.buttonDate.TabIndex = 19;
-			this.buttonDate.Text = "날짜";
-			this.buttonDate.UseVisualStyleBackColor = true;
-			this.buttonDate.Click += new System.EventHandler(this.buttonDate_Click);
 			// 
 			// label5
 			// 
@@ -364,18 +338,7 @@
 			this.dateTimePicker1.Name = "dateTimePicker1";
 			this.dateTimePicker1.Size = new System.Drawing.Size(135, 29);
 			this.dateTimePicker1.TabIndex = 22;
-			// 
-			// dateTimePicker2
-			// 
-			this.dateTimePicker2.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.dateTimePicker2.CustomFormat = "yyyy-MM-01";
-			this.dateTimePicker2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePicker2.Location = new System.Drawing.Point(0, 10);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(139, 29);
-			this.dateTimePicker2.TabIndex = 23;
-			this.dateTimePicker2.Value = new System.DateTime(2022, 1, 28, 0, 0, 0, 0);
+			this.dateTimePicker1.Value = new System.DateTime(2022, 2, 7, 0, 0, 0, 0);
 			// 
 			// panel2
 			// 
@@ -389,13 +352,27 @@
 			this.panel2.TabIndex = 25;
 			this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
 			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.dateTimePicker2);
+			this.panel1.Controls.Add(this.dateTimePicker1);
+			this.panel1.Controls.Add(this.comboBoxSearch);
+			this.panel1.Controls.Add(this.label5);
+			this.panel1.Controls.Add(this.buttonSearch);
+			this.panel1.Controls.Add(this.textBoxSearch);
+			this.panel1.Controls.Add(this.buttonTerm);
+			this.panel1.Location = new System.Drawing.Point(621, 0);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(695, 46);
+			this.panel1.TabIndex = 25;
+			// 
 			// tableLayoutPanel2
 			// 
 			this.tableLayoutPanel2.ColumnCount = 4;
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.10448F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.89552F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
 			this.tableLayoutPanel2.Controls.Add(this.pDate, 1, 2);
 			this.tableLayoutPanel2.Controls.Add(this.buttonUpdate, 3, 4);
 			this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
@@ -436,20 +413,27 @@
 			this.label6.TabIndex = 15;
 			this.label6.Text = "계정";
 			// 
-			// panel1
+			// pDate
 			// 
-			this.panel1.Controls.Add(this.dateTimePicker1);
-			this.panel1.Controls.Add(this.comboBoxSearch);
-			this.panel1.Controls.Add(this.label5);
-			this.panel1.Controls.Add(this.buttonSearch);
-			this.panel1.Controls.Add(this.textBoxSearch);
-			this.panel1.Controls.Add(this.buttonTerm);
-			this.panel1.Controls.Add(this.dateTimePicker2);
-			this.panel1.Controls.Add(this.buttonDate);
-			this.panel1.Location = new System.Drawing.Point(621, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(695, 46);
-			this.panel1.TabIndex = 25;
+			this.pDate.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.pDate.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.pDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.pDate.Location = new System.Drawing.Point(85, 65);
+			this.pDate.Name = "pDate";
+			this.pDate.Size = new System.Drawing.Size(135, 29);
+			this.pDate.TabIndex = 25;
+			this.pDate.Value = new System.DateTime(2022, 2, 7, 0, 0, 0, 0);
+			// 
+			// dateTimePicker2
+			// 
+			this.dateTimePicker2.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.dateTimePicker2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dateTimePicker2.Location = new System.Drawing.Point(16, 10);
+			this.dateTimePicker2.Name = "dateTimePicker2";
+			this.dateTimePicker2.Size = new System.Drawing.Size(135, 29);
+			this.dateTimePicker2.TabIndex = 25;
+			this.dateTimePicker2.Value = new System.DateTime(2022, 2, 7, 0, 0, 0, 0);
 			// 
 			// Form1
 			// 
@@ -466,10 +450,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
-			this.tableLayoutPanel2.ResumeLayout(false);
-			this.tableLayoutPanel2.PerformLayout();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			this.ResumeLayout(false);
 
         }
@@ -494,18 +478,17 @@
         private System.Windows.Forms.TextBox textBoxContent;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.DateTimePicker pDate;
         private System.Windows.Forms.Button buttonTerm;
-        private System.Windows.Forms.Button buttonDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.DateTimePicker pDate;
+		private System.Windows.Forms.DateTimePicker dateTimePicker2;
 	}
 }
 
