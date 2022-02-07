@@ -20,13 +20,25 @@ namespace accountBook
 		}
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			buttonLogin_Click(sender, e);
-			buttonSearch_Click(sender, e);
-			buttonUpdate.Enabled = false;
-		    radioButton1.Checked = true;
+			
 
-			DateTime MonthFirstDay = DateTime.Now.AddDays(1 - DateTime.Now.Day);
-			dateTimePicker2.Value = MonthFirstDay;
+			try
+			{
+
+				buttonLogin_Click(sender, e);
+				buttonSearch_Click(sender, e);
+				buttonUpdate.Enabled = false;
+				radioButton1.Checked = true;
+
+				DateTime MonthFirstDay = DateTime.Now.AddDays(1 - DateTime.Now.Day);
+				dateTimePicker2.Value = MonthFirstDay;
+
+			}
+			catch (Exception ex)
+			{
+		
+			}
+
 
 		}
 		private void 연결(string selectQuery, string account)
@@ -73,7 +85,15 @@ namespace accountBook
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				
+
+				
+
+					if (ex.Message.ToString() ==  "'0'의 InvalidArgument = Value는 'SelectedIndex'에 사용할 수 없습니다.\r\n매개 변수 이름: SelectedIndex")
+					{
+						MessageBox.Show("데이터베이스가 없거나 실행되지않았습니다.");
+					}
+
 				}
 			}
 		}
@@ -125,27 +145,47 @@ namespace accountBook
 			{
 				string Connect = "datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8";
 				string Query = "SELECT MAX(accSeq)+1 AS seqMax FROM dawoon.dc_account;";
+			
+
 				MySqlConnection con = new MySqlConnection(Connect);
 				con.Open();
-				MySqlCommand cmd = new MySqlCommand(Query, con);
+				 MySqlCommand cmd = new MySqlCommand(Query, con);
 				MySqlDataReader rdr = cmd.ExecuteReader();
 				while (rdr.Read())
 				{
+					if (rdr["seqMax"].ToString() == "")
+					{
+						string a;
+						a = rdr["seqMax"].ToString();
+						a = "1";
+						return a;
+					}
+
 					return rdr["seqMax"].ToString();
+
 				}
+			
 				rdr.Close();
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
 			}
+
+
+
 			return "";
+
+		
+
 		}
 
 
 
 		private void buttonSave_Click(object sender, EventArgs e)
 		{
+			
+			
 			if (textBoxContent.Text == "")
 			{
 				MessageBox.Show("내용을 입력해주세요");
@@ -161,6 +201,7 @@ namespace accountBook
 				string account = "지출";
 				if (radioButton2.Checked)
 					account = "수입";
+
 				string Query = "insert into dawoon.dc_account(accSeq,usedDate,accAcount,itemSeq,subject,money,content,memo,flagYN,regDate,issueDate,issueID) values('"
 						+ seqCount() + "','"
 						+ pDate.Text + "','"
@@ -392,6 +433,8 @@ namespace accountBook
 		}
 		private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			
+			
 		}
 		private void checkBoxDelShow_CheckedChanged(object sender, EventArgs e)
 		{
@@ -401,16 +444,30 @@ namespace accountBook
 
 		private void buttonLogin_Click(object sender, EventArgs e)
 		{
-			Login f = new Login();
-			DialogResult result = f.ShowDialog();
-			if (result == DialogResult.OK)
+			
+
+			try
 			{
+				Login f = new Login();
+				DialogResult result = f.ShowDialog();
+				if (result == DialogResult.OK)
+				{
+				}
+				else if (result == DialogResult.Cancel)
+				{
+					MessageBox.Show("실패");
+					this.Close();
+				}
 			}
-			else if (result == DialogResult.Cancel)
+			catch(Exception ex)
 			{
-				MessageBox.Show("실패");
-				this.Close();
+				if (ex.Message.ToString() == "'0'의 InvalidArgument=Value는 'SelectedIndex'에 사용할 수 없습니다. 매개 변수 이름: SelectedIndex")
+				{
+					MessageBox.Show("데이터베이스가 없거나 실행되지않았습니다.");
+				}
 			}
+
+
 		}
 		private void buttonForm2_Click(object sender, EventArgs e)
 		{
