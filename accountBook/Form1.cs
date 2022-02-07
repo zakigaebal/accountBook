@@ -85,15 +85,10 @@ namespace accountBook
 				}
 				catch (Exception ex)
 				{
-				
-
-				
-
-					if (ex.Message.ToString() ==  "'0'의 InvalidArgument = Value는 'SelectedIndex'에 사용할 수 없습니다.\r\n매개 변수 이름: SelectedIndex")
+					if (ex.Message.ToString() == "'0'의 InvalidArgument = Value는 'SelectedIndex'에 사용할 수 없습니다.\r\n매개 변수 이름: SelectedIndex")
 					{
-						MessageBox.Show("데이터베이스가 없거나 실행되지않았습니다.");
+						MessageBox.Show("항목입력하기");
 					}
-
 				}
 			}
 		}
@@ -113,7 +108,10 @@ namespace accountBook
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					if (ex.Message.ToString() == "'0'의 InvalidArgument = Value는 'SelectedIndex'에 사용할 수 없습니다.\r\n매개 변수 이름: SelectedIndex")
+					{
+						MessageBox.Show("항목입력하기");
+					}
 				}
 			}
 		}
