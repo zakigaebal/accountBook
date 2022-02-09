@@ -344,25 +344,20 @@ namespace accountBook
 				changSaveUpdate = false;
 
 				buttonUpdate.Enabled = true;
-				buttonSave.Enabled = false;
+			
 			}
 			else
 			{
 				changSaveUpdate = true;
 			}
-
-
 			string account = "지출";
 			if (radioButton2.Checked)
 				account = "수입";
-
-
 			string accountName = getItemSeq(account, comboBoxName.Text);
 			if (e.RowIndex < 0)
 			{
 				return;
 			}
-
 			pDate.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
 			account = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
 			//accountName = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -370,6 +365,18 @@ namespace accountBook
 			textBoxMoney.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
 			textBoxContent.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
 			textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+			
+			if (account == "수입")
+			{
+				radioButton1.Checked = false;
+				radioButton2.Checked = true;
+			}
+			else if(account == "지출")
+			{
+				radioButton1.Checked = true;
+				radioButton2.Checked = false;
+			}
+				
 		}
 		private void buttonDel_Click(object sender, EventArgs e)
 		{
