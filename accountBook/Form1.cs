@@ -25,6 +25,8 @@ namespace accountBook
 			try
 			{
 
+
+
 				buttonLogin_Click(sender, e);
 				buttonSearch_Click(sender, e);
 				buttonUpdate.Enabled = false;
@@ -368,13 +370,7 @@ namespace accountBook
 			textBoxMoney.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
 			textBoxContent.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
 			textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-
-
 		}
-
-
-
-
 		private void buttonDel_Click(object sender, EventArgs e)
 		{
 			try
@@ -393,6 +389,12 @@ namespace accountBook
 		}
 		private void buttonUpdate_Click(object sender, EventArgs e)
 		{
+			if (textBoxContent.Text == "")
+			{
+				MessageBox.Show("내용을 입력해주세요");
+				textBoxContent.Focus();
+				return;
+			}
 
 			string account = "지출";
 			if (radioButton2.Checked)
@@ -405,15 +407,16 @@ namespace accountBook
 					"ON (가계부.subject = 항목.subject)" +
 					"SET 가계부.accSeq='" + seqstr +
 					"',가계부.usedDate='" + pDate.Text.Trim() +
-					"',항목.acount='" + account +
-					"',항목.subject='" + comboBoxName.Text +
+					"',가계부.accAcount='" + account +
+					"',가계부.subject='" + comboBoxName.Text +
 					"',가계부.money='" + textBoxMoney.Text +
 					"',가계부.content='" + textBoxContent.Text +
 					"',가계부.memo='" + textBoxMemo.Text + "' where 가계부.accSeq='" + seqstr + "';";
 				CrudSql(QueryUpdate, "수정완료");
-				buttonSearch_Click(sender, e);
+		
 				buttonSave.Enabled = true;
 				clear();
+				buttonSearch_Click(sender, e);
 			}
 			catch (Exception ex)
 			{
@@ -429,6 +432,8 @@ namespace accountBook
 				buttonSearch_Click(sender, e);
 			}
 		}
+
+
 		private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			
@@ -477,9 +482,7 @@ namespace accountBook
 
 
 
-		private void ComBoChange()
-		{
-		}
+		
 		private void buttonForm2_TextChanged(object sender, EventArgs e)
 		{
 		}
@@ -528,10 +531,6 @@ namespace accountBook
 
 		}
 
-		private void pDate_ValueChanged_1(object sender, EventArgs e)
-		{
-
-		}
 
 		private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
 		{
@@ -540,14 +539,14 @@ namespace accountBook
 			// 데이터가 Red인 경우 배경색을 빨강으로 변경
 			if (dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString() == "지출")
 			{
-				e.CellStyle.BackColor = Color.PaleVioletRed;
-				e.CellStyle.ForeColor = Color.White;
+				e.CellStyle.BackColor = Color.MistyRose;
+				e.CellStyle.ForeColor = Color.Black;
 			}
 			// 데이터가 Blue인 경우 배경색을 파랑으로 변경
 			else if (dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString() == "수입")
 			{
-				e.CellStyle.BackColor = Color.CornflowerBlue;
-				e.CellStyle.ForeColor = Color.White;
+				e.CellStyle.BackColor = Color.AliceBlue;
+				e.CellStyle.ForeColor = Color.Black;
 			}
 		}
 
@@ -603,11 +602,7 @@ namespace accountBook
 			dataGridView1.Columns[6].HeaderText = "메모";
 		}
 
-		private void buttonDate_Click(object sender, EventArgs e)
-		{
-			//dateTimePicker1.Text = baseYear + "-" + int.Parse(f.Mon).ToString("00");
-			//    buttonSearch_Click(sender,e);
-		}
+	
 		private void textBoxMoney_KeyDown(object sender, KeyEventArgs e)
 		{
 		}
@@ -619,17 +614,21 @@ namespace accountBook
 		{
 		}
 
-		private void buttontest_Click(object sender, EventArgs e)
+
+
+
+
+		private void panel2_Paint(object sender, PaintEventArgs e)
 		{
 
+		}
+
+		private void Form1_Click(object sender, EventArgs e)
+		{
+			buttonSave.Enabled = true;
 		}
 
 		private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-
-		private void panel2_Paint(object sender, PaintEventArgs e)
 		{
 
 		}
