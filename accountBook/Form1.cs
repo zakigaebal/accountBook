@@ -11,41 +11,29 @@ namespace accountBook
 	{
 		MySqlConnection connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8");
 		bool changSaveUpdate = true;
-
-
-
 		public Form1()
 		{
 			InitializeComponent();
 		}
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			
-
 			try
 			{
-
-
-
 				buttonLogin_Click(sender, e);
 				buttonSearch_Click(sender, e);
 				buttonUpdate.Enabled = false;
 				radioButton1.Checked = true;
-
 				DateTime MonthFirstDay = DateTime.Now.AddDays(1 - DateTime.Now.Day);
 				dateTimePicker2.Value = MonthFirstDay;
-
+				pDate.Value = DateTime.Now;
+				dateTimePicker1.Value = DateTime.Now;
 			}
 			catch (Exception ex)
 			{
-		
 			}
-
-
 		}
 		private void 연결(string selectQuery, string account)
 		{
-			
 			selectQuery = "SELECT * FROM dawoon.dc_items where flagYN = 'Y';";
 			connection.Open();
 			MySqlCommand cmd = new MySqlCommand(selectQuery, connection);
@@ -139,6 +127,8 @@ namespace accountBook
 			}
 			return "";
 		}
+
+
 		private string seqCount()
 		{
 			try
@@ -160,9 +150,7 @@ namespace accountBook
 						a = "1";
 						return a;
 					}
-
 					return rdr["seqMax"].ToString();
-
 				}
 			
 				rdr.Close();
@@ -194,15 +182,19 @@ namespace accountBook
 			}
 			try
 			{
-				string moneydot = textBoxMoney.Text;
+			
 				var startDay = DateTime.Parse(pDate.Value.ToString("yyyy-MM-01"));
 				var endDay = DateTime.Parse(startDay.AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd"));
-				// 마감날짜 해아함
+				string moneydot = textBoxMoney.Text;
+
+		
 				string account = "지출";
 				if (radioButton2.Checked)
 					account = "수입";
 
-				string Query = "insert into dawoon.dc_account(accSeq,usedDate,accAcount,itemSeq,subject,money,content,memo,flagYN,regDate,issueDate,issueID) values('"
+
+
+				string QuerySave = "insert into dawoon.dc_account(accSeq,usedDate,accAcount,itemSeq,subject,money,content,memo,flagYN,regDate,issueDate,issueID) values('"
 						+ seqCount() + "','"
 						+ pDate.Text + "','"
 						+ account + "','"
@@ -213,7 +205,9 @@ namespace accountBook
 						+ textBoxMemo.Text.Trim()
 						+ "','Y',now(),now(),'CDY');";
 
-				CrudSql(Query, "저장완료");
+
+
+				CrudSql(QuerySave, "저장완료");
 				clear();
 				buttonSearch_Click(sender, e);
 			}
@@ -226,26 +220,16 @@ namespace accountBook
 		{
 			try
 			{
+
 				string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
 				string searchtext = textBoxSearch.Text.Trim();
 				string keyText = comboBoxSearch.Text;
 				string field = "";
 				string flagYN = "";
-				string Query2 = "SELECT 가계부.accSeq," +
-					 " 가계부.usedDate," +
-					 " 항목.acount," +
-					 " 항목.subject," +
-					 " 가계부.money," +
-					 " 가계부.content," +
-					 " 가계부.memo," +
-					 " 가계부.flagYN," +
-					 " 가계부.regDate," +
-					 " 가계부.issueDate," +
-					 " 가계부.issueID" +
-					 " FROM dc_account 가계부" +
-					 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE '" + field + "'" + " like '%" + searchtext + "'% AND " + flagYN;
+				string Query2 = "";
+				string Query3 = "";
 			
-				if (keyText == "항목") field = "항목.subject ";
+				if (keyText == "항목") field = "가계부.subject ";
 				else if (keyText == "내용") field = "가계부.content";
 			
 				if (checkBoxDelShow.Checked == true)
@@ -257,9 +241,26 @@ namespace accountBook
 					flagYN = "가계부.flagYN = 'Y'";
 				}
 				// SELECT  accSeq, usedDate, dc_items.acount, dc_items.itemSeq, dc_items.subject, money, content, memo, dc_items.flagYN, dc_items.regDate, dc_items.issueDate, dc_items.issueID FROM dc_account LEFT JOIN dc_items ON dc_account.subject = dc_items.subject;
-		
+
+				// 	+ getItemSeq(account, comboBoxName.Text) + "','"
+
+				Query3 = "select " +
+					 " 가계부.accSeq," +
+					 " 가계부.usedDate," +
+					 " 가계부.accAcount," +
+					 " 가계부.subject," +
+					 " 가계부.money," +
+					 " 가계부.content," +
+					 " 가계부.memo," +
+					 " 가계부.flagYN," +
+					 " 가계부.regDate," +
+					 " 가계부.issueDate," +
+					 " 가계부.issueID " +
+					"from dc_account 가계부 WHERE " + field + " like '" + "%" + searchtext + "%" + "' AND " + flagYN;
+
 				Query2 = "SELECT 가계부.accSeq," +
 					 " 가계부.usedDate," +
+				
 					 " 항목.acount," +
 					 " 항목.subject," +
 					 " 가계부.money," +
@@ -274,7 +275,7 @@ namespace accountBook
 				//  + field + "like '%" + searchtext + "'% AND " + flagYN;
 				//  " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE " + flagYN;
 				MySqlConnection con = new MySqlConnection(Connect);
-				MySqlCommand Comm = new MySqlCommand(Query2, con);
+				MySqlCommand Comm = new MySqlCommand(Query3, con);
 				MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
 				MyAdapter.SelectCommand = Comm;
 				DataTable dTable = new DataTable();
@@ -376,7 +377,6 @@ namespace accountBook
 				radioButton1.Checked = true;
 				radioButton2.Checked = false;
 			}
-				
 		}
 		private void buttonDel_Click(object sender, EventArgs e)
 		{
@@ -429,8 +429,6 @@ namespace accountBook
 			{
 				MessageBox.Show(ex.Message);
 			}
-
-
 		}
 		private void textBoxSearch_TextChanged(object sender, EventArgs e)
 		{
@@ -638,6 +636,16 @@ namespace accountBook
 		private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
 		{
 
+		}
+
+		private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
+		{
+		
+		}
+
+		private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			buttonSearch_Click(sender, e);
 		}
 	}
 }
