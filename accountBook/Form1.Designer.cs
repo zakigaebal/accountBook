@@ -50,7 +50,6 @@
 			this.radioButton1 = new System.Windows.Forms.RadioButton();
 			this.radioButton2 = new System.Windows.Forms.RadioButton();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.panel1 = new System.Windows.Forms.Panel();
 			this.checkBoxDelShow = new System.Windows.Forms.CheckBox();
 			this.comboBoxSearch = new System.Windows.Forms.ComboBox();
 			this.buttonSearch = new System.Windows.Forms.Button();
@@ -79,6 +78,7 @@
 			this.dataGridView1.Size = new System.Drawing.Size(820, 519);
 			this.dataGridView1.TabIndex = 9;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
 			this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
 			this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
 			// 
@@ -119,6 +119,7 @@
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(483, 414);
 			this.tableLayoutPanel2.TabIndex = 16;
+			this.tableLayoutPanel2.Click += new System.EventHandler(this.tableLayoutPanel2_Click);
 			// 
 			// pDate
 			// 
@@ -133,6 +134,7 @@
 			this.pDate.Size = new System.Drawing.Size(322, 29);
 			this.pDate.TabIndex = 25;
 			this.pDate.Value = new System.DateTime(2022, 2, 9, 0, 0, 0, 0);
+			this.pDate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pDate_KeyPress);
 			// 
 			// buttonUpdate
 			// 
@@ -266,6 +268,7 @@
 			this.textBoxMoney.Size = new System.Drawing.Size(322, 29);
 			this.textBoxMoney.TabIndex = 1;
 			this.textBoxMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.textBoxMoney.Click += new System.EventHandler(this.textBoxMoney_Click);
 			this.textBoxMoney.TextChanged += new System.EventHandler(this.textBoxMoney_TextChanged);
 			this.textBoxMoney.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxMoney_KeyDown);
 			this.textBoxMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMoney_KeyPress);
@@ -290,6 +293,7 @@
 			this.textBoxContent.Name = "textBoxContent";
 			this.textBoxContent.Size = new System.Drawing.Size(322, 29);
 			this.textBoxContent.TabIndex = 2;
+			this.textBoxContent.Click += new System.EventHandler(this.textBoxContent_Click);
 			this.textBoxContent.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			// 
 			// textBoxMemo
@@ -302,6 +306,7 @@
 			this.textBoxMemo.Name = "textBoxMemo";
 			this.textBoxMemo.Size = new System.Drawing.Size(406, 241);
 			this.textBoxMemo.TabIndex = 4;
+			this.textBoxMemo.Click += new System.EventHandler(this.textBoxMemo_Click);
 			// 
 			// comboBoxName
 			// 
@@ -313,6 +318,7 @@
 			this.comboBoxName.Name = "comboBoxName";
 			this.comboBoxName.Size = new System.Drawing.Size(322, 29);
 			this.comboBoxName.TabIndex = 8;
+			this.comboBoxName.Click += new System.EventHandler(this.comboBoxName_Click);
 			this.comboBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxName_KeyPress);
 			// 
 			// radioButton1
@@ -357,14 +363,6 @@
 			this.tableLayoutPanel1.TabIndex = 26;
 			this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
 			// 
-			// panel1
-			// 
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel1.Location = new System.Drawing.Point(0, 568);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(1319, 68);
-			this.panel1.TabIndex = 30;
-			// 
 			// checkBoxDelShow
 			// 
 			this.checkBoxDelShow.AutoSize = true;
@@ -382,9 +380,9 @@
 			this.comboBoxSearch.Items.AddRange(new object[] {
             "항목",
             "내용"});
-			this.comboBoxSearch.Location = new System.Drawing.Point(983, 10);
+			this.comboBoxSearch.Location = new System.Drawing.Point(936, 10);
 			this.comboBoxSearch.Name = "comboBoxSearch";
-			this.comboBoxSearch.Size = new System.Drawing.Size(51, 20);
+			this.comboBoxSearch.Size = new System.Drawing.Size(83, 20);
 			this.comboBoxSearch.TabIndex = 2;
 			this.comboBoxSearch.Text = "항목";
 			// 
@@ -394,7 +392,7 @@
 			this.buttonSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.buttonSearch.FlatAppearance.BorderSize = 2;
 			this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonSearch.Location = new System.Drawing.Point(1149, 6);
+			this.buttonSearch.Location = new System.Drawing.Point(1158, 6);
 			this.buttonSearch.Name = "buttonSearch";
 			this.buttonSearch.Size = new System.Drawing.Size(67, 28);
 			this.buttonSearch.TabIndex = 4;
@@ -405,9 +403,9 @@
 			// textBoxSearch
 			// 
 			this.textBoxSearch.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-			this.textBoxSearch.Location = new System.Drawing.Point(1040, 10);
+			this.textBoxSearch.Location = new System.Drawing.Point(1025, 10);
 			this.textBoxSearch.Name = "textBoxSearch";
-			this.textBoxSearch.Size = new System.Drawing.Size(103, 21);
+			this.textBoxSearch.Size = new System.Drawing.Size(127, 21);
 			this.textBoxSearch.TabIndex = 3;
 			this.textBoxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearch_KeyDown);
 			this.textBoxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearch_KeyPress);
@@ -468,14 +466,14 @@
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(1319, 40);
 			this.panel2.TabIndex = 1;
+			this.panel2.Click += new System.EventHandler(this.panel2_Click);
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1319, 636);
+			this.ClientSize = new System.Drawing.Size(1319, 569);
 			this.Controls.Add(this.panel2);
-			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Form1";
@@ -516,7 +514,6 @@
 		private System.Windows.Forms.RadioButton radioButton1;
 		private System.Windows.Forms.RadioButton radioButton2;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.CheckBox checkBoxDelShow;
 		private System.Windows.Forms.ComboBox comboBoxSearch;
 		private System.Windows.Forms.Button buttonSearch;

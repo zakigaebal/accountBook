@@ -34,15 +34,13 @@
 			this.textBoxName = new System.Windows.Forms.TextBox();
 			this.textBoxPassword = new System.Windows.Forms.TextBox();
 			this.buttonlogin = new System.Windows.Forms.Button();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.label1.Location = new System.Drawing.Point(12, 128);
+			this.label1.Location = new System.Drawing.Point(8, 13);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(42, 21);
 			this.label1.TabIndex = 0;
@@ -52,7 +50,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.label2.Location = new System.Drawing.Point(12, 207);
+			this.label2.Location = new System.Drawing.Point(8, 92);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(42, 21);
 			this.label2.TabIndex = 1;
@@ -62,7 +60,7 @@
 			// 
 			this.textBoxName.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
 			this.textBoxName.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-			this.textBoxName.Location = new System.Drawing.Point(16, 152);
+			this.textBoxName.Location = new System.Drawing.Point(12, 37);
 			this.textBoxName.Name = "textBoxName";
 			this.textBoxName.Size = new System.Drawing.Size(295, 43);
 			this.textBoxName.TabIndex = 2;
@@ -70,7 +68,7 @@
 			// textBoxPassword
 			// 
 			this.textBoxPassword.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.textBoxPassword.Location = new System.Drawing.Point(16, 235);
+			this.textBoxPassword.Location = new System.Drawing.Point(12, 120);
 			this.textBoxPassword.Name = "textBoxPassword";
 			this.textBoxPassword.PasswordChar = '*';
 			this.textBoxPassword.Size = new System.Drawing.Size(295, 43);
@@ -80,7 +78,7 @@
 			// buttonlogin
 			// 
 			this.buttonlogin.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.buttonlogin.Location = new System.Drawing.Point(0, 292);
+			this.buttonlogin.Location = new System.Drawing.Point(0, 183);
 			this.buttonlogin.Name = "buttonlogin";
 			this.buttonlogin.Size = new System.Drawing.Size(323, 60);
 			this.buttonlogin.TabIndex = 4;
@@ -88,22 +86,11 @@
 			this.buttonlogin.UseVisualStyleBackColor = true;
 			this.buttonlogin.Click += new System.EventHandler(this.buttonlogin_Click);
 			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-			this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(299, 93);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox1.TabIndex = 5;
-			this.pictureBox1.TabStop = false;
-			// 
 			// Login
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(323, 352);
-			this.Controls.Add(this.pictureBox1);
+			this.ClientSize = new System.Drawing.Size(323, 243);
 			this.Controls.Add(this.buttonlogin);
 			this.Controls.Add(this.textBoxPassword);
 			this.Controls.Add(this.textBoxName);
@@ -114,7 +101,6 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "로그인";
 			this.Load += new System.EventHandler(this.Login_Load);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -127,6 +113,5 @@
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Button buttonlogin;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

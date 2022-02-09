@@ -345,6 +345,7 @@ namespace accountBook
 				changSaveUpdate = false;
 
 				buttonUpdate.Enabled = true;
+				buttonSave.Enabled = false;
 			
 			}
 			else
@@ -497,7 +498,7 @@ namespace accountBook
 
 		private void textBoxMoney_TextChanged(object sender, EventArgs e)
 		{
-
+			
 			string prevValue = string.Empty;
 			TextBox textBox = sender as TextBox;
 
@@ -523,6 +524,7 @@ namespace accountBook
 		}
 		private void textBox1_TextChanged(object sender, EventArgs e)
 		{
+		
 		}
 		private void textBoxMoney_KeyPress(object sender, KeyPressEventArgs e)
 		{
@@ -614,6 +616,7 @@ namespace accountBook
 		private void comboBoxName_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			e.Handled = true;
+			buttonUpdate.Enabled = false;
 		}
 		private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
 		{
@@ -646,6 +649,52 @@ namespace accountBook
 		private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			buttonSearch_Click(sender, e);
+		}
+
+		private void panel2_Click(object sender, EventArgs e)
+		{
+			buttonSave.Enabled = true;
+		}
+
+		private void tableLayoutPanel2_Click(object sender, EventArgs e)
+		{
+			buttonSave.Enabled = true;
+			buttonUpdate.Enabled = false;
+		}
+
+		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void pDate_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			buttonUpdate.Enabled = false;
+			buttonSave.Enabled = true;
+		}
+
+		private void textBoxMemo_Click(object sender, EventArgs e)
+		{
+			buttonUpdate.Enabled = false;
+			buttonSave.Enabled = true;
+		}
+
+		private void textBoxContent_Click(object sender, EventArgs e)
+		{
+			buttonUpdate.Enabled = false;
+			buttonSave.Enabled = true;
+		}
+
+		private void textBoxMoney_Click(object sender, EventArgs e)
+		{
+			buttonUpdate.Enabled = false;
+			buttonSave.Enabled = true;
+		}
+
+		private void comboBoxName_Click(object sender, EventArgs e)
+		{
+			buttonUpdate.Enabled = false;
+			buttonSave.Enabled = true;
 		}
 	}
 }
