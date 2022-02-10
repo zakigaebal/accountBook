@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -16,16 +17,10 @@ namespace accountBook
 		private void Form2_Load(object sender, EventArgs e)
 		{
 			show2();
-			aaaa();
 		}
-
-
-
-
 		private void buttonClose_Click(object sender, EventArgs e)
 		{
 			this.Close();
-
 		}
 		private void comboBoxInOut_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -91,6 +86,10 @@ namespace accountBook
 				dataGridView1.Columns[dataGridView1.Columns.Count - 3].Visible = false;
 				dataGridView1.Columns[dataGridView1.Columns.Count - 2].Visible = false;
 				dataGridView1.Columns[dataGridView1.Columns.Count - 1].Visible = false;
+
+				dataGridView1.Columns[1].HeaderText = "계정";
+				dataGridView1.Columns[2].HeaderText = "항목";
+
 			}
 			catch (Exception ex)
 			{
@@ -147,11 +146,6 @@ namespace accountBook
 			{
 
 			}
-		}
-
-		private void aaaa()
-		{
-
 		}
 
 
@@ -283,16 +277,39 @@ namespace accountBook
 
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
-
+			if (e.RowIndex < 0)
+			{
+				return;
+			}
 			comboBoxAccount.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
 			textBoxSubject.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
 
 
 		}
 
-		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-		{
+	
 
+		private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+		{
+			if (dataGridView1.Rows[e.RowIndex].Cells[0].Value == null)
+				return;
+			// 데이터가 Red인 경우 배경색을 빨강으로 변경
+			if (dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() == "지출")
+			{
+				e.CellStyle.BackColor = Color.MistyRose;
+				e.CellStyle.ForeColor = Color.Black;
+			}
+			// 데이터가 Blue인 경우 배경색을 파랑으로 변경
+			else if (dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() == "수입")
+			{
+				e.CellStyle.BackColor = Color.AliceBlue;
+				e.CellStyle.ForeColor = Color.Black;
+			}
+		}
+
+		private void comboBoxAccount_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			e.Handled = true;
 		}
 	}
 }

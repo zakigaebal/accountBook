@@ -15,6 +15,8 @@ namespace accountBook
 		{
 			InitializeComponent();
 		}
+
+
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			try
@@ -32,6 +34,7 @@ namespace accountBook
 			{
 			}
 		}
+
 		private void 연결(string selectQuery, string account)
 		{
 			selectQuery = "SELECT * FROM dawoon.dc_items where flagYN = 'Y';";
@@ -152,20 +155,13 @@ namespace accountBook
 					}
 					return rdr["seqMax"].ToString();
 				}
-			
 				rdr.Close();
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
 			}
-
-
-
 			return "";
-
-		
-
 		}
 
 
@@ -180,8 +176,11 @@ namespace accountBook
 				textBoxContent.Focus();
 				return;
 			}
+
+
 			try
 			{
+
 			
 				var startDay = DateTime.Parse(pDate.Value.ToString("yyyy-MM-01"));
 				var endDay = DateTime.Parse(startDay.AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd"));
@@ -191,7 +190,6 @@ namespace accountBook
 				string account = "지출";
 				if (radioButton2.Checked)
 					account = "수입";
-
 
 
 				string QuerySave = "insert into dawoon.dc_account(accSeq,usedDate,accAcount,itemSeq,subject,money,content,memo,flagYN,regDate,issueDate,issueID) values('"
@@ -206,16 +204,20 @@ namespace accountBook
 						+ "','Y',now(),now(),'CDY');";
 
 
-
 				CrudSql(QuerySave, "저장완료");
 				clear();
 				buttonSearch_Click(sender, e);
+				radioButton1.Checked = true;
+
 			}
+
+
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
 			}
 		}
+
 		public void buttonSearch_Click(object sender, EventArgs e)
 		{
 			try
@@ -338,15 +340,16 @@ namespace accountBook
 			comboBoxName.Text = "";
 		}
 
+
+
+
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (changSaveUpdate == true)
 			{
 				changSaveUpdate = false;
-
 				buttonUpdate.Enabled = true;
 				buttonSave.Enabled = false;
-			
 			}
 			else
 			{
@@ -367,7 +370,8 @@ namespace accountBook
 			textBoxMoney.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
 			textBoxContent.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
 			textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-			
+
+
 			if (account == "수입")
 			{
 				radioButton1.Checked = false;
@@ -425,6 +429,8 @@ namespace accountBook
 				buttonSave.Enabled = true;
 				clear();
 				buttonSearch_Click(sender, e);
+				buttonUpdate.Enabled = false;
+				radioButton1.Checked = true;
 			}
 			catch (Exception ex)
 			{
@@ -622,13 +628,8 @@ namespace accountBook
 		{
 		}
 
-
-
-
-
 		private void panel2_Paint(object sender, PaintEventArgs e)
 		{
-
 		}
 
 		private void Form1_Click(object sender, EventArgs e)
@@ -659,42 +660,65 @@ namespace accountBook
 		private void tableLayoutPanel2_Click(object sender, EventArgs e)
 		{
 			buttonSave.Enabled = true;
-			buttonUpdate.Enabled = false;
+
 		}
 
 		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
-
+		
 		}
 
 		private void pDate_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			buttonUpdate.Enabled = false;
+	
 			buttonSave.Enabled = true;
+			
 		}
 
 		private void textBoxMemo_Click(object sender, EventArgs e)
 		{
-			buttonUpdate.Enabled = false;
+	
 			buttonSave.Enabled = true;
+		
 		}
 
 		private void textBoxContent_Click(object sender, EventArgs e)
 		{
-			buttonUpdate.Enabled = false;
+		
 			buttonSave.Enabled = true;
+			buttonUpdate.Enabled = false;
 		}
 
 		private void textBoxMoney_Click(object sender, EventArgs e)
 		{
-			buttonUpdate.Enabled = false;
+	
 			buttonSave.Enabled = true;
+			buttonUpdate.Enabled = false;
 		}
 
 		private void comboBoxName_Click(object sender, EventArgs e)
 		{
-			buttonUpdate.Enabled = false;
+			
 			buttonSave.Enabled = true;
+			buttonUpdate.Enabled = false;
+
+		}
+
+		private void comboBoxName_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void pDate_MouseDown(object sender, MouseEventArgs e)
+		{
+			buttonSave.Enabled = true;
+			buttonUpdate.Enabled = false;
+		}
+
+		private void dataGridView1_Click(object sender, EventArgs e)
+		{
+			buttonSave.Enabled = false;
+			buttonUpdate.Enabled = true;
 		}
 	}
 }
