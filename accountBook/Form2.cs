@@ -311,6 +311,48 @@ namespace accountBook
 		{
 			e.Handled = true;
 		}
+
+		private void buttonSearch_Click(object sender, EventArgs e)
+		{
+			string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
+			string searchtext = textBoxSearch.Text.Trim();
+	
+			string field = "";
+			string flagYN = "";
+		
+			string Query3 = "";
+
+		
+
+			Query3 = "select * from dawoon.dc_items where subject like '" + "%" + searchtext + "%" + "' AND flagYN = 'Y'";
+
+
+			//  + field + "like '%" + searchtext + "'% AND " + flagYN;
+			//  " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE " + flagYN;
+			MySqlConnection con = new MySqlConnection(Connect);
+			MySqlCommand Comm = new MySqlCommand(Query3, con);
+			MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+			MyAdapter.SelectCommand = Comm;
+			DataTable dTable = new DataTable();
+			MyAdapter.Fill(dTable);
+			dataGridView1.DataSource = dTable;
+			dataGridView1.Columns[0].Visible = false;
+			dataGridView1.Columns[dataGridView1.Columns.Count - 4].Visible = false;
+			dataGridView1.Columns[dataGridView1.Columns.Count - 3].Visible = false;
+			dataGridView1.Columns[dataGridView1.Columns.Count - 2].Visible = false;
+			dataGridView1.Columns[dataGridView1.Columns.Count - 1].Visible = false;
+			dataGridView1.Columns[1].HeaderText = "날짜";
+			dataGridView1.Columns[2].HeaderText = "계정";
+			dataGridView1.Columns[3].HeaderText = "항목";
+			dataGridView1.Columns[4].HeaderText = "금액";
+			dataGridView1.Columns[5].HeaderText = "내용";
+			dataGridView1.Columns[6].HeaderText = "메모";
+		}
+
+		private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			buttonSearch_Click(sender, e);
+		}
 	}
 }
 

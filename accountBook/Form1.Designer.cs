@@ -192,7 +192,7 @@
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.10448F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.89552F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
 			this.tableLayoutPanel2.Controls.Add(this.pDate, 1, 2);
 			this.tableLayoutPanel2.Controls.Add(this.buttonUpdate, 3, 4);
 			this.tableLayoutPanel2.Controls.Add(this.buttonLogin, 3, 0);
@@ -235,7 +235,7 @@
 			this.pDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
 			this.pDate.Location = new System.Drawing.Point(71, 71);
 			this.pDate.Name = "pDate";
-			this.pDate.Size = new System.Drawing.Size(316, 29);
+			this.pDate.Size = new System.Drawing.Size(315, 29);
 			this.pDate.TabIndex = 25;
 			this.pDate.Value = new System.DateTime(2022, 2, 9, 0, 0, 0, 0);
 			this.pDate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pDate_KeyPress);
@@ -247,9 +247,9 @@
 			this.buttonUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonUpdate.FlatAppearance.BorderSize = 2;
 			this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.buttonUpdate.Location = new System.Drawing.Point(393, 137);
+			this.buttonUpdate.Location = new System.Drawing.Point(392, 137);
 			this.buttonUpdate.Name = "buttonUpdate";
-			this.buttonUpdate.Size = new System.Drawing.Size(87, 27);
+			this.buttonUpdate.Size = new System.Drawing.Size(88, 27);
 			this.buttonUpdate.TabIndex = 7;
 			this.buttonUpdate.Text = "수정";
 			this.buttonUpdate.UseVisualStyleBackColor = false;
@@ -257,7 +257,7 @@
 			// 
 			// buttonLogin
 			// 
-			this.buttonLogin.Location = new System.Drawing.Point(393, 3);
+			this.buttonLogin.Location = new System.Drawing.Point(392, 3);
 			this.buttonLogin.Name = "buttonLogin";
 			this.buttonLogin.Size = new System.Drawing.Size(75, 28);
 			this.buttonLogin.TabIndex = 5;
@@ -282,9 +282,9 @@
 			this.buttonDel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonDel.FlatAppearance.BorderSize = 2;
 			this.buttonDel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.buttonDel.Location = new System.Drawing.Point(393, 102);
+			this.buttonDel.Location = new System.Drawing.Point(392, 102);
 			this.buttonDel.Name = "buttonDel";
-			this.buttonDel.Size = new System.Drawing.Size(87, 29);
+			this.buttonDel.Size = new System.Drawing.Size(88, 29);
 			this.buttonDel.TabIndex = 6;
 			this.buttonDel.Text = "삭제";
 			this.buttonDel.UseVisualStyleBackColor = false;
@@ -295,9 +295,9 @@
 			this.buttonForm2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonForm2.FlatAppearance.BorderSize = 2;
 			this.buttonForm2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonForm2.Location = new System.Drawing.Point(393, 37);
+			this.buttonForm2.Location = new System.Drawing.Point(392, 37);
 			this.buttonForm2.Name = "buttonForm2";
-			this.buttonForm2.Size = new System.Drawing.Size(87, 28);
+			this.buttonForm2.Size = new System.Drawing.Size(88, 28);
 			this.buttonForm2.TabIndex = 9;
 			this.buttonForm2.Text = "항목 추가";
 			this.buttonForm2.UseVisualStyleBackColor = true;
@@ -310,9 +310,9 @@
 			this.buttonSave.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonSave.FlatAppearance.BorderSize = 2;
 			this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.buttonSave.Location = new System.Drawing.Point(393, 71);
+			this.buttonSave.Location = new System.Drawing.Point(392, 71);
 			this.buttonSave.Name = "buttonSave";
-			this.buttonSave.Size = new System.Drawing.Size(87, 25);
+			this.buttonSave.Size = new System.Drawing.Size(88, 25);
 			this.buttonSave.TabIndex = 5;
 			this.buttonSave.Text = "저장";
 			this.buttonSave.UseVisualStyleBackColor = false;
@@ -370,7 +370,7 @@
 			this.textBoxMoney.ImeMode = System.Windows.Forms.ImeMode.Hangul;
 			this.textBoxMoney.Location = new System.Drawing.Point(71, 102);
 			this.textBoxMoney.Name = "textBoxMoney";
-			this.textBoxMoney.Size = new System.Drawing.Size(316, 29);
+			this.textBoxMoney.Size = new System.Drawing.Size(315, 29);
 			this.textBoxMoney.TabIndex = 1;
 			this.textBoxMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.textBoxMoney.Click += new System.EventHandler(this.textBoxMoney_Click);
@@ -396,7 +396,7 @@
 			this.textBoxContent.ImeMode = System.Windows.Forms.ImeMode.Hangul;
 			this.textBoxContent.Location = new System.Drawing.Point(71, 137);
 			this.textBoxContent.Name = "textBoxContent";
-			this.textBoxContent.Size = new System.Drawing.Size(316, 29);
+			this.textBoxContent.Size = new System.Drawing.Size(315, 29);
 			this.textBoxContent.TabIndex = 2;
 			this.textBoxContent.Click += new System.EventHandler(this.textBoxContent_Click);
 			this.textBoxContent.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -421,7 +421,7 @@
 			this.comboBoxName.FormattingEnabled = true;
 			this.comboBoxName.Location = new System.Drawing.Point(71, 37);
 			this.comboBoxName.Name = "comboBoxName";
-			this.comboBoxName.Size = new System.Drawing.Size(316, 29);
+			this.comboBoxName.Size = new System.Drawing.Size(315, 29);
 			this.comboBoxName.TabIndex = 8;
 			this.comboBoxName.SelectedIndexChanged += new System.EventHandler(this.comboBoxName_SelectedIndexChanged);
 			this.comboBoxName.Click += new System.EventHandler(this.comboBoxName_Click);
@@ -432,7 +432,7 @@
 			this.radioButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.radioButton1.AutoSize = true;
 			this.radioButton1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.radioButton1.Location = new System.Drawing.Point(282, 4);
+			this.radioButton1.Location = new System.Drawing.Point(281, 4);
 			this.radioButton1.Name = "radioButton1";
 			this.radioButton1.Size = new System.Drawing.Size(60, 25);
 			this.radioButton1.TabIndex = 10;

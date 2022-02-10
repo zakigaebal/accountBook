@@ -686,22 +686,19 @@ namespace accountBook
 		{
 		
 			buttonSave.Enabled = true;
-			buttonUpdate.Enabled = false;
+		
 		}
 
 		private void textBoxMoney_Click(object sender, EventArgs e)
 		{
 	
 			buttonSave.Enabled = true;
-			buttonUpdate.Enabled = false;
+		
 		}
 
 		private void comboBoxName_Click(object sender, EventArgs e)
 		{
-			
 			buttonSave.Enabled = true;
-			buttonUpdate.Enabled = false;
-
 		}
 
 		private void comboBoxName_SelectedIndexChanged(object sender, EventArgs e)
@@ -712,13 +709,14 @@ namespace accountBook
 		private void pDate_MouseDown(object sender, MouseEventArgs e)
 		{
 			buttonSave.Enabled = true;
-			buttonUpdate.Enabled = false;
+		
 		}
 
 		private void dataGridView1_Click(object sender, EventArgs e)
 		{
 			buttonSave.Enabled = false;
 			buttonUpdate.Enabled = true;
+		
 		}
 	}
 }
