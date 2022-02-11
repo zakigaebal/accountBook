@@ -718,6 +718,11 @@ namespace accountBook
 			buttonUpdate.Enabled = true;
 		
 		}
+
+		private void comboBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			e.Handled = true;
+		}
 	}
 }
 
