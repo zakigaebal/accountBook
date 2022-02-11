@@ -723,6 +723,16 @@ namespace accountBook
 		{
 			e.Handled = true;
 		}
+
+		private void comboBoxSearch_SelectedIndexChanged_1(object sender, EventArgs e)
+		{
+
+		}
+
+		private void textBoxSearch_TextChanged_1(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
 
