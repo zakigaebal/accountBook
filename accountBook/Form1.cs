@@ -38,6 +38,7 @@ namespace accountBook
 			catch (Exception ex)
 			{
 			}
+			
 		}
 
 		private void 연결(string selectQuery, string account)
@@ -343,7 +344,7 @@ namespace accountBook
 			comboBoxName.Text = "";
 		}
 
-
+	
 
 
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -745,24 +746,29 @@ namespace accountBook
 
 		private void toolStripButton1_Click(object sender, EventArgs e)
 		{
-			chart2.Series[0].Points.Clear();
+
 			ChartRefresh();
 		
 		}
-
+		
 		private void ChartRefresh()
 		{
 			string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
 			MySqlConnection conn = new MySqlConnection(Connect);
-			MySqlCommand cmd = new MySqlCommand("select * from dawoon.dc_account", conn);
+			MySqlCommand cmd = new MySqlCommand("select * from dawoon.dc_account where flagYN='Y'", conn);
 			MySqlDataReader myReader;
+			
 			try
 			{
 				conn.Open();
 				myReader = cmd.ExecuteReader();
 				while (myReader.Read())
 				{
-					chart2.Series[0].Points.AddXY(myReader.GetString("accAcount"), myReader.GetString("money"));
+					try 
+					{ 
+		
+					}
+					catch { }
 				}
 			}
 			catch (Exception ex)
@@ -853,6 +859,12 @@ namespace accountBook
 			saveDialog.FileName = "export".ToString();
 
 			return saveDialog;
+		}
+
+		private void ReportButton_Click(object sender, EventArgs e)
+		{
+			Report newform3 = new Report(DateTime.Parse(dateTimePicker2.Text), (DateTime.Parse(dateTimePicker1.Text)));
+			newform3.ShowDialog(this);
 		}
 	}
 }

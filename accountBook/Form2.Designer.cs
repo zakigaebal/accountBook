@@ -101,9 +101,9 @@
 			this.buttonUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonUpdate.FlatAppearance.BorderSize = 2;
 			this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.buttonUpdate.Location = new System.Drawing.Point(120, 3);
+			this.buttonUpdate.Location = new System.Drawing.Point(119, 3);
 			this.buttonUpdate.Name = "buttonUpdate";
-			this.buttonUpdate.Size = new System.Drawing.Size(116, 64);
+			this.buttonUpdate.Size = new System.Drawing.Size(115, 64);
 			this.buttonUpdate.TabIndex = 14;
 			this.buttonUpdate.Text = "수정";
 			this.buttonUpdate.UseVisualStyleBackColor = false;
@@ -115,9 +115,9 @@
 			this.buttonDel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonDel.FlatAppearance.BorderSize = 2;
 			this.buttonDel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.buttonDel.Location = new System.Drawing.Point(242, 3);
+			this.buttonDel.Location = new System.Drawing.Point(240, 3);
 			this.buttonDel.Name = "buttonDel";
-			this.buttonDel.Size = new System.Drawing.Size(132, 64);
+			this.buttonDel.Size = new System.Drawing.Size(134, 64);
 			this.buttonDel.TabIndex = 15;
 			this.buttonDel.Text = "삭제";
 			this.buttonDel.UseVisualStyleBackColor = false;
@@ -131,7 +131,7 @@
 			this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.buttonSave.Location = new System.Drawing.Point(3, 3);
 			this.buttonSave.Name = "buttonSave";
-			this.buttonSave.Size = new System.Drawing.Size(111, 64);
+			this.buttonSave.Size = new System.Drawing.Size(110, 64);
 			this.buttonSave.TabIndex = 16;
 			this.buttonSave.Text = "저장";
 			this.buttonSave.UseVisualStyleBackColor = false;
@@ -144,7 +144,7 @@
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
 			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView1.Location = new System.Drawing.Point(386, 51);
+			this.dataGridView1.Location = new System.Drawing.Point(386, 57);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.RowTemplate.Height = 23;
@@ -161,7 +161,7 @@
 			this.panel1.Controls.Add(this.label2);
 			this.panel1.Controls.Add(this.label1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel1.Location = new System.Drawing.Point(3, 51);
+			this.panel1.Location = new System.Drawing.Point(3, 57);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(377, 184);
 			this.panel1.TabIndex = 18;
@@ -171,7 +171,7 @@
 			this.tableLayoutPanel2.ColumnCount = 3;
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.03226F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.96774F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139F));
 			this.tableLayoutPanel2.Controls.Add(this.buttonSave, 0, 0);
 			this.tableLayoutPanel2.Controls.Add(this.buttonUpdate, 1, 0);
 			this.tableLayoutPanel2.Controls.Add(this.buttonDel, 2, 0);
@@ -202,14 +202,14 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 190F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(689, 238);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(689, 244);
 			this.tableLayoutPanel1.TabIndex = 19;
 			// 
 			// textBoxSearch
 			// 
 			this.textBoxSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.textBoxSearch.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-			this.textBoxSearch.Location = new System.Drawing.Point(489, 13);
+			this.textBoxSearch.Location = new System.Drawing.Point(489, 16);
 			this.textBoxSearch.Name = "textBoxSearch";
 			this.textBoxSearch.Size = new System.Drawing.Size(127, 21);
 			this.textBoxSearch.TabIndex = 20;
@@ -222,7 +222,7 @@
 			this.buttonSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.buttonSearch.FlatAppearance.BorderSize = 2;
 			this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonSearch.Location = new System.Drawing.Point(622, 11);
+			this.buttonSearch.Location = new System.Drawing.Point(622, 14);
 			this.buttonSearch.Name = "buttonSearch";
 			this.buttonSearch.Size = new System.Drawing.Size(64, 25);
 			this.buttonSearch.TabIndex = 21;
@@ -236,7 +236,7 @@
 			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
 			this.pictureBox1.Location = new System.Drawing.Point(3, 3);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(377, 42);
+			this.pictureBox1.Size = new System.Drawing.Size(377, 48);
 			this.pictureBox1.TabIndex = 22;
 			this.pictureBox1.TabStop = false;
 			// 
@@ -244,7 +244,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(689, 238);
+			this.ClientSize = new System.Drawing.Size(689, 244);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
