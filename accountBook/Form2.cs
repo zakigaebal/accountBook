@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 namespace accountBook
@@ -60,11 +59,10 @@ namespace accountBook
 		}
 		private void clear()
 		{
+
 			textBoxSubject.Text = "";
 
 		}
-
-
 
 		private void show2()
 		{
@@ -91,6 +89,7 @@ namespace accountBook
 				dataGridView1.Columns[2].HeaderText = "항목";
 
 			}
+
 			catch (Exception ex)
 			{
 				string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";

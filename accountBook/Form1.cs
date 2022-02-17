@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+
 
 namespace accountBook
 {
@@ -22,6 +24,7 @@ namespace accountBook
 			try
 			{
 				buttonLogin_Click(sender, e);
+				
 				buttonSearch_Click(sender, e);
 				buttonUpdate.Enabled = false;
 				radioButton1.Checked = true;
@@ -29,6 +32,8 @@ namespace accountBook
 				dateTimePicker2.Value = MonthFirstDay;
 				pDate.Value = DateTime.Now;
 				dateTimePicker1.Value = DateTime.Now;
+				ChartRefresh();
+
 			}
 			catch (Exception ex)
 			{
@@ -108,6 +113,8 @@ namespace accountBook
 				}
 			}
 		}
+
+
 		private string getItemSeq(string account, string txt)
 		{
 			try
@@ -176,12 +183,8 @@ namespace accountBook
 				textBoxContent.Focus();
 				return;
 			}
-
-
 			try
 			{
-
-			
 				var startDay = DateTime.Parse(pDate.Value.ToString("yyyy-MM-01"));
 				var endDay = DateTime.Parse(startDay.AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd"));
 				string moneydot = textBoxMoney.Text;
@@ -351,6 +354,7 @@ namespace accountBook
 				buttonUpdate.Enabled = true;
 				buttonSave.Enabled = false;
 			}
+
 			else
 			{
 				changSaveUpdate = true;
@@ -732,6 +736,123 @@ namespace accountBook
 		private void textBoxSearch_TextChanged_1(object sender, EventArgs e)
 		{
 
+		}
+
+		private void buttonClose_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		private void toolStripButton1_Click(object sender, EventArgs e)
+		{
+			chart2.Series[0].Points.Clear();
+			ChartRefresh();
+		
+		}
+
+		private void ChartRefresh()
+		{
+			string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
+			MySqlConnection conn = new MySqlConnection(Connect);
+			MySqlCommand cmd = new MySqlCommand("select * from dawoon.dc_account", conn);
+			MySqlDataReader myReader;
+			try
+			{
+				conn.Open();
+				myReader = cmd.ExecuteReader();
+				while (myReader.Read())
+				{
+					chart2.Series[0].Points.AddXY(myReader.GetString("accAcount"), myReader.GetString("money"));
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+		}
+		private void buttonFileSave_Click(object sender, EventArgs e)
+		{
+			ExportToCSV();
+		}
+
+		private void ExportToCSV()
+		{
+			SaveFileDialog saveFileDialog = GetCsvSave();
+			if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+			{
+				Save_Csv(saveFileDialog.FileName, dataGridView1, true); // dataGridView에 데이터를 세팅하는 메서드를 호출
+			}
+		}
+
+		bool headerText = true;
+		private void Save_Csv(string fileName, DataGridView dataGridView1, bool v)
+		{
+			string delimiter = ",";  // 구분자
+			FileStream fs = new FileStream(fileName, System.IO.FileMode.Create, System.IO.FileAccess.Write);
+			StreamWriter csvExport = new StreamWriter(fs, System.Text.Encoding.UTF8); //UTF8로 엔코딩
+
+			if (dataGridView1.Rows.Count == 0) return;
+
+			// header가 true면 헤더정보 출력
+			if (headerText)
+			{
+				for (int i = 1; i < dataGridView1.Columns.Count - 4; i++)
+				{
+					csvExport.Write(dataGridView1.Columns[i].HeaderText);
+					if (i != dataGridView1.Columns.Count - 1)
+					{
+						csvExport.Write(delimiter);
+					}
+				}
+			}
+
+			csvExport.Write(csvExport.NewLine); // add new line
+
+			// 데이터 출력
+			foreach (DataGridViewRow row in dataGridView1.Rows)
+			{
+				if (!row.IsNewRow)
+				{
+					for (int i = 1; i < dataGridView1.Columns.Count - 4; i++)
+					{
+						csvExport.Write(row.Cells[i].Value);
+						if (i != dataGridView1.Columns.Count - 1)
+						{
+							csvExport.Write(delimiter);
+						}
+					}
+					csvExport.Write(csvExport.NewLine); // write new line
+				}
+			}
+
+
+
+			csvExport.Flush();
+			csvExport.Close();
+			fs.Close();
+
+			MessageBox.Show("CSV 파일 저장 완료！");
+		}
+
+		private SaveFileDialog GetCsvSave()
+		{
+			//Getting the location and file name of the excel to save from user.
+			SaveFileDialog saveDialog = new SaveFileDialog();
+			saveDialog.CheckPathExists = true;
+			saveDialog.AddExtension = true;
+			saveDialog.ValidateNames = true;
+
+			string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			string filepath = Path.GetDirectoryName(path);
+
+
+			saveDialog.InitialDirectory = filepath;// Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+			saveDialog.DefaultExt = ".csv";
+			saveDialog.Filter = "csv (*.csv) | *.csv";
+			saveDialog.FileName = "export".ToString();
+
+			return saveDialog;
 		}
 	}
 }
