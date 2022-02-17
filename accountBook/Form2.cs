@@ -143,7 +143,7 @@ namespace accountBook
 			}
 			catch (Exception ex)
 			{
-
+				MessageBox.Show(ex.Message);
 			}
 		}
 
@@ -316,8 +316,7 @@ namespace accountBook
 			string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
 			string searchtext = textBoxSearch.Text.Trim();
 	
-			string field = "";
-			string flagYN = "";
+	
 		
 			string Query3 = "";
 

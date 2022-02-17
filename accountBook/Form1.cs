@@ -37,6 +37,7 @@ namespace accountBook
 			}
 			catch (Exception ex)
 			{
+				MessageBox.Show(ex.Message);
 			}
 			
 		}
@@ -481,7 +482,7 @@ namespace accountBook
 			}
 			catch(Exception ex)
 			{
-			
+				MessageBox.Show(ex.Message);
 			}
 
 
@@ -863,8 +864,7 @@ namespace accountBook
 
 		private void ReportButton_Click(object sender, EventArgs e)
 		{
-			Report newform3 = new Report(DateTime.Parse(dateTimePicker2.Text), (DateTime.Parse(dateTimePicker1.Text)));
-			newform3.ShowDialog(this);
+	
 		}
 	}
 }

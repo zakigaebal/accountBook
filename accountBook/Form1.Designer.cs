@@ -60,26 +60,25 @@
 			this.comboBoxName = new System.Windows.Forms.ComboBox();
 			this.radioButton1 = new System.Windows.Forms.RadioButton();
 			this.radioButton2 = new System.Windows.Forms.RadioButton();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
 			this.buttonFileSave = new System.Windows.Forms.ToolStripButton();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.panel2.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.tableLayoutPanel3.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.toolStrip1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// checkBoxDelShow
 			// 
 			this.checkBoxDelShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.checkBoxDelShow.AutoSize = true;
-			this.checkBoxDelShow.Location = new System.Drawing.Point(1117, 521);
+			this.checkBoxDelShow.Location = new System.Drawing.Point(1240, 527);
 			this.checkBoxDelShow.Name = "checkBoxDelShow";
 			this.checkBoxDelShow.Size = new System.Drawing.Size(76, 16);
 			this.checkBoxDelShow.TabIndex = 13;
@@ -178,7 +177,7 @@
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel2.Location = new System.Drawing.Point(313, 3);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(485, 70);
+			this.panel2.Size = new System.Drawing.Size(484, 70);
 			this.panel2.TabIndex = 1;
 			this.panel2.Click += new System.EventHandler(this.panel2_Click);
 			// 
@@ -187,7 +186,7 @@
 			this.tableLayoutPanel1.ColumnCount = 3;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.75969F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.24031F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 517F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 518F));
 			this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 1, 1);
 			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
@@ -291,7 +290,7 @@
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.06569F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.93431F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
 			this.tableLayoutPanel2.Controls.Add(this.pDate, 1, 2);
 			this.tableLayoutPanel2.Controls.Add(this.buttonLogin, 3, 0);
 			this.tableLayoutPanel2.Controls.Add(this.label6, 0, 0);
@@ -340,7 +339,7 @@
 			// 
 			// buttonLogin
 			// 
-			this.buttonLogin.Location = new System.Drawing.Point(204, 3);
+			this.buttonLogin.Location = new System.Drawing.Point(203, 3);
 			this.buttonLogin.Name = "buttonLogin";
 			this.buttonLogin.Size = new System.Drawing.Size(89, 26);
 			this.buttonLogin.TabIndex = 5;
@@ -365,9 +364,9 @@
 			this.buttonForm2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonForm2.FlatAppearance.BorderSize = 2;
 			this.buttonForm2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonForm2.Location = new System.Drawing.Point(204, 35);
+			this.buttonForm2.Location = new System.Drawing.Point(203, 35);
 			this.buttonForm2.Name = "buttonForm2";
-			this.buttonForm2.Size = new System.Drawing.Size(97, 33);
+			this.buttonForm2.Size = new System.Drawing.Size(98, 33);
 			this.buttonForm2.TabIndex = 9;
 			this.buttonForm2.Text = "항목 추가";
 			this.buttonForm2.UseVisualStyleBackColor = true;
@@ -482,7 +481,7 @@
 			this.comboBoxName.FormattingEnabled = true;
 			this.comboBoxName.Location = new System.Drawing.Point(59, 37);
 			this.comboBoxName.Name = "comboBoxName";
-			this.comboBoxName.Size = new System.Drawing.Size(139, 29);
+			this.comboBoxName.Size = new System.Drawing.Size(138, 29);
 			this.comboBoxName.TabIndex = 1;
 			this.comboBoxName.SelectedIndexChanged += new System.EventHandler(this.comboBoxName_SelectedIndexChanged);
 			this.comboBoxName.Click += new System.EventHandler(this.comboBoxName_Click);
@@ -493,7 +492,7 @@
 			this.radioButton1.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.radioButton1.AutoSize = true;
 			this.radioButton1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-			this.radioButton1.Location = new System.Drawing.Point(134, 3);
+			this.radioButton1.Location = new System.Drawing.Point(133, 3);
 			this.radioButton1.Name = "radioButton1";
 			this.radioButton1.Size = new System.Drawing.Size(60, 25);
 			this.radioButton1.TabIndex = 10;
@@ -514,47 +513,6 @@
 			this.radioButton2.UseVisualStyleBackColor = true;
 			this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
 			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.buttonSearch);
-			this.panel1.Controls.Add(this.textBoxSearch);
-			this.panel1.Controls.Add(this.comboBoxSearch);
-			this.panel1.Location = new System.Drawing.Point(804, 3);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(504, 70);
-			this.panel1.TabIndex = 20;
-			// 
-			// toolStrip1
-			// 
-			this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.buttonFileSave});
-			this.toolStrip1.Location = new System.Drawing.Point(0, 518);
-			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.Size = new System.Drawing.Size(1319, 25);
-			this.toolStrip1.TabIndex = 1;
-			this.toolStrip1.Text = "toolStrip1";
-			// 
-			// toolStripButton1
-			// 
-			this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-			this.toolStripButton1.Image = global::accountBook.Properties.Resources._134221_refresh_reload_repeat_update_arrow_icon;
-			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton1.Name = "toolStripButton1";
-			this.toolStripButton1.Size = new System.Drawing.Size(103, 22);
-			this.toolStripButton1.Text = "차트 새로고침";
-			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-			// 
-			// buttonFileSave
-			// 
-			this.buttonFileSave.Image = ((System.Drawing.Image)(resources.GetObject("buttonFileSave.Image")));
-			this.buttonFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.buttonFileSave.Name = "buttonFileSave";
-			this.buttonFileSave.Size = new System.Drawing.Size(90, 22);
-			this.buttonFileSave.Text = "파일저장(&S)";
-			this.buttonFileSave.Click += new System.EventHandler(this.buttonFileSave_Click);
-			// 
 			// pictureBox1
 			// 
 			this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -565,6 +523,36 @@
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox1.TabIndex = 18;
 			this.pictureBox1.TabStop = false;
+			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.buttonSearch);
+			this.panel1.Controls.Add(this.textBoxSearch);
+			this.panel1.Controls.Add(this.comboBoxSearch);
+			this.panel1.Location = new System.Drawing.Point(803, 3);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(504, 70);
+			this.panel1.TabIndex = 20;
+			// 
+			// toolStrip1
+			// 
+			this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buttonFileSave});
+			this.toolStrip1.Location = new System.Drawing.Point(0, 518);
+			this.toolStrip1.Name = "toolStrip1";
+			this.toolStrip1.Size = new System.Drawing.Size(1319, 25);
+			this.toolStrip1.TabIndex = 1;
+			this.toolStrip1.Text = "toolStrip1";
+			// 
+			// buttonFileSave
+			// 
+			this.buttonFileSave.Image = ((System.Drawing.Image)(resources.GetObject("buttonFileSave.Image")));
+			this.buttonFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.buttonFileSave.Name = "buttonFileSave";
+			this.buttonFileSave.Size = new System.Drawing.Size(90, 22);
+			this.buttonFileSave.Text = "파일저장(&S)";
+			this.buttonFileSave.Click += new System.EventHandler(this.buttonFileSave_Click);
 			// 
 			// Form1
 			// 
@@ -588,11 +576,11 @@
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -633,7 +621,6 @@
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.ToolStrip toolStrip1;
-		private System.Windows.Forms.ToolStripButton toolStripButton1;
 		private System.Windows.Forms.ToolStripButton buttonFileSave;
 	}
 }
