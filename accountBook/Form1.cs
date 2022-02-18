@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using MySql.Data.MySqlClient;
 
 
@@ -17,8 +19,6 @@ namespace accountBook
 		{
 			InitializeComponent();
 		}
-
-
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			try
@@ -33,15 +33,13 @@ namespace accountBook
 				pDate.Value = DateTime.Now;
 				dateTimePicker1.Value = DateTime.Now;
 				ChartRefresh();
-
+				chart();
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
 			}
-			
 		}
-
 		private void 연결(string selectQuery, string account)
 		{
 			selectQuery = "SELECT * FROM dawoon.dc_items where flagYN = 'Y';";
@@ -69,14 +67,65 @@ namespace accountBook
 			MessageBox.Show(메세지);
 			con.Close();
 		}
+
+		private void chart()
+		{
+		
+
+
+			string strConn = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
+			string sql = "SELECT 가계부.accSeq," +
+					 " 가계부.usedDate," +
+					 " 항목.acount," +
+					 " 항목.subject," +
+					 " 가계부.money," +
+					 " 가계부.content," +
+					 " 가계부.memo," +
+					 " 가계부.flagYN," +
+					 " 가계부.regDate," +
+					 " 가계부.issueDate," +
+					 " 가계부.issueID" +
+					 " FROM dc_account 가계부" +
+					 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE 가계부.flagYN = 'Y'";
+
+			using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
+			{
+				conn.Open(); // conn 연결
+				MySqlCommand cmd = new MySqlCommand(sql, conn); //명령클래스 cmd 생성
+				DataSet ds = new DataSet(); //데이터셋 ds 생성
+				MySqlDataAdapter sa = new MySqlDataAdapter(cmd); //cmd인자를 받은 데이터어뎁터 sa 생성
+				sa.Fill(ds); //sa 데이터어뎁터 변수를 ds데이터셋에 채워라
+										 // DataTable 객체를 DataSource에 지정하고,
+										 // X,Y축 컬럼을 XValueMember와 YValueMembers에 지정
+				chart1.DataSource = ds.Tables[0]; //chart6.데이터소스는 ds,Tables의 첫번째로 지정
+				chart1.Series[0].XValueMember = "subject"; // x축 컬럼 number필드
+				chart1.Series[0].YValueMembers = "money"; // y축 컬럼 time필드
+
+				chart1.DataBind(); //chart2 데이터바인딩
+				chart1.Series[0].ChartType = SeriesChartType.Pie;
+			
+			}
+
+			using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
+			{
+				conn.Open(); // conn 연결
+				MySqlCommand cmd = new MySqlCommand(sql, conn); //명령클래스 cmd 생성
+				DataSet ds = new DataSet(); //데이터셋 ds 생성
+				DataTable dTable = new DataTable();
+				MySqlDataAdapter sa = new MySqlDataAdapter(cmd); //cmd인자를 받은 데이터어뎁터 sa 생성
+				sa.Fill(dTable);
+				sa.Fill(ds);
+				chart2.DataSource = dTable; //chart6.데이터소스는 ds,Tables의 첫번째로 지정
+				chart2.DataBindCrossTable(dTable.AsEnumerable(), "acount", "usedDate", "money", "");
+			}
+		}
+
 		public void radioButton1_CheckedChanged(object sender, EventArgs e)
 		{
-			
 			if (radioButton1.Checked)
 			{
 				string account = "지출";
 				comboBoxName.Items.Clear();
-				
 				try
 				{
 					string selectQuery = "SELECT * FROM dawoon.dc_items";
@@ -92,6 +141,8 @@ namespace accountBook
 				}
 			}
 		}
+
+
 
 		public void radioButton2_CheckedChanged(object sender, EventArgs e)
 		{
@@ -115,8 +166,6 @@ namespace accountBook
 				}
 			}
 		}
-
-
 		private string getItemSeq(string account, string txt)
 		{
 			try
@@ -139,8 +188,6 @@ namespace accountBook
 			}
 			return "";
 		}
-
-
 		private string seqCount()
 		{
 			try
@@ -287,6 +334,9 @@ namespace accountBook
 				MyAdapter.SelectCommand = Comm;
 				DataTable dTable = new DataTable();
 				MyAdapter.Fill(dTable);
+				//dataGridView1.SuspendLayout(); 포스팅 더블버퍼링 C#차트
+
+
 				dataGridView1.DataSource = dTable;
 				dataGridView1.Columns[0].Visible = false;
 				dataGridView1.Columns[dataGridView1.Columns.Count - 4].Visible = false;
