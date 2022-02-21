@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using MySql.Data.MySqlClient;
+using System.Reflection;
 
 
 namespace accountBook
@@ -15,24 +16,31 @@ namespace accountBook
 	{
 		MySqlConnection connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=ekdnsel;Charset=utf8");
 		bool changSaveUpdate = true;
+	
+
 		public Form1()
 		{
 			InitializeComponent();
+			dataGridView1.DoubleBuffered(true);
+
 		}
+
+
+		
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			try
 			{
+				dataGridView1.SuspendLayout();
+
 				buttonLogin_Click(sender, e);
 				chart();
-
 				buttonUpdate.Enabled = false;
 				radioButton1.Checked = true;
 				DateTime MonthFirstDay = DateTime.Now.AddDays(1 - DateTime.Now.Day);
 				dateTimePicker2.Value = MonthFirstDay;
 				pDate.Value = DateTime.Now;
 				dateTimePicker1.Value = DateTime.Now;
-
 				buttonSearch_Click(sender, e);
 			}
 			catch (Exception ex)
@@ -40,7 +48,10 @@ namespace accountBook
 				MessageBox.Show(ex.Message);
 			}
 		}
-		private void 연결(string selectQuery, string account)
+
+
+	
+		private void connect(string selectQuery, string account)
 		{
 			selectQuery = "SELECT * FROM dawoon.dc_items where flagYN = 'Y';";
 			connection.Open();
@@ -67,27 +78,26 @@ namespace accountBook
 			MessageBox.Show(메세지);
 			con.Close();
 		}
-
 		private void chart()
 		{
 			string strConn = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
-			string sql = "SELECT 가계부.accSeq," +
-					 " 가계부.usedDate," +
-					 " 항목.acount," +
-					 " 항목.subject," +
-					 " 가계부.money," +
-					 " 가계부.content," +
-					 " 가계부.memo," +
-					 " 가계부.flagYN," +
-					 " 가계부.regDate," +
-					 " 가계부.issueDate," +
-					 " 가계부.issueID" +
-					 " FROM dc_account 가계부" +
-					 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE 가계부.flagYN = 'Y'";
-			try { 
+			string sql = "SELECT ab.accSeq," +
+					 " ab.usedDate," +
+					 " it.acount," +
+					 " it.subject," +
+					 " ab.money," +
+					 " ab.content," +
+					 " ab.memo," +
+					 " ab.flagYN," +
+					 " ab.regDate," +
+					 " ab.issueDate," +
+					 " ab.issueID" +
+					 " FROM dc_account ab" +
+					 " RIGHT JOIN dc_items it ON (ab.subject = it.subject) WHERE ab.flagYN = 'Y'";
+			try 
+			{ 
 			using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
 			{
-		
 				conn.Open(); // conn 연결
 				MySqlCommand cmd = new MySqlCommand(sql, conn); //명령클래스 cmd 생성
 				DataSet ds = new DataSet(); //데이터셋 ds 생성
@@ -98,18 +108,14 @@ namespace accountBook
 				chart1.DataSource = ds.Tables[0]; //chart6.데이터소스는 ds,Tables의 첫번째로 지정
 				chart1.Series[0].XValueMember = "subject"; // x축 컬럼 subject필드
 				chart1.Series[0].YValueMembers = "money"; // y축 컬럼 money필드
-
 	
 				chart1.DataBind(); //chart2 데이터바인딩
 				chart1.Series[0].ChartType = SeriesChartType.Pie;
-
-
 				//가계부.usedDate(between '" + dateTimePicker2.Value.ToString() + "' and '" + dateTimePicker1.Value.ToString() + "') and " +
 			}
-
 			using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
-			{
-		
+		   {
+			  chart2.Series.Clear();
 				conn.Open(); // conn 연결
 				MySqlCommand cmd = new MySqlCommand(sql, conn); //명령클래스 cmd 생성
 				DataTable dTable = new DataTable();
@@ -117,15 +123,14 @@ namespace accountBook
 				sa.Fill(dTable);
 				chart2.DataSource = dTable; //chart6.데이터소스는 ds,Tables의 첫번째로 지정
 				chart2.DataBindCrossTable(dTable.AsEnumerable(), "acount", "usedDate", "money", "");
-				chart2.ChartAreas["ChartArea1"].AxisX.LabelStyle.Interval = 2;
-			}
-			}
+		
+		   }
+		  }
 			catch (Exception ex)
 			{
-
+				MessageBox.Show(ex.Message);
 			}
 		}
-
 		public void radioButton1_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radioButton1.Checked)
@@ -135,7 +140,7 @@ namespace accountBook
 				try
 				{
 					string selectQuery = "SELECT * FROM dawoon.dc_items";
-					연결(selectQuery, account);
+					connect(selectQuery, account);
 					comboBoxName.SelectedIndex = 0;
 				}
 				catch (Exception ex)
@@ -147,9 +152,6 @@ namespace accountBook
 				}
 			}
 		}
-
-
-
 		public void radioButton2_CheckedChanged(object sender, EventArgs e)
 		{
 		
@@ -160,7 +162,7 @@ namespace accountBook
 				try
 				{
 					string selectQuery = "SELECT * FROM dawoon.dc_items";
-					연결(selectQuery, account);
+					connect(selectQuery, account);
 					comboBoxName.SelectedIndex = 0;
 				}
 				catch (Exception ex)
@@ -225,9 +227,6 @@ namespace accountBook
 			}
 			return "";
 		}
-
-
-
 		private void buttonSave_Click(object sender, EventArgs e)
 		{
 			if (textBoxContent.Text == "")
@@ -256,26 +255,22 @@ namespace accountBook
 						+ textBoxContent.Text.Trim() + "','"
 						+ textBoxMemo.Text.Trim()
 						+ "','Y',now(),now(),'CDY');";
-
 				CrudSql(QuerySave, "저장완료");
 				clear();
 				buttonSearch_Click(sender, e);
 				radioButton1.Checked = true;
 				chart();
 			}
-
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
 			}
-
 		}
 
 		public void buttonSearch_Click(object sender, EventArgs e)
 		{
 			try
 			{
-
 				string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
 				string searchtext = textBoxSearch.Text.Trim();
 				string keyText = comboBoxSearch.Text;
@@ -284,38 +279,37 @@ namespace accountBook
 		
 				string QuerySearch = "";
 			
-				if (keyText == "항목") field = "가계부.subject ";
-				else if (keyText == "내용") field = "가계부.content";
+				if (keyText == "항목") field = "ab.subject ";
+				else if (keyText == "내용") field = "ab.content";
 			
 				if (checkBoxDelShow.Checked == true)
 				{
-					flagYN = "가계부.flagYN = 'N'";
+					flagYN = "ab.flagYN = 'N'";
 				}
 				else
 				{
-					flagYN = "가계부.flagYN = 'Y'";
+					flagYN = "ab.flagYN = 'Y'";
 				}
 				// SELECT  accSeq, usedDate, dc_items.acount, dc_items.itemSeq, dc_items.subject, money, content, memo, dc_items.flagYN, dc_items.regDate, dc_items.issueDate, dc_items.issueID FROM dc_account LEFT JOIN dc_items ON dc_account.subject = dc_items.subject;
 
 				// 	+ getItemSeq(account, comboBoxName.Text) + "','"
 
 				QuerySearch = "select " +
-					 " 가계부.accSeq," +
-					 " 가계부.usedDate," +
-					 " 항목.acount," +
-					 " 항목.subject," +
-					 " 가계부.money," +
-					 " 가계부.content," +
-					 " 가계부.memo," +
-					 " 가계부.flagYN," +
-					 " 가계부.regDate," +
-					 " 가계부.issueDate," +
-					 " 가계부.issueID " +
-					 " FROM dc_account 가계부" +
-					 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE "
-							+ "가계부.usedDate between '" + dateTimePicker2.Value.ToString() + "' and '" + dateTimePicker1.Value.ToString() + "' AND "
+					 " ab.accSeq," +
+					 " ab.usedDate," +
+					 " it.acount," +
+					 " it.subject," +
+					 " ab.money," +
+					 " ab.content," +
+					 " ab.memo," +
+					 " ab.flagYN," +
+					 " ab.regDate," +
+					 " ab.issueDate," +
+					 " ab.issueID " +
+					 " FROM dc_account ab" +
+					 " RIGHT JOIN dc_items it ON (ab.subject = it.subject) WHERE "
+							+ "ab.usedDate between '" + dateTimePicker2.Value.ToString() + "' and '" + dateTimePicker1.Value.ToString() + "' AND "
 					 + field + " like '" + "%" + searchtext + "%" + "' AND " + flagYN;
-
 				MySqlConnection con = new MySqlConnection(Connect);
 				MySqlCommand Comm = new MySqlCommand(QuerySearch, con);
 				MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
@@ -323,9 +317,6 @@ namespace accountBook
 				DataTable dTable = new DataTable();
 				MyAdapter.Fill(dTable);
 				//dataGridView1.SuspendLayout(); 포스팅 더블버퍼링 C#차트
-
-				
-
 				dataGridView1.DataSource = dTable;
 				dataGridView1.Columns[0].Visible = false;
 				dataGridView1.Columns[dataGridView1.Columns.Count - 4].Visible = false;
@@ -384,9 +375,6 @@ namespace accountBook
 			comboBoxName.Text = "";
 		}
 
-	
-
-
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (changSaveUpdate == true)
@@ -395,7 +383,6 @@ namespace accountBook
 				buttonUpdate.Enabled = true;
 				buttonSave.Enabled = false;
 			}
-
 			else
 			{
 				changSaveUpdate = true;
@@ -415,8 +402,6 @@ namespace accountBook
 			textBoxMoney.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
 			textBoxContent.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
 			textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-
-
 			if (account == "수입")
 			{
 				radioButton1.Checked = false;
@@ -452,7 +437,6 @@ namespace accountBook
 				textBoxContent.Focus();
 				return;
 			}
-
 			string account = "지출";
 			if (radioButton2.Checked)
 				account = "수입";
@@ -460,17 +444,16 @@ namespace accountBook
 			try
 			{
 				string seqstr = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString();
-				string QueryUpdate = "update dawoon.dc_account AS 가계부 RIGHT JOIN dawoon.dc_items AS 항목 " +
-					"ON (가계부.subject = 항목.subject)" +
-					"SET 가계부.accSeq='" + seqstr +
-					"',가계부.usedDate='" + pDate.Text.Trim() +
-					"',가계부.accAcount='" + account +
-					"',가계부.subject='" + comboBoxName.Text +
-					"',가계부.money='" + textBoxMoney.Text +
-					"',가계부.content='" + textBoxContent.Text +
-					"',가계부.memo='" + textBoxMemo.Text + "' where 가계부.accSeq='" + seqstr + "';";
+				string QueryUpdate = "update dawoon.dc_account AS ab RIGHT JOIN dawoon.dc_items AS it " +
+					"ON (ab.itemSeq = it.itemSeq)" +
+					"SET ab.accSeq='" + seqstr +
+					"',ab.usedDate='" + pDate.Text.Trim() +
+					"',it.accAcount='" + account +
+					"',it.subject='" + comboBoxName.Text +
+					"',ab.money='" + textBoxMoney.Text +
+					"',ab.content='" + textBoxContent.Text +
+					"',ab.memo='" + textBoxMemo.Text + "' where ab.accSeq='" + seqstr + "';";
 				CrudSql(QueryUpdate, "수정완료");
-		
 				buttonSave.Enabled = true;
 				clear();
 				buttonSearch_Click(sender, e);
@@ -483,26 +466,11 @@ namespace accountBook
 				MessageBox.Show(ex.Message);
 			}
 		}
-		private void textBoxSearch_TextChanged(object sender, EventArgs e)
-		{
-			if (textBoxSearch.Text == "")
-			{
-				buttonSearch_Click(sender, e);
-			}
-		}
-
-
-		private void comboBoxSearch_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			
-			
-		}
+	
 		private void checkBoxDelShow_CheckedChanged(object sender, EventArgs e)
 		{
 			buttonSearch_Click(sender, e);
 		}
-
-
 		private void buttonLogin_Click(object sender, EventArgs e)
 		{
 			
@@ -727,17 +695,8 @@ namespace accountBook
 
 		}
 
-		private void buttonClose_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-
 	
-		
-		private void ChartRefresh()
-		{
-		
-		}
+
 		private void buttonFileSave_Click(object sender, EventArgs e)
 		{
 			ExportToCSV();
@@ -792,9 +751,6 @@ namespace accountBook
 					csvExport.Write(csvExport.NewLine); // write new line
 				}
 			}
-
-
-
 			csvExport.Flush();
 			csvExport.Close();
 			fs.Close();
@@ -822,15 +778,21 @@ namespace accountBook
 
 			return saveDialog;
 		}
-
-		private void ReportButton_Click(object sender, EventArgs e)
-		{
-	
-		}
-
 		private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
 		{
-
+		}
+		private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
+		{
+		}
+	}
+	//Put this class at the end of the main class or you will have problems.
+	public static class ExtensionMethods    // DoubleBuffered 메서드를 확장 시켜주자..
+	{
+		public static void DoubleBuffered(this DataGridView dgv, bool setting)
+		{
+			Type dgvType = dgv.GetType();
+			PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.SetProperty);
+			pi.SetValue(dgv, setting, null);
 		}
 	}
 }
