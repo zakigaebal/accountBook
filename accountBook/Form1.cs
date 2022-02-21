@@ -24,16 +24,16 @@ namespace accountBook
 			try
 			{
 				buttonLogin_Click(sender, e);
-				
-				buttonSearch_Click(sender, e);
+				chart();
+
 				buttonUpdate.Enabled = false;
 				radioButton1.Checked = true;
 				DateTime MonthFirstDay = DateTime.Now.AddDays(1 - DateTime.Now.Day);
 				dateTimePicker2.Value = MonthFirstDay;
 				pDate.Value = DateTime.Now;
 				dateTimePicker1.Value = DateTime.Now;
-			
-				chart();
+
+				buttonSearch_Click(sender, e);
 			}
 			catch (Exception ex)
 			{
@@ -70,9 +70,6 @@ namespace accountBook
 
 		private void chart()
 		{
-		
-
-
 			string strConn = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
 			string sql = "SELECT 가계부.accSeq," +
 					 " 가계부.usedDate," +
@@ -87,9 +84,10 @@ namespace accountBook
 					 " 가계부.issueID" +
 					 " FROM dc_account 가계부" +
 					 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE 가계부.flagYN = 'Y'";
-
+			try { 
 			using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
 			{
+		
 				conn.Open(); // conn 연결
 				MySqlCommand cmd = new MySqlCommand(sql, conn); //명령클래스 cmd 생성
 				DataSet ds = new DataSet(); //데이터셋 ds 생성
@@ -98,26 +96,33 @@ namespace accountBook
 										 // DataTable 객체를 DataSource에 지정하고,
 										 // X,Y축 컬럼을 XValueMember와 YValueMembers에 지정
 				chart1.DataSource = ds.Tables[0]; //chart6.데이터소스는 ds,Tables의 첫번째로 지정
-				chart1.Series[0].XValueMember = "subject"; // x축 컬럼 number필드
-				chart1.Series[0].YValueMembers = "money"; // y축 컬럼 time필드
+				chart1.Series[0].XValueMember = "subject"; // x축 컬럼 subject필드
+				chart1.Series[0].YValueMembers = "money"; // y축 컬럼 money필드
 
+	
 				chart1.DataBind(); //chart2 데이터바인딩
 				chart1.Series[0].ChartType = SeriesChartType.Pie;
-			
+
+
+				//가계부.usedDate(between '" + dateTimePicker2.Value.ToString() + "' and '" + dateTimePicker1.Value.ToString() + "') and " +
 			}
 
 			using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
 			{
+		
 				conn.Open(); // conn 연결
 				MySqlCommand cmd = new MySqlCommand(sql, conn); //명령클래스 cmd 생성
-				DataSet ds = new DataSet(); //데이터셋 ds 생성
 				DataTable dTable = new DataTable();
 				MySqlDataAdapter sa = new MySqlDataAdapter(cmd); //cmd인자를 받은 데이터어뎁터 sa 생성
 				sa.Fill(dTable);
-				sa.Fill(ds);
 				chart2.DataSource = dTable; //chart6.데이터소스는 ds,Tables의 첫번째로 지정
 				chart2.DataBindCrossTable(dTable.AsEnumerable(), "acount", "usedDate", "money", "");
-			
+				chart2.ChartAreas["ChartArea1"].AxisX.LabelStyle.Interval = 2;
+			}
+			}
+			catch (Exception ex)
+			{
+
 			}
 		}
 
@@ -276,8 +281,8 @@ namespace accountBook
 				string keyText = comboBoxSearch.Text;
 				string field = "";
 				string flagYN = "";
-				string Query2 = "";
-				string Query3 = "";
+		
+				string QuerySearch = "";
 			
 				if (keyText == "항목") field = "가계부.subject ";
 				else if (keyText == "내용") field = "가계부.content";
@@ -294,23 +299,9 @@ namespace accountBook
 
 				// 	+ getItemSeq(account, comboBoxName.Text) + "','"
 
-				Query3 = "select " +
+				QuerySearch = "select " +
 					 " 가계부.accSeq," +
 					 " 가계부.usedDate," +
-					 " 가계부.accAcount," +
-					 " 가계부.subject," +
-					 " 가계부.money," +
-					 " 가계부.content," +
-					 " 가계부.memo," +
-					 " 가계부.flagYN," +
-					 " 가계부.regDate," +
-					 " 가계부.issueDate," +
-					 " 가계부.issueID " +
-					"from dc_account 가계부 WHERE " + field + " like '" + "%" + searchtext + "%" + "' AND " + flagYN;
-
-				Query2 = "SELECT 가계부.accSeq," +
-					 " 가계부.usedDate," +
-				
 					 " 항목.acount," +
 					 " 항목.subject," +
 					 " 가계부.money," +
@@ -319,19 +310,21 @@ namespace accountBook
 					 " 가계부.flagYN," +
 					 " 가계부.regDate," +
 					 " 가계부.issueDate," +
-					 " 가계부.issueID" +
+					 " 가계부.issueID " +
 					 " FROM dc_account 가계부" +
-					 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE " + field + " like '" + "%" + searchtext + "%" + "' AND " + flagYN;
-				//  + field + "like '%" + searchtext + "'% AND " + flagYN;
-				//  " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE " + flagYN;
+					 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE "
+							+ "가계부.usedDate between '" + dateTimePicker2.Value.ToString() + "' and '" + dateTimePicker1.Value.ToString() + "' AND "
+					 + field + " like '" + "%" + searchtext + "%" + "' AND " + flagYN;
+
 				MySqlConnection con = new MySqlConnection(Connect);
-				MySqlCommand Comm = new MySqlCommand(Query3, con);
+				MySqlCommand Comm = new MySqlCommand(QuerySearch, con);
 				MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
 				MyAdapter.SelectCommand = Comm;
 				DataTable dTable = new DataTable();
 				MyAdapter.Fill(dTable);
 				//dataGridView1.SuspendLayout(); 포스팅 더블버퍼링 C#차트
 
+				
 
 				dataGridView1.DataSource = dTable;
 				dataGridView1.Columns[0].Visible = false;
@@ -616,59 +609,6 @@ namespace accountBook
 			}
 		}
 
-		
-
-		private void buttonTerm_Click(object sender, EventArgs e)
-		{
-			string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
-			string flagYN = "";
-			string Query2 = "";
-			if (checkBoxDelShow.Checked == true)
-			{
-				flagYN = "가계부.flagYN = 'N'";
-			}
-			else
-			{
-				flagYN = "가계부.flagYN = 'Y'";
-			}
-			// SELECT  accSeq, usedDate, dc_items.acount, dc_items.itemSeq, dc_items.subject, money, content, memo, dc_items.flagYN, dc_items.regDate, dc_items.issueDate, dc_items.issueID FROM dc_account LEFT JOIN dc_items ON dc_account.subject = dc_items.subject;
-			Query2 = "SELECT 가계부.accSeq," +
-							 " 가계부.usedDate," +
-							 " 항목.acount," +
-							 " 항목.subject," +
-							 " 가계부.money," +
-							 " 가계부.content," +
-							 " 가계부.memo," +
-							 " 가계부.flagYN," +
-							 " 가계부.regDate," +
-							 " 가계부.issueDate," +
-							 " 가계부.issueID" +
-							 " FROM dc_account 가계부" +
-							 " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject)" +
-							" where 가계부.usedDate between '" + dateTimePicker2.Value.ToString() + "' and '" + dateTimePicker1.Value.ToString() + "' and " + flagYN;
-			//  + field + "like '%" + searchtext + "'% AND " + flagYN;
-			//  " RIGHT JOIN dc_items 항목 ON (가계부.subject = 항목.subject) WHERE " + flagYN;
-			MySqlConnection con = new MySqlConnection(Connect);
-			MySqlCommand Comm = new MySqlCommand(Query2, con);
-			MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
-			MyAdapter.SelectCommand = Comm;
-			DataTable dTable = new DataTable();
-			MyAdapter.Fill(dTable);
-			dataGridView1.DataSource = dTable;
-			dataGridView1.Columns[0].Visible = false;
-			dataGridView1.Columns[dataGridView1.Columns.Count - 4].Visible = false;
-			dataGridView1.Columns[dataGridView1.Columns.Count - 3].Visible = false;
-			dataGridView1.Columns[dataGridView1.Columns.Count - 2].Visible = false;
-			dataGridView1.Columns[dataGridView1.Columns.Count - 1].Visible = false;
-			dataGridView1.Columns[1].HeaderText = "날짜";
-			dataGridView1.Columns[2].HeaderText = "계정";
-			dataGridView1.Columns[3].HeaderText = "항목";
-			dataGridView1.Columns[4].HeaderText = "금액";
-			dataGridView1.Columns[5].HeaderText = "내용";
-			dataGridView1.Columns[6].HeaderText = "메모";
-		}
-
-	
 		private void textBoxMoney_KeyDown(object sender, KeyEventArgs e)
 		{
 		}

@@ -59,9 +59,7 @@ namespace accountBook
 		}
 		private void clear()
 		{
-
 			textBoxSubject.Text = "";
-
 		}
 
 		private void show2()
