@@ -32,7 +32,7 @@ namespace accountBook
 				dateTimePicker2.Value = MonthFirstDay;
 				pDate.Value = DateTime.Now;
 				dateTimePicker1.Value = DateTime.Now;
-				ChartRefresh();
+			
 				chart();
 			}
 			catch (Exception ex)
@@ -117,6 +117,7 @@ namespace accountBook
 				sa.Fill(ds);
 				chart2.DataSource = dTable; //chart6.데이터소스는 ds,Tables의 첫번째로 지정
 				chart2.DataBindCrossTable(dTable.AsEnumerable(), "acount", "usedDate", "money", "");
+			
 			}
 		}
 
@@ -224,8 +225,6 @@ namespace accountBook
 
 		private void buttonSave_Click(object sender, EventArgs e)
 		{
-			
-			
 			if (textBoxContent.Text == "")
 			{
 				MessageBox.Show("내용을 입력해주세요");
@@ -237,12 +236,10 @@ namespace accountBook
 				var startDay = DateTime.Parse(pDate.Value.ToString("yyyy-MM-01"));
 				var endDay = DateTime.Parse(startDay.AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd"));
 				string moneydot = textBoxMoney.Text;
-
 		
 				string account = "지출";
 				if (radioButton2.Checked)
 					account = "수입";
-
 
 				string QuerySave = "insert into dawoon.dc_account(accSeq,usedDate,accAcount,itemSeq,subject,money,content,memo,flagYN,regDate,issueDate,issueID) values('"
 						+ seqCount() + "','"
@@ -255,19 +252,18 @@ namespace accountBook
 						+ textBoxMemo.Text.Trim()
 						+ "','Y',now(),now(),'CDY');";
 
-
 				CrudSql(QuerySave, "저장완료");
 				clear();
 				buttonSearch_Click(sender, e);
 				radioButton1.Checked = true;
-
+				chart();
 			}
-
 
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
 			}
+
 		}
 
 		public void buttonSearch_Click(object sender, EventArgs e)
@@ -448,7 +444,7 @@ namespace accountBook
 				CrudSql(QueryDelete, "삭제완료");
 				buttonSearch_Click(sender, e);
 				clear();
-
+				chart();
 			}
 			catch (Exception ex)
 			{
@@ -487,6 +483,7 @@ namespace accountBook
 				buttonSearch_Click(sender, e);
 				buttonUpdate.Enabled = false;
 				radioButton1.Checked = true;
+				chart();
 			}
 			catch (Exception ex)
 			{
@@ -795,37 +792,11 @@ namespace accountBook
 			this.Close();
 		}
 
-		private void toolStripButton1_Click(object sender, EventArgs e)
-		{
-
-			ChartRefresh();
-		
-		}
+	
 		
 		private void ChartRefresh()
 		{
-			string Connect = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
-			MySqlConnection conn = new MySqlConnection(Connect);
-			MySqlCommand cmd = new MySqlCommand("select * from dawoon.dc_account where flagYN='Y'", conn);
-			MySqlDataReader myReader;
-			
-			try
-			{
-				conn.Open();
-				myReader = cmd.ExecuteReader();
-				while (myReader.Read())
-				{
-					try 
-					{ 
 		
-					}
-					catch { }
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message);
-			}
 		}
 		private void buttonFileSave_Click(object sender, EventArgs e)
 		{
@@ -915,6 +886,11 @@ namespace accountBook
 		private void ReportButton_Click(object sender, EventArgs e)
 		{
 	
+		}
+
+		private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+		{
+
 		}
 	}
 }
