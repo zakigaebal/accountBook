@@ -41,8 +41,8 @@ namespace accountBook
 
 				dateTimePicker1.Value = DateTime.Now;
 				dateTimePicker3.Value = DateTime.Now;
-				dateTimePicker5.Value = MonthFirstDay;
-				dateTimePicker6.Value = DateTime.Now;
+				dateTimePicker4.Value = MonthFirstDay;
+				dateTimePicker7.Value = DateTime.Now;
 				chart();
 				buttonSearch_Click(sender, e);
 	
@@ -95,11 +95,11 @@ namespace accountBook
 			 "'" + dateTimePicker3.Text + "'" + "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc; ";
 			
 			string Dchart4 = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate  " +
-			"BETWEEN" + "'" + dateTimePicker5.Text + "'" + " AND " + "'" + dateTimePicker6.Text + "'" + "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+			"BETWEEN" + "'" + dateTimePicker4.Text + "'" + " AND " + "'" + dateTimePicker7.Text + "'" + "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
 			string Dchart5 = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate  " +
-			"BETWEEN" + "'" + dateTimePicker5.Text + "'" + " AND " + "'" + dateTimePicker6.Text + "'" + "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+			"BETWEEN" + "'" + dateTimePicker4.Text + "'" + " AND " + "'" + dateTimePicker7.Text + "'" + "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
 			string Dchart7 = "select useddate, accAcount, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate " +
-			"BETWEEN" + "'" + dateTimePicker5.Value.ToString() + "'" + " AND " + "'" + dateTimePicker6.Value.ToString() + "'" + "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc; ";
+			"BETWEEN" + "'" + dateTimePicker4.Value.ToString() + "'" + " AND " + "'" + dateTimePicker7.Value.ToString() + "'" + "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc; ";
 
 
 			try 
@@ -500,6 +500,7 @@ namespace accountBook
 				MessageBox.Show(ex.Message);
 			}
 		}
+
 		private void buttonUpdate_Click(object sender, EventArgs e)
 		{
 			if (textBoxContent.Text == "")
