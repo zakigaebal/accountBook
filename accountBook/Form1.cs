@@ -28,11 +28,11 @@ namespace accountBook
 		{
 			try
 			{
-		
+
 				dataGridView1.SuspendLayout();
 
 				buttonLogin_Click(sender, e);
-		
+
 				buttonUpdate.Enabled = false;
 				radioButton1.Checked = true;
 				DateTime MonthFirstDay = DateTime.Now.AddDays(1 - DateTime.Now.Day);
@@ -41,11 +41,23 @@ namespace accountBook
 
 				dateTimePicker1.Value = DateTime.Now;
 				dateTimePicker3.Value = DateTime.Now;
-				dateTimePicker4.Value = MonthFirstDay;
-				dateTimePicker7.Value = DateTime.Now;
+				dateTimePicker4.Value = DateTime.Now;
+
 				chart();
+				
 				buttonSearch_Click(sender, e);
-	
+				this.KeyPreview = true;
+				dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+				dataGridView1.Columns["money"].DefaultCellStyle.Format = "###,##0";
+
+
+
+
+
+
+
+
+
 			}
 			catch (Exception ex)
 			{
@@ -85,26 +97,121 @@ namespace accountBook
 
 		private void chart()
 		{
+			string keyMonth = comboBoxMonth.Text;
+			string keyYear = comboBoxYear.Text;
+			string keyYear2 = comboBoxYear2.Text;
+
+
+			string month = "";
+			string year = "";
+
+			if (keyYear == "2022") year = "2022";
+			else if (keyYear == "2023") year = "2023";
+			else if (keyYear == "2024") year = "2024";
+			else if (keyYear == "2025") year = "2025";
+			if (keyYear2 == "2022") year = "2022";
+			else if (keyYear2 == "2023") year = "2023";
+			else if (keyYear2 == "2024") year = "2024";
+			else if (keyYear2 == "2025") year = "2025";
+			if (keyMonth == "1월") month = "-01-";
+			else if (keyMonth == "2월") month = "-02-";
+			else if (keyMonth == "3월") month = "-03-";
+			else if (keyMonth == "4월") month = "-04-";
+			else if (keyMonth == "5월") month = "-05-";
+			else if (keyMonth == "6월") month = "-06-";
+			else if (keyMonth == "7월") month = "-07-";
+			else if (keyMonth == "8월") month = "-08-";
+			else if (keyMonth == "9월") month = "-09-";
+			else if (keyMonth == "10월") month = "-10-";
+			else if (keyMonth == "11월") month = "-11-";
+			else if (keyMonth == "12월") month = "-12-";
+
+
 			string strConn = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
 
-			string Dchart = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate  =" +
-			 "'" + dateTimePicker3.Text + "'"  + "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
-			string Dchart2 = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate  =" +
-			 "'" + dateTimePicker3.Text + "'"   + "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
-			string Dchart6 = "select useddate, accAcount, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate  =" +
-			 "'" + dateTimePicker3.Text + "'" + "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc; ";
-			
-			string Dchart4 = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate  " +
-			"BETWEEN" + "'" + dateTimePicker4.Text + "'" + " AND " + "'" + dateTimePicker7.Text + "'" + "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
-			string Dchart5 = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate  " +
-			"BETWEEN" + "'" + dateTimePicker4.Text + "'" + " AND " + "'" + dateTimePicker7.Text + "'" + "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
-			string Dchart7 = "select useddate, accAcount, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate " +
-			"BETWEEN" + "'" + dateTimePicker4.Value.ToString() + "'" + " AND " + "'" + dateTimePicker7.Value.ToString() + "'" + "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc; ";
+			string Dchart = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate  " +
+			"BETWEEN" + "'" + dateTimePicker4.Text + "'" 
+			+ " AND " + "'" + dateTimePicker3.Text + "'" 
+			+ "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+			string Dchart2 = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate  " +
+			"BETWEEN" + "'" + dateTimePicker4.Text + "'" + " AND " + "'" + dateTimePicker3.Text + "'" + "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+			string Dchart6 = "select useddate, accAcount, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate  " +
+		"BETWEEN" + "'" + dateTimePicker4.Text + "'"
+	  + " AND " + "'" + dateTimePicker3.Text + "'"
+		+ "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc; ";
 
+			string Dchart4 = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
+				+ "%" + month + "%' " 
+				+ "AND usedDate like '%" + year +"%' "
+				+ "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+			string Dchart5 = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
+				+ "%" + month + "%' "
+				+ "AND usedDate like '%" + year + "%' "
+				+ "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+			string Dchart7 = "select useddate, accAcount, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
+				+ "%" + month + "%' "
+				+ "AND usedDate like '%" + year + "%' "
+			+ "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc; ";
+			
+			string Dchart8 = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
+				+ "%" + year + "%' "
+				+ "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+			string Dchart9 = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
+				+ "%" + year + "%' "
+				+ "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+			string Dchart10 = "select useddate, accAcount, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
+	  + "%" + year + "%' "
+   	+ "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc; ";
 
 			try 
-			{ 
-			using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
+			{
+				chart2.ChartAreas[0].AxisX.Interval = 1;
+				chart2.ChartAreas[0].AxisY.Interval = 1;
+				chart6.ChartAreas[0].AxisX.Interval = 1;
+				chart6.ChartAreas[0].AxisY.Interval = 1;
+				chart9.ChartAreas[0].AxisX.Interval = 31;
+				chart9.ChartAreas[0].AxisY.Interval = 1;
+			
+			
+
+				chart1.Series[0].IsValueShownAsLabel = true;
+				chart1.Series[0].LabelFormat = "###,##0";
+				chart1.Series[0]["PieStartAngle"] = "270";
+				chart1.Series[0]["PieLabelStyle"] = "OutSide";
+				chart1.Series[0]["PieLineColor"] = "Blue";
+
+				chart3.Series[0].IsValueShownAsLabel = true;
+				chart3.Series[0]["PieStartAngle"] = "270";
+				chart3.Series[0]["PieLabelStyle"] = "OutSide";
+				chart3.Series[0]["PieLineColor"] = "Blue";
+				chart3.Series[0].LabelFormat = "###,##0";
+
+				chart4.Series[0].IsValueShownAsLabel = true;
+				chart4.Series[0]["PieStartAngle"] = "270";
+				chart4.Series[0]["PieLabelStyle"] = "OutSide";
+				chart4.Series[0]["PieLineColor"] = "Blue";
+				chart4.Series[0].LabelFormat = "###,##0";
+
+				chart5.Series[0].IsValueShownAsLabel = true;
+				chart5.Series[0]["PieStartAngle"] = "270";
+				chart5.Series[0]["PieLabelStyle"] = "OutSide";
+				chart5.Series[0]["PieLineColor"] = "Blue";
+				chart5.Series[0].LabelFormat = "###,##0";
+
+				chart7.Series[0].IsValueShownAsLabel = true;
+				chart7.Series[0]["PieStartAngle"] = "270";
+				chart7.Series[0]["PieLabelStyle"] = "OutSide";
+				chart7.Series[0]["PieLineColor"] = "Blue";
+				chart7.Series[0].LabelFormat = "###,##0";
+
+				chart8.Series[0].IsValueShownAsLabel = true;
+				chart8.Series[0]["PieStartAngle"] = "270";
+				chart8.Series[0]["PieLabelStyle"] = "OutSide";
+				chart8.Series[0]["PieLineColor"] = "Blue";
+				chart8.Series[0].LabelFormat = "###,##0";
+
+
+				using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
 			{
 				conn.Open(); // conn 연결
 				MySqlCommand cmd = new MySqlCommand(Dchart, conn); //명령클래스 cmd 생성
@@ -119,8 +226,9 @@ namespace accountBook
 	
 				chart1.DataBind(); //chart2 데이터바인딩
 				chart1.Series[0].ChartType = SeriesChartType.Pie;
-				//가계부.usedDate(between '" + dateTimePicker2.Value.ToString() + "' and '" + dateTimePicker1.Value.ToString() + "') and " +
-			}
+			
+					//가계부.usedDate(between '" + dateTimePicker2.Value.ToString() + "' and '" + dateTimePicker1.Value.ToString() + "') and " +
+				}
 				using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
 				{
 					conn.Open(); // conn 연결
@@ -183,6 +291,7 @@ namespace accountBook
 				chart2.DataSource = dTable; //chart6.데이터소스는 ds,Tables의 첫번째로 지정
 				chart2.DataBindCrossTable(dTable.AsEnumerable(), "accAcount", "usedDate", "money", "");
 		   }
+
 				using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
 				{
 					chart6.Series.Clear();
@@ -194,7 +303,47 @@ namespace accountBook
 					chart6.DataSource = dTable; //chart6.데이터소스는 ds,Tables의 첫번째로 지정
 					chart6.DataBindCrossTable(dTable.AsEnumerable(), "accAcount", "usedDate", "money", "");
 				}
-
+				using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
+				{
+					conn.Open(); // conn 연결
+					MySqlCommand cmd = new MySqlCommand(Dchart8, conn); //명령클래스 cmd 생성
+					DataSet ds = new DataSet(); //데이터셋 ds 생성
+					MySqlDataAdapter sa = new MySqlDataAdapter(cmd); //cmd인자를 받은 데이터어뎁터 sa 생성
+					sa.Fill(ds); //sa 데이터어뎁터 변수를 ds데이터셋에 채워라
+											 // DataTable 객체를 DataSource에 지정하고,
+											 // X,Y축 컬럼을 XValueMember와 YValueMembers에 지정
+					chart7.DataSource = ds.Tables[0]; //chart6.데이터소스는 ds,Tables의 첫번째로 지정
+					chart7.Series[0].XValueMember = "subject"; // x축 컬럼 subject필드
+					chart7.Series[0].YValueMembers = "money"; // y축 컬럼 money필드
+					chart7.DataBind(); //chart2 데이터바인딩
+					chart7.Series[0].ChartType = SeriesChartType.Pie;
+				}
+				using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
+				{
+					conn.Open(); // conn 연결
+					MySqlCommand cmd = new MySqlCommand(Dchart9, conn); //명령클래스 cmd 생성
+					DataSet ds = new DataSet(); //데이터셋 ds 생성
+					MySqlDataAdapter sa = new MySqlDataAdapter(cmd); //cmd인자를 받은 데이터어뎁터 sa 생성
+					sa.Fill(ds); //sa 데이터어뎁터 변수를 ds데이터셋에 채워라
+											 // DataTable 객체를 DataSource에 지정하고,
+											 // X,Y축 컬럼을 XValueMember와 YValueMembers에 지정
+					chart8.DataSource = ds.Tables[0]; //chart6.데이터소스는 ds,Tables의 첫번째로 지정
+					chart8.Series[0].XValueMember = "subject"; // x축 컬럼 subject필드
+					chart8.Series[0].YValueMembers = "money"; // y축 컬럼 money필드
+					chart8.DataBind(); //chart2 데이터바인딩
+					chart8.Series[0].ChartType = SeriesChartType.Pie;
+				}
+				using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
+				{
+					chart9.Series.Clear();
+					conn.Open(); // conn 연결
+					MySqlCommand cmd = new MySqlCommand(Dchart10, conn); //명령클래스 cmd 생성
+					DataTable dTable = new DataTable();
+					MySqlDataAdapter sa = new MySqlDataAdapter(cmd); //cmd인자를 받은 데이터어뎁터 sa 생성
+					sa.Fill(dTable);
+					chart9.DataSource = dTable; //chart6.데이터소스는 ds,Tables의 첫번째로 지정
+					chart9.DataBindCrossTable(dTable.AsEnumerable(), "accAcount", "usedDate", "money", "");
+				}
 			}
 			catch (Exception ex)
 			{
@@ -244,6 +393,10 @@ namespace accountBook
 				}
 			}
 		}
+
+
+
+
 		private string getItemSeq(string account, string txt)
 		{
 			try
@@ -321,7 +474,7 @@ namespace accountBook
 						+ account + "','"
 						+ getItemSeq(account, comboBoxName.Text) + "','"
 						+ comboBoxName.Text.Trim() + "','"
-						+ moneydot.Replace(",","") + "','"
+						+ moneydot.Replace(",", "") + "','"
 						+ textBoxContent.Text.Trim() + "','"
 						+ textBoxMemo.Text.Trim()
 						+ "','Y',now(),now(),'CDY');";
@@ -346,7 +499,6 @@ namespace accountBook
 				string keyText = comboBoxSearch.Text;
 				string field = "";
 				string flagYN = "";
-		
 				string QuerySearch = "";
 			
 				if (keyText == "항목") field = "ab.subject ";
@@ -475,8 +627,10 @@ namespace accountBook
 			textBoxMemo.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
 			if (account == "수입")
 			{
+
 				radioButton1.Checked = false;
 				radioButton2.Checked = true;
+
 			}
 			else if(account == "지출")
 			{
@@ -488,12 +642,14 @@ namespace accountBook
 		{
 			try
 			{
+
 				string seqstr = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString();
 				string QueryDelete = "update dawoon.dc_account set flagYN='N' WHERE accSeq=" + seqstr;
 				CrudSql(QueryDelete, "삭제완료");
 				buttonSearch_Click(sender, e);
 				clear();
 				chart();
+
 			}
 			catch (Exception ex)
 			{
@@ -521,8 +677,8 @@ namespace accountBook
 					"ON (ab.itemSeq = it.itemSeq)" +
 					"SET ab.accSeq='" + seqstr +
 					"',ab.usedDate='" + pDate.Text.Trim() +
-					"',it.acount='" + account +
-					"',it.subject='" + comboBoxName.Text +
+					"',ab.acount='" + account +
+					"',ab.subject='" + comboBoxName.Text +
 					"',ab.money='" + moneydot.Replace(",", "") +
 					"',ab.content='" + textBoxContent.Text +
 					"',ab.memo='" + textBoxMemo.Text + "' where ab.accSeq='" + seqstr + "';";
@@ -578,10 +734,6 @@ namespace accountBook
 			newform2.ShowDialog(this);
 		}
 
-
-
-
-		
 		private void buttonForm2_TextChanged(object sender, EventArgs e)
 		{
 		}
@@ -906,6 +1058,39 @@ namespace accountBook
 		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			chart();
+		}
+
+		private void Form1_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Escape)
+			{
+				this.Close();
+			}
+		}
+
+		private void comboBoxMonth_SelectedIndexChanged(object sender, EventArgs e)
+		{
+		
+		}
+
+		private void comboBoxYear_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			chart();
+		}
+
+		private void buttonChart2_Click_1(object sender, EventArgs e)
+		{
+			chart();
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			chart();
+		}
+
+		private void panel2_Paint_1(object sender, PaintEventArgs e)
+		{
+
 		}
 	}
 	//Put this class at the end of the main class or you will have problems.

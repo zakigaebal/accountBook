@@ -43,7 +43,7 @@
 			this.label1.Location = new System.Drawing.Point(8, 13);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(56, 21);
-			this.label1.TabIndex = 0;
+			this.label1.TabIndex = 1;
 			this.label1.Text = "이름(&I)";
 			// 
 			// label2
@@ -53,7 +53,7 @@
 			this.label2.Location = new System.Drawing.Point(8, 92);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(61, 21);
-			this.label2.TabIndex = 2;
+			this.label2.TabIndex = 3;
 			this.label2.Text = "암호(&P)";
 			// 
 			// textBoxName
@@ -63,7 +63,7 @@
 			this.textBoxName.Location = new System.Drawing.Point(12, 37);
 			this.textBoxName.Name = "textBoxName";
 			this.textBoxName.Size = new System.Drawing.Size(295, 43);
-			this.textBoxName.TabIndex = 1;
+			this.textBoxName.TabIndex = 2;
 			// 
 			// textBoxPassword
 			// 
@@ -72,7 +72,7 @@
 			this.textBoxPassword.Name = "textBoxPassword";
 			this.textBoxPassword.PasswordChar = '*';
 			this.textBoxPassword.Size = new System.Drawing.Size(295, 43);
-			this.textBoxPassword.TabIndex = 3;
+			this.textBoxPassword.TabIndex = 4;
 			this.textBoxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyDown);
 			// 
 			// buttonlogin
@@ -81,7 +81,7 @@
 			this.buttonlogin.Location = new System.Drawing.Point(0, 183);
 			this.buttonlogin.Name = "buttonlogin";
 			this.buttonlogin.Size = new System.Drawing.Size(323, 60);
-			this.buttonlogin.TabIndex = 4;
+			this.buttonlogin.TabIndex = 0;
 			this.buttonlogin.Text = "확인(&C)";
 			this.buttonlogin.UseVisualStyleBackColor = true;
 			this.buttonlogin.Click += new System.EventHandler(this.buttonlogin_Click);
