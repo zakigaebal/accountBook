@@ -70,11 +70,11 @@ namespace accountBook
 		private void imageLi()
 		{ // 탭컨트롤 아이콘, 3개를 추가합니다
 			ImageList imageList = new ImageList();
-			imageList.Images.Add("key1", Properties.Resources._1);
-			imageList.Images.Add("key2", Properties.Resources._31);
-			imageList.Images.Add("key3", Properties.Resources._365);
+			imageList.Images.Add("key1", Properties.Resources.day);
+			imageList.Images.Add("key2", Properties.Resources.date);
+			imageList.Images.Add("key3", Properties.Resources.month);
 			imageList.ColorDepth = ColorDepth.Depth32Bit;
-			imageList.ImageSize = new Size(18, 18); // 가로, 세로 크기 
+			imageList.ImageSize = new Size(128, 64); // 가로, 세로 크기 
 			imageList.TransparentColor = Color.Transparent; // 부모창 배경색으로 설정
 			tabControl1.ImageList = imageList;
 			tabPage1.ImageIndex = 0;

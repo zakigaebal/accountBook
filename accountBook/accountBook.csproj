@@ -176,6 +176,9 @@
     <None Include="Resources\1.png" />
     <None Include="Resources\31.png" />
     <None Include="Resources\365.png" />
+    <None Include="Resources\date.png" />
+    <None Include="Resources\day.png" />
+    <None Include="Resources\month.png" />
     <Content Include="Resources\number1.png" />
     <None Include="Resources\number11.png" />
     <Content Include="SqlServerTypes\readme.htm" />
