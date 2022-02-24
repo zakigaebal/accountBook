@@ -64,7 +64,6 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.checkBoxDelShow = new System.Windows.Forms.CheckBox();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.buttonFileSave = new System.Windows.Forms.ToolStripButton();
 			this.panel5 = new System.Windows.Forms.Panel();
 			this.buttonUpdate = new System.Windows.Forms.Button();
 			this.buttonSave = new System.Windows.Forms.Button();
@@ -125,6 +124,7 @@
 			this.chart6 = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.buttonFileSave = new System.Windows.Forms.ToolStripButton();
 			this.toolStrip1.SuspendLayout();
 			this.panel5.SuspendLayout();
 			this.panel6.SuspendLayout();
@@ -207,15 +207,6 @@
 			this.toolStrip1.TabIndex = 1;
 			this.toolStrip1.Text = "toolStrip1";
 			this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
-			// 
-			// buttonFileSave
-			// 
-			this.buttonFileSave.Image = global::accountBook.Properties.Resources._1564526_add_arrow_download_save_guardar_icon;
-			this.buttonFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.buttonFileSave.Name = "buttonFileSave";
-			this.buttonFileSave.Size = new System.Drawing.Size(90, 22);
-			this.buttonFileSave.Text = "파일저장(&S)";
-			this.buttonFileSave.Click += new System.EventHandler(this.buttonFileSave_Click);
 			// 
 			// panel5
 			// 
@@ -353,7 +344,7 @@
 			// 
 			// buttonForm2
 			// 
-			this.buttonForm2.BackColor = System.Drawing.Color.LightGreen;
+			this.buttonForm2.BackColor = System.Drawing.SystemColors.ButtonFace;
 			this.buttonForm2.FlatAppearance.BorderSize = 2;
 			this.buttonForm2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonForm2.Location = new System.Drawing.Point(301, 49);
@@ -452,7 +443,7 @@
 			this.dateTimePicker2.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
 			this.dateTimePicker2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
 			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dateTimePicker2.Location = new System.Drawing.Point(3, 1);
+			this.dateTimePicker2.Location = new System.Drawing.Point(3, 5);
 			this.dateTimePicker2.Name = "dateTimePicker2";
 			this.dateTimePicker2.Size = new System.Drawing.Size(130, 29);
 			this.dateTimePicker2.TabIndex = 25;
@@ -463,7 +454,7 @@
 			this.dateTimePicker1.CalendarFont = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
 			this.dateTimePicker1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
 			this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dateTimePicker1.Location = new System.Drawing.Point(152, 0);
+			this.dateTimePicker1.Location = new System.Drawing.Point(152, 5);
 			this.dateTimePicker1.Name = "dateTimePicker1";
 			this.dateTimePicker1.Size = new System.Drawing.Size(126, 29);
 			this.dateTimePicker1.TabIndex = 22;
@@ -476,7 +467,7 @@
 			this.comboBoxSearch.Items.AddRange(new object[] {
             "항목",
             "내용"});
-			this.comboBoxSearch.Location = new System.Drawing.Point(319, 1);
+			this.comboBoxSearch.Location = new System.Drawing.Point(319, 5);
 			this.comboBoxSearch.Name = "comboBoxSearch";
 			this.comboBoxSearch.Size = new System.Drawing.Size(70, 29);
 			this.comboBoxSearch.TabIndex = 2;
@@ -486,7 +477,7 @@
 			// 
 			// label5
 			// 
-			this.label5.Location = new System.Drawing.Point(125, 4);
+			this.label5.Location = new System.Drawing.Point(125, 8);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(30, 23);
 			this.label5.TabIndex = 24;
@@ -497,7 +488,7 @@
 			// 
 			this.textBoxSearch.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
 			this.textBoxSearch.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-			this.textBoxSearch.Location = new System.Drawing.Point(395, 1);
+			this.textBoxSearch.Location = new System.Drawing.Point(395, 5);
 			this.textBoxSearch.Name = "textBoxSearch";
 			this.textBoxSearch.Size = new System.Drawing.Size(114, 29);
 			this.textBoxSearch.TabIndex = 3;
@@ -507,11 +498,11 @@
 			// 
 			// buttonSearch
 			// 
-			this.buttonSearch.BackColor = System.Drawing.Color.Gold;
+			this.buttonSearch.BackColor = System.Drawing.SystemColors.Control;
 			this.buttonSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.buttonSearch.FlatAppearance.BorderSize = 2;
 			this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonSearch.Location = new System.Drawing.Point(515, 0);
+			this.buttonSearch.Location = new System.Drawing.Point(522, 4);
 			this.buttonSearch.Name = "buttonSearch";
 			this.buttonSearch.Size = new System.Drawing.Size(56, 31);
 			this.buttonSearch.TabIndex = 2;
@@ -521,7 +512,7 @@
 			// 
 			// panel1
 			// 
-			this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+			this.panel1.BackColor = System.Drawing.SystemColors.Menu;
 			this.panel1.Controls.Add(this.textBoxMemo);
 			this.panel1.Controls.Add(this.textBoxContent);
 			this.panel1.Controls.Add(this.labelWhy);
@@ -1100,6 +1091,15 @@
 			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
 			this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
 			this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
+			// 
+			// buttonFileSave
+			// 
+			this.buttonFileSave.Image = global::accountBook.Properties.Resources._1564526_add_arrow_download_save_guardar_icon;
+			this.buttonFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.buttonFileSave.Name = "buttonFileSave";
+			this.buttonFileSave.Size = new System.Drawing.Size(90, 22);
+			this.buttonFileSave.Text = "파일저장(&S)";
+			this.buttonFileSave.Click += new System.EventHandler(this.buttonFileSave_Click);
 			// 
 			// Form1
 			// 
