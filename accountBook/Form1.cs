@@ -125,11 +125,31 @@ namespace accountBook
 				pieIncomeChart.Series[0].LegendText = "#VALX(#PERCENT{P1})\n금액: #VALY{N0}원";
 				pieIncomeChart.DataManipulator.Sort(System.Windows.Forms.DataVisualization.Charting.PointSortOrder.Descending,
 				pieIncomeChart.Series[0]);
+
 				pieIncomeChart.Series[0]["CollectedSliceExploded"] = "true";
 			  pieIncomeChart.Series[0]["CollectedThreshold"] = "30";
 				pieIncomeChart.Series[0]["CollectedThresholdUsePercent"] = "false";
 				pieIncomeChart.Series[0]["CollectedLabel"] = "기타";
-				pieIncomeChart.Series[0]["CollectedLegendText"] = "기타\n(10%미만)";
+				pieIncomeChart.Series[0]["CollectedLegendText"] = "기타(10%미만)";
+
+				pieOutcomeChart.Series[0]["PieStartAngle"] = "270";
+				pieOutcomeChart.Series[0].IsVisibleInLegend = true;
+				pieOutcomeChart.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+				pieOutcomeChart.Legends[0].Alignment = StringAlignment.Center;
+				pieOutcomeChart.Series[0]["PieLabelStyle"] = "OutSide";
+				pieOutcomeChart.Series[0]["PieLineColor"] = "Blue";
+				pieOutcomeChart.Series[0].BorderWidth = 1;
+				pieOutcomeChart.Series[0].BorderColor = Color.Black;
+				pieOutcomeChart.Series[0].Label = "#VALX \n(#PERCENT{P0})";
+				pieOutcomeChart.Series[0].LegendText = "#VALX(#PERCENT{P0})\n금액: #VALY{N0}원";
+				pieOutcomeChart.DataManipulator.Sort(System.Windows.Forms.DataVisualization.Charting.PointSortOrder.Descending,
+				pieOutcomeChart.Series[0]);
+
+				pieOutcomeChart.Series[0]["CollectedSliceExploded"] = "true";
+				pieOutcomeChart.Series[0]["CollectedThreshold"] = "10";
+				pieOutcomeChart.Series[0]["CollectedThresholdUsePercent"] = "false";
+				pieOutcomeChart.Series[0]["CollectedLabel"] = "기타";
+				pieOutcomeChart.Series[0]["CollectedLegendText"] = "기타(10%미만)";
 
 				using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
 			{
@@ -152,23 +172,7 @@ namespace accountBook
 			using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
 			{
 		
-				pieOutcomeChart.Series[0]["PieStartAngle"] = "270";
-				pieOutcomeChart.Series[0].IsVisibleInLegend = true;
-				pieOutcomeChart.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-				pieOutcomeChart.Legends[0].Alignment = StringAlignment.Center;
-				pieOutcomeChart.Series[0]["PieLabelStyle"] = "OutSide";
-				pieOutcomeChart.Series[0]["PieLineColor"] = "Blue";
-				pieOutcomeChart.Series[0].BorderWidth = 1;
-				pieOutcomeChart.Series[0].BorderColor = Color.Black;
-				pieOutcomeChart.Series[0].Label = "#VALX \n(#PERCENT{P0})";
-				pieOutcomeChart.Series[0].LegendText = "#VALX(#PERCENT{P0})\n금액: #VALY{N0}원";
-				pieOutcomeChart.DataManipulator.Sort(System.Windows.Forms.DataVisualization.Charting.PointSortOrder.Descending,
-				pieOutcomeChart.Series[0]);
-				pieOutcomeChart.Series[0]["CollectedSliceExploded"] = "true";
-				pieOutcomeChart.Series[0]["CollectedThreshold"] = "10";
-				pieOutcomeChart.Series[0]["CollectedThresholdUsePercent"] = "false";
-				pieOutcomeChart.Series[0]["CollectedLabel"] = "기타";
-				pieOutcomeChart.Series[0]["CollectedLegendText"] = "기타\n(10%미만)";
+				
 
 				conn.Open(); // conn 연결
 				MySqlCommand cmd = new MySqlCommand(outcomeQuery, conn); //명령클래스 cmd 생성
@@ -195,20 +199,29 @@ namespace accountBook
 				MySqlCommand cmd = new MySqlCommand(barQuery, conn); //명령클래스 cmd 생성
 				DataTable dTable = new DataTable();
 				MySqlDataReader rdr = cmd.ExecuteReader();
-				while (rdr.Read())
+					string[] date = new string[100];
+					int[] income = new int[100];
+					int[] outcome = new int[100];
+
+					
+					while (rdr.Read())
 				{
-         	string accSearch	=	rdr["accacount"].ToString();
-					if(accSearch == "수입") { 
-					barChart.Series[0].Points.AddXY(rdr["usedDate"].ToString(), rdr["money"].ToString());
+						string lengths = rdr["usedDate"].ToString();
+					//	MessageBox.Show(lengths.Length.ToString());
+        if(tabControl1.SelectedIndex ==2)
+					barChart.Series[0].Points.AddXY(rdr["usedDate"].ToString(), rdr["income"].ToString());
+				else
+					barChart.Series[0].Points.AddXY(rdr["usedDate"].ToString().Substring(0, 10), rdr["income"].ToString());
 					barChart.Series[0].IsVisibleInLegend = true;
 					barChart.Series[0].Label = "[수입] #VALY{N0}원";
-					}
-					if (accSearch == "지출")
-					{
-						barChart.Series[1].Points.AddXY(rdr["usedDate"].ToString(), rdr["money"].ToString());
+
+					if (tabControl1.SelectedIndex == 2)
+							barChart.Series[1].Points.AddXY(rdr["usedDate"].ToString(), rdr["income"].ToString());
+					else
+						barChart.Series[1].Points.AddXY(rdr["usedDate"].ToString().Substring(0,10), rdr["outcome"].ToString());
 						barChart.Series[1].IsVisibleInLegend = true;
 						barChart.Series[1].Label = "[지출] #VALY{N0}원";
-					}
+				
 				}
 
 		
@@ -235,66 +248,92 @@ namespace accountBook
 		{
 			try
 			{
-	
-
-				string DayIncomeChartQuery = "select accAcount, SUBJECT, sum(money)  money FROM dc_account WHERE usedDate = '" +
-     	 dateTimePicker4.Text + "'"
-			+ "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
-
-			string DayOutcomeChartQuery = "select accAcount, SUBJECT, sum(money)  money FROM dc_account WHERE usedDate = '" +
+				if (tabControl1.SelectedIndex == 0)
+				{
+					string DayIncomeChartQuery = "select accAcount, SUBJECT, sum(money)  money FROM dc_account WHERE usedDate = '" +
 			dateTimePicker4.Text + "'"
-		  + "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+		+ "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
 
-				string DayBarChartQuery = "select useddate, accAcount, sum(money)  money FROM dc_account WHERE usedDate = '" +
-						dateTimePicker4.Text + "'"
-		+ "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc;";
+					string DayOutcomeChartQuery = "select accAcount, SUBJECT, sum(money)  money FROM dc_account WHERE usedDate = '" +
+					dateTimePicker4.Text + "'"
+					+ "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
 
-				dailyChart(DayIncomeChartQuery, DayOutcomeChartQuery, DayBarChartQuery, chart1, chart3, chart2);
-			
+					string DayBarChartQuery = "select useddate, accAcount, sum(money)  money FROM dc_account WHERE usedDate = '" +
+							dateTimePicker4.Text + "'"
+			+ "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc;";
 
-				//기간일자
-				string DateIncomeChartQuery = "select accAcount, SUBJECT, sum(money)  money FROM dc_account WHERE  (usedDate BETWEEN '" +
-				dateTimePicker3.Text + "' AND '" + dateTimePicker5.Text + "')"
-				+ "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
-
-				string DateOutcomeChartQuery = "select accAcount, SUBJECT, sum(money)  money FROM dc_account WHERE  (usedDate BETWEEN '" +
-				dateTimePicker3.Text + "' AND '" + dateTimePicker5.Text + "')"
-				+ "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
-
-				string DateBarChartQuery = "select useddate, accAcount, sum(money)  money FROM dc_account WHERE (usedDate BETWEEN '" +
-				dateTimePicker3.Text + "' AND '" + dateTimePicker5.Text + "')"
-						+ " AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc;";
-			
-				dailyChart(DateIncomeChartQuery, DateOutcomeChartQuery, DateBarChartQuery, chart4, chart5, chart6);
+					string DayunionQuery = "SELECT useddate, MAX(`수입`) income, MAX(`지출`) outcome FROM(select useddate, sum(money) `수입` , 0 `지출`  FROM dc_account WHERE(usedDate = '" + dateTimePicker4.Text
+					 + "') AND flagYN = 'Y'  AND accacount = '수입' GROUP BY useddate UNION all select useddate, 0 `수입`, sum(money) `지출`  FROM dc_account WHERE(usedDate = '"
+					+ dateTimePicker4.Text + "') AND flagYN = 'Y'  AND accacount = '지출' GROUP BY useddate) Z group by useddate ORDER BY useddate ASC; ";
 
 
-				//	string Dchart6 = "select useddate, accAcount, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate  " +
-				//"BETWEEN" + "'" + dateTimePicker4.Text + "'"
-				//+ " AND " + "'" + dateTimePicker3.Text + "'"
-				//+ "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc; ";
-				string keyYear2 = comboBoxYear2.Text;
-				string year = "";
-				//chart6.ChartAreas[0].AxisX.Interval = 31;
-				//chart6.ChartAreas[0].AxisY.Interval = 1;
-				if (keyYear2 == "2022") year = "2022";
-				else if (keyYear2 == "2023") year = "2023";
-				else if (keyYear2 == "2024") year = "2024";
-				else if (keyYear2 == "2025") year = "2025";
-				//월간
-				string MonthIncomeChartQuery = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
-				+ "%" + year + "%' "
-				+ "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
-			string MonthOutcomeChartQuery = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
-				+ "%" + year + "%' "
-				+ "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
-				//	string Dchart10 = "select useddate, accAcount, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
-				//+ "%" + year + "%' "
-				// + "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc; ";
-				string MonthBarChartQuery = "select useddate, accAcount, sum(money)  money FROM dc_account WHERE usedDate like '"
+					dailyChart(DayIncomeChartQuery, DayOutcomeChartQuery, DayunionQuery, chart1, chart3, chart2);
+				}
+
+
+				else if (tabControl1.SelectedIndex == 1)
+				{
+					//기간일자
+					string DateIncomeChartQuery = "select accAcount, SUBJECT, sum(money)  money FROM dc_account WHERE  (usedDate BETWEEN '" +
+					dateTimePicker3.Text + "' AND '" + dateTimePicker5.Text + "')"
+					+ "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+
+					string DateOutcomeChartQuery = "select accAcount, SUBJECT, sum(money)  money FROM dc_account WHERE  (usedDate BETWEEN '" +
+					dateTimePicker3.Text + "' AND '" + dateTimePicker5.Text + "')"
+					+ "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+
+					string DateBarChartQuery = "select useddate, accAcount, sum(money)  money FROM dc_account WHERE (usedDate BETWEEN '" +
+					dateTimePicker3.Text + "' AND '" + dateTimePicker5.Text + "')"
+							+ " AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc;";
+
+					string unionQuery = "SELECT useddate, MAX(`수입`) income, MAX(`지출`) outcome FROM(select useddate, sum(money) `수입` , 0 `지출`  FROM dc_account WHERE(usedDate BETWEEN '" + dateTimePicker3.Text
+						+ "' AND '" + dateTimePicker5.Text + "') AND flagYN = 'Y'  AND accacount = '수입' GROUP BY useddate UNION all select useddate, 0 `수입`, sum(money) `지출`  FROM dc_account WHERE(usedDate BETWEEN " +
+						"'" + dateTimePicker3.Text + "' AND '" + dateTimePicker5.Text + "') AND flagYN = 'Y'  AND accacount = '지출' GROUP BY useddate) Z group by useddate ORDER BY useddate ASC; ";
+
+					dailyChart(DateIncomeChartQuery, DateOutcomeChartQuery, unionQuery, chart4, chart5, chart6);
+				}
+
+				else if (tabControl1.SelectedIndex == 2)
+				{
+					//	string Dchart6 = "select useddate, accAcount, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate  " +
+					//"BETWEEN" + "'" + dateTimePicker4.Text + "'"
+					//+ " AND " + "'" + dateTimePicker3.Text + "'"
+					//+ "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc; ";
+					string keyYear2 = comboBoxYear2.Text;
+					string year = "";
+					//chart6.ChartAreas[0].AxisX.Interval = 31;
+					//chart6.ChartAreas[0].AxisY.Interval = 1;
+					if (keyYear2 == "2022") year = "2022";
+					else if (keyYear2 == "2020") year = "2020";
+					else if (keyYear2 == "2021") year = "2021";
+					else if (keyYear2 == "2023") year = "2023";
+					else if (keyYear2 == "2024") year = "2024";
+					else if (keyYear2 == "2025") year = "2025";
+					//월간
+					string MonthIncomeChartQuery = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
+					+ "%" + year + "%' "
+					+ "AND accAcount = '수입' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+					string MonthOutcomeChartQuery = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
 						+ "%" + year + "%' "
-						+ "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc;";
+						+ "AND accAcount = '지출' AND flagYN ='Y' GROUP BY SUBJECT ORDER BY useddate asc;";
+					//	string Dchart10 = "select useddate, accAcount, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
+					//+ "%" + year + "%' "
+					// + "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc; ";
+					string MonthBarChartQuery = "select useddate, accAcount, sum(money)  money FROM dc_account WHERE usedDate like '"
+							+ "%" + year + "%' "
+							+ "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc;";
 
-				dailyChart(MonthIncomeChartQuery, MonthOutcomeChartQuery, MonthBarChartQuery, chart7, chart8, chart9);
+
+					string MBUnionQuery = "SELECT z.useddate, MAX(`수입`) income, MAX(`지출`) outcome FROM( SELECT SUBSTRING(dc.useddate, 6, 2) useddate, sum(money) `수입` , 0 `지출`  FROM dc_account dc WHERE(dc.usedDate like '%" + year + "%') AND flagYN = 'Y'  AND accacount = '수입' GROUP BY dc.useddate UNION all select substring(dc.useddate, 6, 2) useddate, 0 `수입`, sum(money) `지출`  FROM dc_account dc WHERE(dc.usedDate like '%" + year + "%') AND flagYN = 'Y'  AND accacount = '지출' GROUP BY dc.useddate) Z group BY z.useddate ORDER BY z.useddate ASC; ";
+
+
+
+
+					dailyChart(MonthIncomeChartQuery, MonthOutcomeChartQuery, MBUnionQuery, chart7, chart8, chart9);
+				}
+
+
+				
 
 				// string Dchart4 = "select accAcount, SUBJECT, sum(money)  money FROM dc_account WHERE usedDate  " +
 				// "BETWEEN" + "'" + dateTimePicker3.Text + "'"
@@ -740,7 +779,7 @@ namespace accountBook
 					"ON (ab.itemSeq = it.itemSeq)" +
 					"SET ab.accSeq='" + seqstr +
 					"',ab.usedDate='" + pDate.Text.Trim() +
-					"',ab.acount='" + account +
+					"',ab.accAcount='" + account +
 					"',ab.subject='" + comboBoxName.Text +
 					"',ab.money='" + moneydot.Replace(",", "") +
 					"',ab.content='" + textBoxContent.Text +
@@ -1087,7 +1126,6 @@ namespace accountBook
 			}
 		}
 
-		
 
 		private void comboBoxYear_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -1103,10 +1141,6 @@ namespace accountBook
 		{
 			chart();
 		}
-
-	
-
-	
 
 		private void splitContainer3_Panel1_Paint(object sender, PaintEventArgs e)
 		{
@@ -1141,6 +1175,16 @@ namespace accountBook
 		private void buttonMonthChart_Click(object sender, EventArgs e)
 		{
 			chart();
+		}
+
+		private void tabPage2_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void tabPage3_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 	//Put this class at the end of the main class or you will have problems.

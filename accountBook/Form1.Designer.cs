@@ -573,7 +573,6 @@
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
 			this.tabPage1.Size = new System.Drawing.Size(1012, 485);
 			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "하루";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
 			// splitContainer5
@@ -737,8 +736,8 @@
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
 			this.tabPage2.Size = new System.Drawing.Size(1012, 485);
 			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "기간일자";
 			this.tabPage2.UseVisualStyleBackColor = true;
+			this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
 			// 
 			// splitContainer1
 			// 
@@ -855,8 +854,8 @@
 			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
 			this.tabPage3.Size = new System.Drawing.Size(1012, 485);
 			this.tabPage3.TabIndex = 2;
-			this.tabPage3.Text = "월간";
 			this.tabPage3.UseVisualStyleBackColor = true;
+			this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
 			// 
 			// splitContainer7
 			// 
@@ -1068,7 +1067,6 @@
 			this.chart6.Name = "chart6";
 			series6.ChartArea = "ChartArea1";
 			series6.IsValueShownAsLabel = true;
-			series6.Label = "#VAL";
 			series6.Legend = "Legend1";
 			series6.Name = "Series1";
 			this.chart6.Series.Add(series6);
@@ -1100,6 +1098,7 @@
 			this.dataGridView1.TabIndex = 17;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
 			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+			this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
 			this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
 			// 
 			// Form1
