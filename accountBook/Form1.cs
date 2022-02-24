@@ -56,7 +56,8 @@ namespace accountBook
 					dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
 					dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-				
+					dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
 					dataGridView1.Columns[dataGridView1.ColumnCount - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 					dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 					dataGridView1.RowHeadersVisible = false;
@@ -115,23 +116,30 @@ namespace accountBook
 		private void dailyChart(string incomeQuery, string outcomeQuery, string barQuery, Chart pieIncomeChart, Chart pieOutcomeChart, Chart barChart)
 		{
 			string strConn = "datasource=127.0.0.1;port=3306;database=dawoon;username=root;password=ekdnsel;Charset=utf8";
+			
 			try
 			{
 				pieIncomeChart.Series[0]["PieStartAngle"] = "270";
 				pieIncomeChart.Series[0].IsVisibleInLegend = true;
 				pieIncomeChart.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
 				pieIncomeChart.Legends[0].Alignment = StringAlignment.Center;
+				pieIncomeChart.Series[0]["PieLabelStyle"] = "OutSide";
+				pieIncomeChart.Series[0]["PieLineColor"] = "Blue";
 				pieIncomeChart.Series[0].BorderWidth = 1;
 				pieIncomeChart.Series[0].BorderColor = Color.Black;
 				pieIncomeChart.Series[0].Label = "#VALX \n(#PERCENT{P1})";
 				pieIncomeChart.Series[0].LegendText = "#VALX(#PERCENT{P1})\n금액: #VALY{N0}원";
+
+				pieIncomeChart.Series[0]["CollectedThresholdUsePercent"] = "true";
+				pieIncomeChart.Series[0]["CollectedThreshold"] = "5";
+				pieIncomeChart.Series[0]["CollectedSliceExploded"] = "true";
+				//	pieIncomeChart.Series[0]["CollectedLabel"] = "기타";
+				//	pieIncomeChart.Series[0]["CollectedLegendText"] = "기타";
+
 				pieIncomeChart.DataManipulator.Sort(System.Windows.Forms.DataVisualization.Charting.PointSortOrder.Descending,
 				pieIncomeChart.Series[0]);
-				pieIncomeChart.Series[0]["CollectedSliceExploded"] = "true";
-			  pieIncomeChart.Series[0]["CollectedThreshold"] = "30";
-				pieIncomeChart.Series[0]["CollectedThresholdUsePercent"] = "false";
-				pieIncomeChart.Series[0]["CollectedLabel"] = "기타";
-				pieIncomeChart.Series[0]["CollectedLegendText"] = "기타(10%미만)";
+
+		
 
 				pieOutcomeChart.Series[0]["PieStartAngle"] = "270";
 				pieOutcomeChart.Series[0].IsVisibleInLegend = true;
@@ -143,13 +151,21 @@ namespace accountBook
 				pieOutcomeChart.Series[0].BorderColor = Color.Black;
 				pieOutcomeChart.Series[0].Label = "#VALX\n(#PERCENT{P0})";
 				pieOutcomeChart.Series[0].LegendText = "#VALX(#PERCENT{P0})\n금액: #VALY{N0}원";
+
+				pieOutcomeChart.Series[0]["CollectedThresholdUsePercent"] = "true";
+				pieOutcomeChart.Series[0]["CollectedThreshold"] = "5";
+				pieOutcomeChart.Series[0]["CollectedSliceExploded"] = "true";
+
 				pieOutcomeChart.DataManipulator.Sort(System.Windows.Forms.DataVisualization.Charting.PointSortOrder.Descending,
 				pieOutcomeChart.Series[0]);
-				pieOutcomeChart.Series[0]["CollectedSliceExploded"] = "true";
-				pieOutcomeChart.Series[0]["CollectedThreshold"] = "10";
-				pieOutcomeChart.Series[0]["CollectedThresholdUsePercent"] = "false";
-				pieOutcomeChart.Series[0]["CollectedLabel"] = "기타";
-				pieOutcomeChart.Series[0]["CollectedLegendText"] = "기타(10%미만)";
+
+	
+
+		//		pieOutcomeChart.Series[0]["CollectedLabel"] = "기타";
+			//	pieOutcomeChart.Series[0]["CollectedLegendText"] = "기타";
+
+
+
 				using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
 			{
 				conn.Open(); // conn 연결
@@ -189,7 +205,6 @@ namespace accountBook
 			using (MySqlConnection conn = new MySqlConnection(strConn)) // 연결클래스 conn 생성
 			{
 				barChart.Series.Clear();
-			
 				barChart.Series.Add("수입");
 				barChart.Series.Add("지출");
 				conn.Open(); // conn 연결
@@ -199,21 +214,23 @@ namespace accountBook
 					string[] date = new string[100];
 					int[] income = new int[100];
 					int[] outcome = new int[100];
-
-					
 					while (rdr.Read())
 				{
 						string lengths = rdr["usedDate"].ToString();
 					//	MessageBox.Show(lengths.Length.ToString());
-        if(tabControl1.SelectedIndex ==2)
+        if(tabControl1.SelectedIndex == 2) 
+				{ 
 					barChart.Series[0].Points.AddXY(rdr["usedDate"].ToString(), rdr["income"].ToString());
-				else
+			 	}
+						else
 					barChart.Series[0].Points.AddXY(rdr["usedDate"].ToString().Substring(0, 10), rdr["income"].ToString());
 					barChart.Series[0].IsVisibleInLegend = true;
 					barChart.Series[0].Label = "[수입] #VALY{N0}원";
 
-					if (tabControl1.SelectedIndex == 2)
-							barChart.Series[1].Points.AddXY(rdr["usedDate"].ToString(), rdr["income"].ToString());
+					if (tabControl1.SelectedIndex == 2) { 
+							barChart.Series[1].Points.AddXY(rdr["usedDate"].ToString(), rdr["outcome"].ToString());
+					}
+
 					else
 						barChart.Series[1].Points.AddXY(rdr["usedDate"].ToString().Substring(0,10), rdr["outcome"].ToString());
 						barChart.Series[1].IsVisibleInLegend = true;
@@ -240,6 +257,8 @@ namespace accountBook
 		{
 			try
 			{
+			
+
 				if (tabControl1.SelectedIndex == 0)
 				{
 					string DayIncomeChartQuery = "select accAcount, SUBJECT, sum(money)  money FROM dc_account WHERE usedDate = '" +
@@ -284,6 +303,7 @@ namespace accountBook
 
 					dailyChart(DateIncomeChartQuery, DateOutcomeChartQuery, unionQuery, chart4, chart5, chart6);
 				}
+				
 
 				else if (tabControl1.SelectedIndex == 2)
 				{
@@ -295,6 +315,7 @@ namespace accountBook
 					else if (keyYear2 == "2023") year = "2023";
 					else if (keyYear2 == "2024") year = "2024";
 					else if (keyYear2 == "2025") year = "2025";
+
 					//월간
 					string MonthIncomeChartQuery = "select accAcount, SUBJECT, sum(cast(replace(money,',','') AS INT))  money FROM dc_account WHERE usedDate like '"
 					+ "%" + year + "%' "
@@ -305,7 +326,12 @@ namespace accountBook
 					string MonthBarChartQuery = "select useddate, accAcount, sum(money)  money FROM dc_account WHERE usedDate like '"
 							+ "%" + year + "%' "
 							+ "AND flagYN ='Y' GROUP BY useddate,accacount ORDER BY useddate asc;";
-					string MBUnionQuery = "SELECT z.useddate, MAX(`수입`) income, MAX(`지출`) outcome FROM( SELECT SUBSTRING(dc.useddate, 6, 2) useddate, sum(money) `수입` , 0 `지출`  FROM dc_account dc WHERE(dc.usedDate like '%" + year + "%') AND flagYN = 'Y'  AND accacount = '수입' GROUP BY dc.useddate UNION all select substring(dc.useddate, 6, 2) useddate, 0 `수입`, sum(money) `지출`  FROM dc_account dc WHERE(dc.usedDate like '%" + year + "%') AND flagYN = 'Y'  AND accacount = '지출' GROUP BY dc.useddate) Z group BY z.useddate ORDER BY z.useddate ASC; ";
+					
+					string MBUnionQuery = "SELECT z.useddate, MAX(`수입`) income, MAX(`지출`) outcome FROM( SELECT SUBSTRING(dc.useddate, 6, 2) " +
+						"useddate, sum(money) `수입` , 0 `지출`  FROM dc_account dc WHERE(dc.usedDate like '%" + year + "%') AND flagYN = 'Y'  AND accacount = '수입' " +
+						"GROUP BY dc.useddate UNION all select substring(dc.useddate, 6, 2) useddate, 0 `수입`, sum(money) `지출`  FROM dc_account dc WHERE(dc.usedDate like '%" 
+						+ year + "%') AND flagYN = 'Y'  AND accacount = '지출' GROUP BY dc.useddate) Z group BY z.useddate ORDER BY z.useddate ASC; ";
+					
 					dailyChart(MonthIncomeChartQuery, MonthOutcomeChartQuery, MBUnionQuery, chart7, chart8, chart9);
 				}
 
@@ -681,7 +707,7 @@ namespace accountBook
 			textBoxMemo.Text = "";
 			textBoxContent.Text = "";
 			pDate.Text = "";
-			comboBoxName.Text = "";
+		
 			textBoxMoney.Text = "";
 
 		}
@@ -1169,6 +1195,11 @@ namespace accountBook
 		}
 
 		private void tabPage3_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void splitContainer8_SplitterMoved(object sender, SplitterEventArgs e)
 		{
 
 		}

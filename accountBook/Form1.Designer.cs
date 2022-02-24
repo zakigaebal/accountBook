@@ -39,17 +39,6 @@
 			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
 			System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
 			System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
 			System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
 			System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -61,9 +50,21 @@
 			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
 			System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
 			System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.checkBoxDelShow = new System.Windows.Forms.CheckBox();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+			this.buttonFileSave = new System.Windows.Forms.ToolStripButton();
 			this.panel5 = new System.Windows.Forms.Panel();
 			this.buttonUpdate = new System.Windows.Forms.Button();
 			this.buttonSave = new System.Windows.Forms.Button();
@@ -83,6 +84,8 @@
 			this.textBoxContent = new System.Windows.Forms.TextBox();
 			this.textBoxMemo = new System.Windows.Forms.TextBox();
 			this.panel6 = new System.Windows.Forms.Panel();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.panel8 = new System.Windows.Forms.Panel();
 			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
 			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -110,6 +113,9 @@
 			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
 			this.buttonChart2 = new System.Windows.Forms.Button();
 			this.splitContainer6 = new System.Windows.Forms.SplitContainer();
+			this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+			this.chart5 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+			this.chart6 = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.splitContainer7 = new System.Windows.Forms.SplitContainer();
 			this.splitContainer8 = new System.Windows.Forms.SplitContainer();
@@ -119,15 +125,11 @@
 			this.chart7 = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.chart8 = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.chart9 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.chart5 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.chart6 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.buttonFileSave = new System.Windows.Forms.ToolStripButton();
 			this.toolStrip1.SuspendLayout();
 			this.panel5.SuspendLayout();
 			this.panel6.SuspendLayout();
+			this.panel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.panel8.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.panel7.SuspendLayout();
@@ -161,6 +163,9 @@
 			this.splitContainer6.Panel1.SuspendLayout();
 			this.splitContainer6.Panel2.SuspendLayout();
 			this.splitContainer6.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.chart5)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.chart6)).BeginInit();
 			this.tabPage3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).BeginInit();
 			this.splitContainer7.Panel1.SuspendLayout();
@@ -177,11 +182,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.chart7)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart8)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart9)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.chart5)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.chart6)).BeginInit();
-			this.panel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// checkBoxDelShow
@@ -207,6 +207,15 @@
 			this.toolStrip1.TabIndex = 1;
 			this.toolStrip1.Text = "toolStrip1";
 			this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
+			// 
+			// buttonFileSave
+			// 
+			this.buttonFileSave.Image = global::accountBook.Properties.Resources._1564526_add_arrow_download_save_guardar_icon;
+			this.buttonFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.buttonFileSave.Name = "buttonFileSave";
+			this.buttonFileSave.Size = new System.Drawing.Size(90, 22);
+			this.buttonFileSave.Text = "파일저장(&S)";
+			this.buttonFileSave.Click += new System.EventHandler(this.buttonFileSave_Click);
 			// 
 			// panel5
 			// 
@@ -424,6 +433,32 @@
 			this.panel6.Size = new System.Drawing.Size(581, 511);
 			this.panel6.TabIndex = 15;
 			// 
+			// panel2
+			// 
+			this.panel2.Controls.Add(this.dataGridView1);
+			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel2.Location = new System.Drawing.Point(0, 246);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(581, 265);
+			this.panel2.TabIndex = 18;
+			// 
+			// dataGridView1
+			// 
+			this.dataGridView1.AllowUserToAddRows = false;
+			this.dataGridView1.AllowUserToDeleteRows = false;
+			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Location = new System.Drawing.Point(3, 0);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.ReadOnly = true;
+			this.dataGridView1.RowTemplate.Height = 23;
+			this.dataGridView1.Size = new System.Drawing.Size(581, 265);
+			this.dataGridView1.TabIndex = 17;
+			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+			this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+			this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
+			// 
 			// panel8
 			// 
 			this.panel8.Controls.Add(this.dateTimePicker2);
@@ -596,7 +631,6 @@
 			// 
 			this.splitContainer3.Panel1.Controls.Add(this.buttonChart);
 			this.splitContainer3.Panel1.Controls.Add(this.dateTimePicker4);
-			this.splitContainer3.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer3_Panel1_Paint);
 			// 
 			// splitContainer3.Panel2
 			// 
@@ -646,7 +680,6 @@
 			// splitContainer4.Panel2
 			// 
 			this.splitContainer4.Panel2.Controls.Add(this.chart3);
-			this.splitContainer4.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer4_Panel2_Paint);
 			this.splitContainer4.Size = new System.Drawing.Size(1006, 229);
 			this.splitContainer4.SplitterDistance = 487;
 			this.splitContainer4.TabIndex = 0;
@@ -832,171 +865,9 @@
 			// splitContainer6.Panel2
 			// 
 			this.splitContainer6.Panel2.Controls.Add(this.chart5);
-			this.splitContainer6.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer4_Panel2_Paint);
 			this.splitContainer6.Size = new System.Drawing.Size(1006, 220);
 			this.splitContainer6.SplitterDistance = 474;
 			this.splitContainer6.TabIndex = 0;
-			// 
-			// tabPage3
-			// 
-			this.tabPage3.Controls.Add(this.splitContainer7);
-			this.tabPage3.Location = new System.Drawing.Point(4, 22);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage3.Size = new System.Drawing.Size(1012, 485);
-			this.tabPage3.TabIndex = 2;
-			this.tabPage3.UseVisualStyleBackColor = true;
-			this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
-			// 
-			// splitContainer7
-			// 
-			this.splitContainer7.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.splitContainer7.Location = new System.Drawing.Point(3, 3);
-			this.splitContainer7.Name = "splitContainer7";
-			this.splitContainer7.Orientation = System.Windows.Forms.Orientation.Horizontal;
-			// 
-			// splitContainer7.Panel1
-			// 
-			this.splitContainer7.Panel1.Controls.Add(this.splitContainer8);
-			// 
-			// splitContainer7.Panel2
-			// 
-			this.splitContainer7.Panel2.Controls.Add(this.chart9);
-			this.splitContainer7.Size = new System.Drawing.Size(1006, 479);
-			this.splitContainer7.SplitterDistance = 220;
-			this.splitContainer7.TabIndex = 4;
-			// 
-			// splitContainer8
-			// 
-			this.splitContainer8.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.splitContainer8.IsSplitterFixed = true;
-			this.splitContainer8.Location = new System.Drawing.Point(0, 0);
-			this.splitContainer8.Name = "splitContainer8";
-			this.splitContainer8.Orientation = System.Windows.Forms.Orientation.Horizontal;
-			// 
-			// splitContainer8.Panel1
-			// 
-			this.splitContainer8.Panel1.Controls.Add(this.comboBoxYear2);
-			this.splitContainer8.Panel1.Controls.Add(this.buttonMonthChart);
-			// 
-			// splitContainer8.Panel2
-			// 
-			this.splitContainer8.Panel2.Controls.Add(this.splitContainer9);
-			this.splitContainer8.Size = new System.Drawing.Size(1006, 220);
-			this.splitContainer8.SplitterDistance = 36;
-			this.splitContainer8.TabIndex = 2;
-			// 
-			// comboBoxYear2
-			// 
-			this.comboBoxYear2.FormattingEnabled = true;
-			this.comboBoxYear2.Items.AddRange(new object[] {
-            "2020",
-            "2021",
-            "2022",
-            "2023",
-            "2024",
-            "2025"});
-			this.comboBoxYear2.Location = new System.Drawing.Point(870, 9);
-			this.comboBoxYear2.Name = "comboBoxYear2";
-			this.comboBoxYear2.Size = new System.Drawing.Size(69, 20);
-			this.comboBoxYear2.TabIndex = 29;
-			this.comboBoxYear2.Text = "2022";
-			this.comboBoxYear2.SelectedIndexChanged += new System.EventHandler(this.comboBoxYear2_SelectedIndexChanged);
-			// 
-			// buttonMonthChart
-			// 
-			this.buttonMonthChart.BackColor = System.Drawing.Color.Gold;
-			this.buttonMonthChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.buttonMonthChart.FlatAppearance.BorderSize = 2;
-			this.buttonMonthChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonMonthChart.Location = new System.Drawing.Point(945, 3);
-			this.buttonMonthChart.Name = "buttonMonthChart";
-			this.buttonMonthChart.Size = new System.Drawing.Size(56, 31);
-			this.buttonMonthChart.TabIndex = 26;
-			this.buttonMonthChart.Text = "검색";
-			this.buttonMonthChart.UseVisualStyleBackColor = false;
-			this.buttonMonthChart.Click += new System.EventHandler(this.buttonMonthChart_Click);
-			// 
-			// splitContainer9
-			// 
-			this.splitContainer9.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.splitContainer9.Location = new System.Drawing.Point(0, 0);
-			this.splitContainer9.Name = "splitContainer9";
-			// 
-			// splitContainer9.Panel1
-			// 
-			this.splitContainer9.Panel1.Controls.Add(this.chart7);
-			// 
-			// splitContainer9.Panel2
-			// 
-			this.splitContainer9.Panel2.Controls.Add(this.chart8);
-			this.splitContainer9.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer4_Panel2_Paint);
-			this.splitContainer9.Size = new System.Drawing.Size(1006, 180);
-			this.splitContainer9.SplitterDistance = 487;
-			this.splitContainer9.TabIndex = 0;
-			// 
-			// chart7
-			// 
-			this.chart7.BorderlineColor = System.Drawing.Color.Black;
-			this.chart7.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-			chartArea7.Name = "ChartArea1";
-			this.chart7.ChartAreas.Add(chartArea7);
-			this.chart7.Dock = System.Windows.Forms.DockStyle.Fill;
-			legend7.Name = "Legend1";
-			this.chart7.Legends.Add(legend7);
-			this.chart7.Location = new System.Drawing.Point(0, 0);
-			this.chart7.Name = "chart7";
-			series7.ChartArea = "ChartArea1";
-			series7.Legend = "Legend1";
-			series7.Name = "Series1";
-			this.chart7.Series.Add(series7);
-			this.chart7.Size = new System.Drawing.Size(487, 180);
-			this.chart7.TabIndex = 3;
-			this.chart7.Text = "chart7";
-			title5.Name = "Title1";
-			title5.Text = "수입";
-			this.chart7.Titles.Add(title5);
-			// 
-			// chart8
-			// 
-			this.chart8.BorderlineColor = System.Drawing.Color.Black;
-			this.chart8.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-			chartArea8.Name = "ChartArea1";
-			this.chart8.ChartAreas.Add(chartArea8);
-			this.chart8.Dock = System.Windows.Forms.DockStyle.Fill;
-			legend8.Name = "Legend1";
-			this.chart8.Legends.Add(legend8);
-			this.chart8.Location = new System.Drawing.Point(0, 0);
-			this.chart8.Name = "chart8";
-			series8.ChartArea = "ChartArea1";
-			series8.Legend = "Legend1";
-			series8.Name = "Series1";
-			this.chart8.Series.Add(series8);
-			this.chart8.Size = new System.Drawing.Size(515, 180);
-			this.chart8.TabIndex = 5;
-			this.chart8.Text = "chart8";
-			title6.Name = "Title1";
-			title6.Text = "지출";
-			this.chart8.Titles.Add(title6);
-			// 
-			// chart9
-			// 
-			this.chart9.BorderlineColor = System.Drawing.Color.Black;
-			this.chart9.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-			chartArea9.Name = "ChartArea1";
-			this.chart9.ChartAreas.Add(chartArea9);
-			this.chart9.Dock = System.Windows.Forms.DockStyle.Fill;
-			legend9.Name = "Legend1";
-			this.chart9.Legends.Add(legend9);
-			this.chart9.Location = new System.Drawing.Point(0, 0);
-			this.chart9.Name = "chart9";
-			series9.ChartArea = "ChartArea1";
-			series9.Legend = "Legend1";
-			series9.Name = "Series1";
-			this.chart9.Series.Add(series9);
-			this.chart9.Size = new System.Drawing.Size(1006, 255);
-			this.chart9.TabIndex = 0;
-			this.chart9.Text = "chart9";
 			// 
 			// chart4
 			// 
@@ -1065,41 +936,168 @@
 			this.chart6.TabIndex = 1;
 			this.chart6.Text = "chart6";
 			// 
-			// panel2
+			// tabPage3
 			// 
-			this.panel2.Controls.Add(this.dataGridView1);
-			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel2.Location = new System.Drawing.Point(0, 246);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(581, 265);
-			this.panel2.TabIndex = 18;
+			this.tabPage3.Controls.Add(this.splitContainer7);
+			this.tabPage3.Location = new System.Drawing.Point(4, 22);
+			this.tabPage3.Name = "tabPage3";
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage3.Size = new System.Drawing.Size(1012, 485);
+			this.tabPage3.TabIndex = 2;
+			this.tabPage3.UseVisualStyleBackColor = true;
+			this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
 			// 
-			// dataGridView1
+			// splitContainer7
 			// 
-			this.dataGridView1.AllowUserToAddRows = false;
-			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.RowTemplate.Height = 23;
-			this.dataGridView1.Size = new System.Drawing.Size(581, 265);
-			this.dataGridView1.TabIndex = 17;
-			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-			this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
-			this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
+			this.splitContainer7.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer7.Location = new System.Drawing.Point(3, 3);
+			this.splitContainer7.Name = "splitContainer7";
+			this.splitContainer7.Orientation = System.Windows.Forms.Orientation.Horizontal;
 			// 
-			// buttonFileSave
+			// splitContainer7.Panel1
 			// 
-			this.buttonFileSave.Image = global::accountBook.Properties.Resources._1564526_add_arrow_download_save_guardar_icon;
-			this.buttonFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.buttonFileSave.Name = "buttonFileSave";
-			this.buttonFileSave.Size = new System.Drawing.Size(90, 22);
-			this.buttonFileSave.Text = "파일저장(&S)";
-			this.buttonFileSave.Click += new System.EventHandler(this.buttonFileSave_Click);
+			this.splitContainer7.Panel1.Controls.Add(this.splitContainer8);
+			// 
+			// splitContainer7.Panel2
+			// 
+			this.splitContainer7.Panel2.Controls.Add(this.chart9);
+			this.splitContainer7.Size = new System.Drawing.Size(1006, 479);
+			this.splitContainer7.SplitterDistance = 239;
+			this.splitContainer7.TabIndex = 4;
+			// 
+			// splitContainer8
+			// 
+			this.splitContainer8.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer8.IsSplitterFixed = true;
+			this.splitContainer8.Location = new System.Drawing.Point(0, 0);
+			this.splitContainer8.Name = "splitContainer8";
+			this.splitContainer8.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// splitContainer8.Panel1
+			// 
+			this.splitContainer8.Panel1.Controls.Add(this.comboBoxYear2);
+			this.splitContainer8.Panel1.Controls.Add(this.buttonMonthChart);
+			// 
+			// splitContainer8.Panel2
+			// 
+			this.splitContainer8.Panel2.Controls.Add(this.splitContainer9);
+			this.splitContainer8.Size = new System.Drawing.Size(1006, 239);
+			this.splitContainer8.SplitterDistance = 39;
+			this.splitContainer8.TabIndex = 2;
+			this.splitContainer8.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer8_SplitterMoved);
+			// 
+			// comboBoxYear2
+			// 
+			this.comboBoxYear2.FormattingEnabled = true;
+			this.comboBoxYear2.Items.AddRange(new object[] {
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"});
+			this.comboBoxYear2.Location = new System.Drawing.Point(870, 9);
+			this.comboBoxYear2.Name = "comboBoxYear2";
+			this.comboBoxYear2.Size = new System.Drawing.Size(69, 20);
+			this.comboBoxYear2.TabIndex = 29;
+			this.comboBoxYear2.Text = "2022";
+			this.comboBoxYear2.SelectedIndexChanged += new System.EventHandler(this.comboBoxYear2_SelectedIndexChanged);
+			// 
+			// buttonMonthChart
+			// 
+			this.buttonMonthChart.BackColor = System.Drawing.Color.Gold;
+			this.buttonMonthChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.buttonMonthChart.FlatAppearance.BorderSize = 2;
+			this.buttonMonthChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonMonthChart.Location = new System.Drawing.Point(945, 3);
+			this.buttonMonthChart.Name = "buttonMonthChart";
+			this.buttonMonthChart.Size = new System.Drawing.Size(56, 31);
+			this.buttonMonthChart.TabIndex = 26;
+			this.buttonMonthChart.Text = "검색";
+			this.buttonMonthChart.UseVisualStyleBackColor = false;
+			this.buttonMonthChart.Click += new System.EventHandler(this.buttonMonthChart_Click);
+			// 
+			// splitContainer9
+			// 
+			this.splitContainer9.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer9.Location = new System.Drawing.Point(0, 0);
+			this.splitContainer9.Name = "splitContainer9";
+			// 
+			// splitContainer9.Panel1
+			// 
+			this.splitContainer9.Panel1.Controls.Add(this.chart7);
+			// 
+			// splitContainer9.Panel2
+			// 
+			this.splitContainer9.Panel2.Controls.Add(this.chart8);
+			this.splitContainer9.Size = new System.Drawing.Size(1006, 196);
+			this.splitContainer9.SplitterDistance = 487;
+			this.splitContainer9.TabIndex = 0;
+			// 
+			// chart7
+			// 
+			this.chart7.BorderlineColor = System.Drawing.Color.Black;
+			this.chart7.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+			chartArea7.Name = "ChartArea1";
+			this.chart7.ChartAreas.Add(chartArea7);
+			this.chart7.Dock = System.Windows.Forms.DockStyle.Fill;
+			legend7.Name = "Legend1";
+			this.chart7.Legends.Add(legend7);
+			this.chart7.Location = new System.Drawing.Point(0, 0);
+			this.chart7.Name = "chart7";
+			series7.ChartArea = "ChartArea1";
+			series7.Legend = "Legend1";
+			series7.Name = "Series1";
+			this.chart7.Series.Add(series7);
+			this.chart7.Size = new System.Drawing.Size(487, 196);
+			this.chart7.TabIndex = 3;
+			this.chart7.Text = "chart7";
+			title5.Name = "Title1";
+			title5.Text = "수입";
+			this.chart7.Titles.Add(title5);
+			// 
+			// chart8
+			// 
+			this.chart8.BorderlineColor = System.Drawing.Color.Black;
+			this.chart8.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+			chartArea8.Name = "ChartArea1";
+			this.chart8.ChartAreas.Add(chartArea8);
+			this.chart8.Dock = System.Windows.Forms.DockStyle.Fill;
+			legend8.Name = "Legend1";
+			this.chart8.Legends.Add(legend8);
+			this.chart8.Location = new System.Drawing.Point(0, 0);
+			this.chart8.Name = "chart8";
+			series8.ChartArea = "ChartArea1";
+			series8.Legend = "Legend1";
+			series8.Name = "Series1";
+			this.chart8.Series.Add(series8);
+			this.chart8.Size = new System.Drawing.Size(515, 196);
+			this.chart8.TabIndex = 5;
+			this.chart8.Text = "chart8";
+			title6.Name = "Title1";
+			title6.Text = "지출";
+			this.chart8.Titles.Add(title6);
+			// 
+			// chart9
+			// 
+			this.chart9.BorderlineColor = System.Drawing.Color.Black;
+			this.chart9.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+			chartArea9.Name = "ChartArea1";
+			this.chart9.ChartAreas.Add(chartArea9);
+			this.chart9.Dock = System.Windows.Forms.DockStyle.Fill;
+			legend9.Name = "Legend1";
+			this.chart9.Legends.Add(legend9);
+			this.chart9.Location = new System.Drawing.Point(0, 0);
+			this.chart9.Name = "chart9";
+			series9.ChartArea = "ChartArea1";
+			series9.IsValueShownAsLabel = true;
+			series9.Label = "#VAL";
+			series9.Legend = "Legend1";
+			series9.Name = "Series1";
+			this.chart9.Series.Add(series9);
+			this.chart9.Size = new System.Drawing.Size(1006, 236);
+			this.chart9.TabIndex = 1;
+			this.chart9.Text = "chart9";
 			// 
 			// Form1
 			// 
@@ -1122,6 +1120,8 @@
 			this.toolStrip1.PerformLayout();
 			this.panel5.ResumeLayout(false);
 			this.panel6.ResumeLayout(false);
+			this.panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.panel8.ResumeLayout(false);
 			this.panel8.PerformLayout();
 			this.panel1.ResumeLayout(false);
@@ -1157,6 +1157,9 @@
 			this.splitContainer6.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
 			this.splitContainer6.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.chart5)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.chart6)).EndInit();
 			this.tabPage3.ResumeLayout(false);
 			this.splitContainer7.Panel1.ResumeLayout(false);
 			this.splitContainer7.Panel2.ResumeLayout(false);
@@ -1173,11 +1176,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.chart7)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart8)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart9)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.chart5)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.chart6)).EndInit();
-			this.panel2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1230,7 +1228,6 @@
 		private System.Windows.Forms.SplitContainer splitContainer9;
 		private System.Windows.Forms.DataVisualization.Charting.Chart chart7;
 		private System.Windows.Forms.DataVisualization.Charting.Chart chart8;
-		private System.Windows.Forms.DataVisualization.Charting.Chart chart9;
 		private System.Windows.Forms.Panel panel8;
 		private System.Windows.Forms.DateTimePicker dateTimePicker2;
 		private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -1247,6 +1244,7 @@
 		private System.Windows.Forms.DataVisualization.Charting.Chart chart6;
 		private System.Windows.Forms.Panel panel2;
 		public System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataVisualization.Charting.Chart chart9;
 	}
 }
 
